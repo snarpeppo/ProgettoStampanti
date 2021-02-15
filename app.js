@@ -19,7 +19,7 @@ app.get('/lpq',(req,res) => {
 app.get('/lpstat',(req,res) => {
     const command = lpstat();
     console.log('command',command);
-    res.render('lpqView',{
+    res.render('lpstatView',{
         command
     });
 });
