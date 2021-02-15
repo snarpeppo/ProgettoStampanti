@@ -1,5 +1,4 @@
 const express = require('express');
-const bootstrap = require ('bootstrap');
 const app = express();
 const lpq = require('./api/lpq.js')
 const lpstat = require('./api/lpstat.js')
