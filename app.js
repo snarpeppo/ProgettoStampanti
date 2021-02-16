@@ -6,6 +6,12 @@ const lpstat = require("./api/lpstat.js");
 app.listen(3001);
 app.set("view engine", "ejs");
 
+app.get("/", (req, res) => {
+  res.redirect("/home");
+
+  res.render("index");
+});
+
 app.get("/home", (req, res) => {
   res.render("index");
 });
