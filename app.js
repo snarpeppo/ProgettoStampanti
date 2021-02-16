@@ -5,7 +5,7 @@ const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
 const lp = require("./api/lp.js");
 
-app.listen(3000);
+app.listen(3001);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
