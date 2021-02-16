@@ -5,7 +5,7 @@ const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
 const lp = require("./api/lp.js");
 
-app.listen(3001);
+app.listen(3000);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
@@ -41,7 +41,7 @@ app.get("/lpstat", (req, res) => {
 });
 
 app.get("/lp", (req, res) => {
-  const command = lp("/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt");
+  const command = lp("/home/finsoft/ProgettoStampanti/file/file.txt");
   console.log("command", command);
   res.render("lpView", {
     command,
