@@ -3,8 +3,8 @@ const utils = require('../utils/utils.js');
 
 lpstat = function () {
     let lpstatList = utils.list();
-    console.log(lpstatList);
-    return JSON.stringify(lpstatList);
+    console.log(typeof(lpstatList));
+    return lpstatList;
   };
 
   module.exports = lpstat;
