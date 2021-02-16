@@ -3,7 +3,7 @@ const app = express();
 const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
 
-app.listen(3001);
+app.listen(3000);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
@@ -28,6 +28,10 @@ app.get("/lpq", (req, res) => {
     command,
   });
 });
+
+app.get("/classes", (req, res) => {
+  res.render("classes");
+  });
 
 app.get("/lpstat", (req, res) => {
   const command = lpstat();
