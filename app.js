@@ -5,7 +5,7 @@ const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
 const lp = require("./api/lp.js");
 
-app.listen(3001);
+app.listen(3000);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
@@ -33,9 +33,6 @@ app.get("/classes", (req, res) => {
   res.render("classes");
 });
 
-app.get("/quickprint", (req, res) => {
-  res.render("quickprint");
-});
 
 app.get("/lpstat", (req, res) => {
   const command = lpstat();
