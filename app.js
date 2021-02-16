@@ -6,6 +6,11 @@ const lpstat = require("./api/lpstat.js");
 app.listen(3001);
 app.set("view engine", "ejs");
 
+app.get("/home", (req, res) => {
+  res.render("index");
+});
+
+
 app.get("/lpq", (req, res) => {
   const command = lpq();
   console.log("command", command);
