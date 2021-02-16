@@ -1,48 +1,56 @@
 const spawnSync = require("child_process").spawnSync;
 const utils = require("../utils/utils.js");
+const writeSync = require("fs").writeSync;
 
-lp = function (data, options) {
+// lp = function (data, options) {
+//   let self = this;
+//   //console.log("self",self);
+//   let args = utils.buildArgs(options);
+//   //console.log("args", args);
+//   args.push("-d", "");
+//   //console.log("args2", args);
+
+//   let lp = spawnSync("lp", args, { encoding: "utf-8" });
+//   console.log("lp",lp);
+//   let input = lp.output;
+
+//   console.log("input",input);
+
+//   input.writeSync(data);
+//   input.end();
+//   //	lp.stdin.write(data)
+//   //	lp.stdin.end()
+
+// };
+
+lp = function (filePath, options) {
   let self = this;
-  console.log("self",self);
+  //console.log(self);
   let args = utils.buildArgs(options);
-  console.log("args", args);
   args.push("-d", self.list()[0]);
+  console.log("args", args);
+  args.push("--");
+  args.push(filePath);
   console.log("args2", args);
+  console.log("filepath", filePath);
 
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-  console.log("lp",lp);
-  let input = lp.output;
+  console.log("lp", lp);
 
-  console.log("input",input);
+//   let input = lp.output;
 
-  input.writeSync(data);
-  input.end();
-  //	lp.stdin.write(data)
-  //	lp.stdin.end()
+//   console.log("input", input);
+
+//   input.writeSync(data);
+//   input.end();
+  //   var job = new Job(lp);
+  //   job.on("sent", function () {
+  //     self.jobs.push(job);
+  //   });
+
+  //   job.on("completed", function () {
+  //     self.jobs.splice(self.jobs.indexOf(job), 1);
+  //   });
 };
-
-// Printer.prototype.printFile = function (filePath, options) {
-//   var self = this;
-//   //console.log(self);
-//   var args = buildArgs(options);
-//   args.push("-d", self.name);
-//   //console.log(args);
-//   args.push("--");
-//   args.push(filePath);
-//   console.log(filePath);
-
-//   var lp = spawnSync("lp", args, { encoding: "utf-8" });
-
-//   var job = new Job(lp);
-//   job.on("sent", function () {
-//     self.jobs.push(job);
-//   });
-
-//   job.on("completed", function () {
-//     self.jobs.splice(self.jobs.indexOf(job), 1);
-//   });
-
-//   return job;
-// };
 
 module.exports = lp;
