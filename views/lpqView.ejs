@@ -8,12 +8,29 @@
 
     <%- include('../views/partials/nav.ejs') %>
 
-    <p>lpq result:</p>
-    <% if (command) { %>
-        <h2><%= command %></h2>
-      <% } %>
-  </body>
-
+    <table class="table table-striped">
+      <thead>
+        <tr class='table-dark'>
+          <th scope="col">Job Rank</th>
+          <th scope="col">Job Commisioner</th>
+          <th scope="col">Job ID</th>
+          <th scope="col">Job File Name</th>
+          <th scope="col">Job Size</th>
+        </tr>
+      </thead>
+      <tbody>
+     
+        <% for(var i=0; i<command.length; i++){ %>
+          <tr>
+            <th scope="row"><%= command[i].rank %></th>
+            <th scope="row"><%= command[i].owner %></th>
+            <th scope="row"><%= command[i].identifier %></th>
+            <th scope="row"><%= command[i].files %></th>
+            <th scope="row"><%= command[i].totalSize %></th>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
   <%- include('../views/partials/footer.ejs') %>
 
 </html>

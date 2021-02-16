@@ -25,7 +25,7 @@ lpq = function () {
       totalSize: parseInt(line[4]),
     };
   });
-  return JSON.stringify(InfoJob);
+  return InfoJob;
 
 }
 module.exports = lpq;
