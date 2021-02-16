@@ -1,5 +1,5 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
+//const jwt = require("jsonwebtoken");
 const app = express();
 const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
