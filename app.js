@@ -33,6 +33,10 @@ app.get("/classes", (req, res) => {
   res.render("classes");
 });
 
+app.get("/quickprint", (req, res) => {
+  res.render("quickprint");
+});
+
 app.get("/lpstat", (req, res) => {
   const command = lpstat();
   res.render("lpstatView", {
