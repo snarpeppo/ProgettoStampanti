@@ -28,6 +28,10 @@ app.get("/lpq", (req, res) => {
   });
 });
 
+app.get("/classes", (req, res) => {
+  res.render("classes");
+  });
+
 app.get("/lpstat", (req, res) => {
   const command = lpstat();
   res.render("lpstatView", {
