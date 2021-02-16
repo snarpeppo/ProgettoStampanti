@@ -3,7 +3,6 @@ const utils = require('../utils/utils.js');
 
 lpstat = function () {
     let lpstatList = utils.list();
-    console.log(typeof(lpstatList));
     return lpstatList;
   };
 

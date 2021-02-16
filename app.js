@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
+const lp = require("./api/lp.js")
 
 app.listen(3001);
 app.set("view engine", "ejs");
@@ -20,10 +21,8 @@ app.get("/home", (req, res) => {
   res.render("home");
 });
 
-
 app.get("/lpq", (req, res) => {
   const command = lpq();
-  console.log("command", command);
   res.render("lpqView", {
     command,
   });
@@ -31,8 +30,15 @@ app.get("/lpq", (req, res) => {
 
 app.get("/lpstat", (req, res) => {
   const command = lpstat();
-  console.log("command", command);
   res.render("lpstatView", {
+    command,
+  });
+});
+
+app.get("/lp", (req, res) => {
+  const command = lp();
+  console.log("command", command);
+  res.render("lpView", {
     command,
   });
 });
