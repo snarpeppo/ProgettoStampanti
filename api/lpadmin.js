@@ -1,14 +1,21 @@
 const spawnSync = require("child_process").spawnSync;
 const utils = require("../utils/utils.js");
 
-lpq = function () {
+lpadmin = function (filepath, options) {
   let self = this;
-  let args = ["-P", self.list()[4]];
-  //console.log('args', args);
+  let args = utils.buildArgs(options);
+  let args = ["-c", "-D", "-L", self.list()[0]];
+  args.push("-c", self.list()[0]);
+  args.push("-D", self.list()[0]);
+  args.push("-L", self.list()[0]);
 
-  let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
-  //console.log('lpq',lpq);
-  let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
+  //console.log("args", args);
+  args.push("--");
+  args.push(filePath);
+
+  let lpadmin = spawnSync("lpadmin", args, { encoding: "utf-8" });
+  //console.log('lpadmin',lpadmin);
+  let stdoutSpawnSync = utils.parseStdout(lpadmin.stdout);
   //console.log('stdoutSpawnSync',stdoutSpawnSync);
 
   stdoutSpawnSync.shift();
@@ -27,4 +34,4 @@ lpq = function () {
   });
   return InfoJob;
 };
-module.exports = lpq;
+module.exports = lpadmin;
