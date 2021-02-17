@@ -31,32 +31,18 @@ lp = function (filePath, options) {
   //console.log("args", args);
   args.push("--");
   args.push(filePath);
- // console.log("args2", args);
+  //console.log("args2", args);
   //console.log("filepath", filePath);
-
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-  console.log("lp", lp);
+ // console.log("lp", lp);
 
  let input = lp.stdout;
 
   //console.log("input", input);
   let inputParsed = utils.parseStdout(input);
-    console.log(inputParsed);
-   // console.log("input", inputFiltered);
+  //console.log(inputParsed);
+  //console.log("input", inputFiltered);
     return inputParsed
-
-  
-
-//   input.writeSync(data);
-//   input.end();
-  //   var job = new Job(lp);
-  //   job.on("sent", function () {
-  //     self.jobs.push(job);
-  //   });
-
-  //   job.on("completed", function () {
-  //     self.jobs.splice(self.jobs.indexOf(job), 1);
-  //   });
 };
 
 module.exports = lp;
