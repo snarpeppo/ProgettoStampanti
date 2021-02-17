@@ -7,7 +7,7 @@ const lp = require("./api/lp.js");
 const lpadmin = require("./api/lpadmin");
 const { name } = require("ejs");
 
-app.listen(3000);
+app.listen(3001);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {

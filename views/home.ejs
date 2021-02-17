@@ -2,10 +2,12 @@
 <html lang="en">
   <%- include('../views/partials/header.ejs') %>
 
-  <body class>
-    <h1>Linux Printer Manager</h1>
+  <body>
+    <h1 style="margin-left: 20px;">Linux Printer Manager</h1>
 
     <%- include('../views/partials/nav.ejs') %>
+
+    <div class="mx-auto" style="width: 1325px; margin-top: 20px;">
 
     <h2>Printers</h2>
 
@@ -21,6 +23,7 @@
     <h2>Jobs</h2>
 
     <a href="lpq" class="btn btn-sm btn-secondary">Manage Jobs</a>
+  </div>
   </body>
 
   <%- include('../views/partials/footer.ejs') %>
