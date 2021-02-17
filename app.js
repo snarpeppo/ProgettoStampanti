@@ -55,7 +55,7 @@ app.get("/lp", (req, res) => {
 app.get("/lpadmin", (req, res) => {
   const command = lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
   res.render("lpadminView", {
-    command,
+    command
   });
 });
 
