@@ -7,10 +7,14 @@
     <h1>AidaLinux</h1>
    
     <%- include('../views/partials/nav.ejs') %>
-    
-    <h2>lp View</h2>
-      
-    <%= command %>
+
+    <div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert">
+     
+     <p><strong>Print Successful!</strong> You should check Jobs.</p>
+     <p><strong>request: </strong> <%= command %> </p> 
+    </div>
+
+   
 
   <%- include('../views/partials/footer.ejs') %>
 

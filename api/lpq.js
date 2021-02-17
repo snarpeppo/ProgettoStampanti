@@ -1,10 +1,10 @@
 const spawnSync = require("child_process").spawnSync;
-const utils = require('../utils/utils.js');
+const utils = require("../utils/utils.js");
 
 lpq = function () {
   let self = this;
   let args = ["-P", self.list()[4]];
-//console.log('args', args);
+  //console.log('args', args);
 
   let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
   //console.log('lpq',lpq);
@@ -13,7 +13,7 @@ lpq = function () {
  //console.log('stdoutSpawnSync',stdoutSpawnSync);
   stdoutSpawnSync.shift();
   stdoutSpawnSync.shift();
-  console.log('stdout',stdoutSpawnSync);
+  console.log("stdout", stdoutSpawnSync);
 
   let InfoJob = stdoutSpawnSync.map(function (line) {
     line = line.split(/ +/);
@@ -28,11 +28,5 @@ lpq = function () {
   });
 
   return InfoJob;
-
-}
+};
 module.exports = lpq;
-
-
- 
-
-  

@@ -27,22 +27,22 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  args.push("-d", self.list()[4]);
+  args.push("-d", self.list()[2]);
   //console.log("args", args);
   args.push("--");
   args.push(filePath);
   //console.log("args2", args);
   //console.log("filepath", filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
- // console.log("lp", lp);
+  // console.log("lp", lp);
 
- let input = lp.stdout;
+  let input = lp.stdout;
 
   //console.log("input", input);
   let inputParsed = utils.parseStdout(input);
   //console.log(inputParsed);
   //console.log("input", inputFiltered);
-    return inputParsed
+  return inputParsed;
 };
 
 module.exports = lp;
