@@ -4,6 +4,7 @@ const app = express();
 const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
 const lp = require("./api/lp.js");
+const lpadmin = require("./api/lpadmin");
 const { name } = require("ejs");
 
 app.listen(3000);
@@ -52,7 +53,7 @@ app.get("/lp", (req, res) => {
 });
 
 app.get("/lpadmin", (req, res) => {
-  const command = lpadmin();
+  const command = lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
   res.render("lpadminView", {
     command,
   });
