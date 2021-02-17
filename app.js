@@ -4,6 +4,7 @@ const app = express();
 const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
 const lp = require("./api/lp.js");
+const lpstatJobs = require("./api/lpstatJobs.js")
 const lpadmin = require("./api/lpadmin");
 const { name } = require("ejs");
 
@@ -26,8 +27,9 @@ app.get("/home", (req, res) => {
 
 app.get("/lpq", (req, res) => {
   const command = lpq();
+  const job = lpstatJobs();
   res.render("lpqView", {
-    command,
+    command, job
   });
 });
 
@@ -38,9 +40,16 @@ app.get("/classes", (req, res) => {
 app.get("/lpstat", (req, res) => {
   const command = lpstat();
   res.render("lpstatView", {
-    command,
+    command
   });
 });
+
+// app.get("/lpstatJobs", (req, res) => {
+//   const jobs = lpstatJobs();
+//   res.render("lpstatView", {
+//     jobs
+//   });
+// });
 
 app.get("/lp", (req, res) => {
   const command = lp(

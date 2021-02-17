@@ -291,7 +291,7 @@ list = function () {
   let listaSoloPrinters = listaParsata.filter(function (line) {
     return line.match(line.match(/^printer/) || line.match(/^impressora/));
   });
-  console.log("printers",listaSoloPrinters);
+  //console.log("printers",listaSoloPrinters);
   let listaSoloNomi = listaSoloPrinters.map(function (printer) {
     return printer.match(/(?: \S+)/)[0].trim();
   });
