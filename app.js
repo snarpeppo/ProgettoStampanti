@@ -8,7 +8,7 @@ const lpstatJobs = require("./api/lpstatJobs.js")
 const lpadmin = require("./api/lpadmin");
 const { name } = require("ejs");
 
-app.listen(3000);
+app.listen(3002);
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {

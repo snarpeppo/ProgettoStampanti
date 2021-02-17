@@ -4,12 +4,12 @@
      <%- include('../views/partials/header.ejs') %>
 
   <body>
-    <h1 style="margin-left: 20px; margin-top: 10px;">AidaLinux</h1>
+    <h1 style="padding-left: 20px; padding-top: 10px;">AidaLinux</h1>
 
     <%- include('../views/partials/nav.ejs') %>
-    <h2 style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px;">Single printer jobs List</h2>
+    <h2 style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px;">Single printer jobs List</h2>
     
-
+<div style="padding: 20px 20px;">
     <table class="table table-striped table-borderless">
       <thead>
         <tr class='table-dark'>
@@ -34,7 +34,7 @@
       </tbody>
     </table>
     <br>
-    <h2 style="margin-left: 20px; margin-bottom: 20px;">All Printer Jobs List</h2>
+    <h2 style="padding-left: 20px; padding-bottom: 20px;">All Printer Jobs List</h2>
 
     <table class="table table-striped table-borderless">
       <thead>
@@ -55,7 +55,9 @@
         <% } %>
       </tbody>
     </table>
+  </div>
   <%- include('../views/partials/footer.ejs') %>
 
+  </body>
 </html>
     
