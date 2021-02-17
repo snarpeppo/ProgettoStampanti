@@ -1,4 +1,3 @@
-const spawnSync = require("child_process").spawnSync;
 const utils = require('../utils/utils.js');
 
 lpstat = function () {
