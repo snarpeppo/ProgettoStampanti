@@ -9,15 +9,17 @@
 
     <%- include('../views/partials/nav.ejs') %>
     <br>
-    <h2 style="padding-left: 20px; padding-bottom: 20px;">Printers List</h2>
+    <h2 style="padding-left: 20px; padding-bottom: 10px;">Printers List</h2>
+    <div class="table-responsive">
     <table class="table table-borderless table-striped">
       <thead>
         <tr class='table-dark'>
-          <th scope="col">Name</th>
+          <th scope="col" style="padding-left: 20px;">Name</th>
         </tr>
       </thead>
       <tbody>
-     
+      </div>
+
         <% for(var i=0; i<command.length; i++){ %>
           <tr>
             <th scope="row"><%= command[i] %></th>
