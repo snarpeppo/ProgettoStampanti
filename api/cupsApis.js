@@ -28,7 +28,7 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  self = utils.list()[0];
+  self = utils.list()[6];
   args.push("-d", self);
   //console.log("args", args);
   args.push("--");
@@ -65,7 +65,7 @@ lpadmin = function (name, description, location) {
 
 lpq = function () {
   let self = this;
-  self = utils.list()[0];
+  self = utils.list()[6];
   let args = ["-P", self];
   //console.log('args', args);
 
