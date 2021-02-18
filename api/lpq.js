@@ -3,7 +3,7 @@ const utils = require("../utils/utils.js");
 
 lpq = function () {
   let self = this;
-  let args = ["-P", self.list()[7]];
+  let args = ["-P", self.list()[0]];
   //console.log('args', args);
 
   let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
