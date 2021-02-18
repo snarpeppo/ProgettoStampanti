@@ -27,7 +27,7 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  args.push("-d", self.list()[4]);
+  args.push("-d", self.list()[6]);
   //console.log("args", args);
   args.push("--");
   args.push(filePath);
