@@ -25,7 +25,9 @@ app.get("/lpq", (req, res) => {
   const command = cups.lpq();
   const job = cups.lpstatJobs();
   res.render("lpqView", {
-    command, job, name
+    command,
+    job,
+    name,
   });
 });
 
@@ -36,7 +38,7 @@ app.get("/classes", (req, res) => {
 app.get("/lpstat", (req, res) => {
   const command = cups.lpstat();
   res.render("lpstatView", {
-    command
+    command,
   });
 });
 
@@ -48,9 +50,7 @@ app.get("/lpstat", (req, res) => {
 // });
 
 app.get("/lp", (req, res) => {
-  const command = cups.lp(
-    "/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt"
-  );
+  const command = lp("/home/finsoft/ProgettoStampanti/file/file.txt");
   console.log("command", command);
   res.render("lpView", {
     command,
@@ -60,7 +60,7 @@ app.get("/lp", (req, res) => {
 app.get("/lpadmin", (req, res) => {
   const command = cups.lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
   res.render("lpadminView", {
-    command
+    command,
   });
 });
 
