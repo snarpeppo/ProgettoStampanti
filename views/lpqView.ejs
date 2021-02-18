@@ -8,15 +8,22 @@
 
     <%- include('../views/partials/nav.ejs') %>
     
-<div class="table-responsive" style="padding: 20px 20px 0px 20px;" >
-  <h2><%= name.printername %> jobs List</h2>
 
-  <select id="volume" class="form-select" onchange="onChange();">
+<div class="container-fluid" style="padding: 20px 0px 0px 20px;">
+  <div class="row" style="width: 100%;">
+    <div class="col-2">
+  <h2><%= name.printername %> jobs List</h2>
+</div>
+  <div class="col-2">
+  <select id="volume" class="form-select-sm" onchange="onChange();">
     <% for ( var i = 0; i<name.length; i++ ) { %>
         <option value="<%= name[i] %>"> <%= name[i] %> </option>
         <% } %>
-
     </select>
+  </div>
+ </div>
+</div>
+  <div class="table-responsive" style="padding: 20px 20px 0px 20px;" >
     <table class="table table-hover table-striped table-borderless">
       <thead>
         <tr class='table-dark'>
