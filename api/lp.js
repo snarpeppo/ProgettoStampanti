@@ -27,14 +27,14 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  args.push("-d", self.list()[0]);
+  args.push("-d", self.list()[6]);
   //console.log("args", args);
   args.push("--");
   args.push(filePath);
   //console.log("args2", args);
   //console.log("filepath", filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-  // console.log("lp", lp);
+   //console.log("lp", lp);
 
   let input = lp.stdout;
 

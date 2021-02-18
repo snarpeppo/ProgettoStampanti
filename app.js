@@ -54,7 +54,7 @@ app.get("/lpstat", (req, res) => {
 
 app.get("/lp", (req, res) => {
   const command = lp(
-    "/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt"
+    "/home/finsoft/ProgettoStampanti/file/file.txt"
   );
   console.log("command", command);
   res.render("lpView", {
