@@ -50,7 +50,7 @@ app.get("/lpstat", (req, res) => {
 // });
 
 app.get("/lp", (req, res) => {
-  const command = lp("/home/finsoft/ProgettoStampanti/file/file.txt");
+  const command = lp("/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt");
   console.log("command", command);
   res.render("lpView", {
     command,
@@ -60,6 +60,13 @@ app.get("/lp", (req, res) => {
 app.get("/lpadmin", (req, res) => {
   const command = cups.lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
   res.render("lpadminView", {
+    command,
+  });
+});
+
+app.get("/cancelAll", (req, res) => {
+  const command = cups.cancelAll();
+  res.render("cancelAllView", {
     command,
   });
 });

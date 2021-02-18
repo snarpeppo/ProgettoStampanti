@@ -28,19 +28,19 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  self = utils.list()[6];
+  self = utils.list()[4];
   args.push("-d", self);
-  //console.log("args", args);
+  console.log("args", args);
   args.push("--");
   args.push(filePath);
-  //console.log("args2", args);
+  console.log("args2", args);
   //console.log("filepath", filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-  // console.log("lp", lp);
+   console.log("lp", lp);
 
   let input = lp.stdout;
 
-  //console.log("input", input);
+  console.log("input", input);
   let inputParsed = utils.parseStdout(input);
   //console.log(inputParsed);
   //console.log("input", inputFiltered);
@@ -63,9 +63,9 @@ lpadmin = function (name, description, location) {
   return stdoutSpawnSync;
 };
 
-lpq = function (name) {
+lpq = function () {
   let self = this;
-  self = utils.list()[6];
+  self = utils.list()[4];
   let args = ["-P", self];
   //console.log('args', args);
 
@@ -148,8 +148,9 @@ lpstat = function () {
 cancelAll = function() {
 let args = ["-a"];
 let cancelAll = spawnSync('cancel', args, {encoding:'utf-8'});
-return cancelAll;
 
+console.log(cancelAll);
+return cancelAll;
 };
 
 module.exports = {
