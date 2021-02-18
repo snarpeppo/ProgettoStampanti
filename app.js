@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const cups = require("./api/cupsApis.js")
+const cups = require("./api/cupsApis.js");
 
 app.listen(3000);
 app.set("view engine", "ejs");
@@ -20,8 +20,8 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/lpq", (req, res) => {
-  const name = cups.lpstat()
-  console.log('Nome stampante',name);
+  const name = cups.lpstat();
+  console.log("Nome stampante", name);
   const command = cups.lpq();
   const job = cups.lpstatJobs();
   res.render("lpqView", {
@@ -50,7 +50,9 @@ app.get("/lpstat", (req, res) => {
 // });
 
 app.get("/lp", (req, res) => {
-  const command = lp("/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt");
+  const command = lp(
+    "/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt"
+  );
   console.log("command", command);
   res.render("lpView", {
     command,
@@ -70,8 +72,6 @@ app.get("/cancelAll", (req, res) => {
     command,
   });
 });
-
-
 
 ///home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt
 ///home/finsoft/ProgettoStampanti/file/file.txt
