@@ -1,12 +1,6 @@
 const express = require("express");
-//const jwt = require("jsonwebtoken");
 const app = express();
-const lpq = require("./api/lpq.js");
-const lpstat = require("./api/lpstat.js");
-const lp = require("./api/lp.js");
-const lpstatJobs = require("./api/lpstatJobs.js");
-const lpadmin = require("./api/lpadmin");
-const { name } = require("ejs");
+const cups = require("./api/cupsApis.js")
 
 app.listen(3000);
 app.set("view engine", "ejs");
@@ -26,9 +20,9 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/lpq", (req, res) => {
-  const name = lpstat();
-  const command = lpq();
-  const job = lpstatJobs();
+  const name = cups.lpstat()
+  const command = cups.lpq();
+  const job = cups.lpstatJobs();
   res.render("lpqView", {
     command,
     job,
@@ -41,7 +35,7 @@ app.get("/classes", (req, res) => {
 });
 
 app.get("/lpstat", (req, res) => {
-  const command = lpstat();
+  const command = cups.lpstat();
   res.render("lpstatView", {
     command,
   });
@@ -63,7 +57,7 @@ app.get("/lp", (req, res) => {
 });
 
 app.get("/lpadmin", (req, res) => {
-  const command = lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
+  const command = cups.lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
   res.render("lpadminView", {
     command,
   });
