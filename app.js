@@ -26,10 +26,11 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/lpq", (req, res) => {
+  const name = lpstat();
   const command = lpq();
   const job = lpstatJobs();
   res.render("lpqView", {
-    command, job
+    command, job, name
   });
 });
 

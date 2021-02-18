@@ -12,7 +12,7 @@ lpstatJobs = function(){
    
    let lpstatMap = lpstatParsata.map(function (line){
        line = line.split(/ +/);
-       console.log('line',line);
+       //console.log('line',line);
        return{
         //    printername: line[0],
         //    bytes: parseInt(line[2]),
