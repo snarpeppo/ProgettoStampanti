@@ -4,7 +4,7 @@ const app = express();
 const lpq = require("./api/lpq.js");
 const lpstat = require("./api/lpstat.js");
 const lp = require("./api/lp.js");
-const lpstatJobs = require("./api/lpstatJobs.js")
+const lpstatJobs = require("./api/lpstatJobs.js");
 const lpadmin = require("./api/lpadmin");
 const { name } = require("ejs");
 
@@ -30,7 +30,9 @@ app.get("/lpq", (req, res) => {
   const command = lpq();
   const job = lpstatJobs();
   res.render("lpqView", {
-    command, job, name
+    command,
+    job,
+    name,
   });
 });
 
@@ -41,7 +43,7 @@ app.get("/classes", (req, res) => {
 app.get("/lpstat", (req, res) => {
   const command = lpstat();
   res.render("lpstatView", {
-    command
+    command,
   });
 });
 
@@ -53,9 +55,7 @@ app.get("/lpstat", (req, res) => {
 // });
 
 app.get("/lp", (req, res) => {
-  const command = lp(
-    "/home/finsoft/ProgettoStampanti/file/file.txt"
-  );
+  const command = lp("/home/finsoft/ProgettoStampanti/file/file.txt");
   console.log("command", command);
   res.render("lpView", {
     command,
@@ -65,7 +65,7 @@ app.get("/lp", (req, res) => {
 app.get("/lpadmin", (req, res) => {
   const command = lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
   res.render("lpadminView", {
-    command
+    command,
   });
 });
 
