@@ -63,7 +63,7 @@ lpadmin = function (name, description, location) {
   return stdoutSpawnSync;
 };
 
-lpq = function () {
+lpq = function (name) {
   let self = this;
   self = utils.list()[0];
   let args = ["-P", self];
@@ -71,16 +71,16 @@ lpq = function () {
 
   let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
   //console.log('lpq',lpq);
-  console.log("stdoutlpq", lpq.stdout);
+ // console.log("stdoutlpq", lpq.stdout);
   let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
   //console.log('stdoutSpawnSync',stdoutSpawnSync);
   stdoutSpawnSync.shift();
   stdoutSpawnSync.shift();
-  console.log("stdout", stdoutSpawnSync);
+ // console.log("stdout", stdoutSpawnSync);
 
   let InfoJob = stdoutSpawnSync.map(function (line) {
     line = line.split(/ +/);
-    console.log(line);
+   // console.log(line);
     return {
       rank: line[0] === "active" ? line[0] : parseInt(line[0].slice(0, -2)),
       owner: line[1],
@@ -97,10 +97,10 @@ lpstatJobs = function () {
   let args = ["-o"];
   let lpstat = spawnSync("lpstat", args, { encoding: "utf-8" });
   //console.log('lpstat',lpstat)
-  console.log("stdoutlpstat", lpstat.stdout);
+ // console.log("stdoutlpstat", lpstat.stdout);
   lpstatParsata = utils.parseStdout(lpstat.stdout);
   // lpstatParsata = JSON.parse(lpstat.stdout);
-  console.log("parsata", lpstatParsata);
+ // console.log("parsata", lpstatParsata);
 
   let lpstatMap = lpstatParsata.map(function (line) {
     line = line.split(/ +/);
@@ -136,7 +136,7 @@ lpstatJobs = function () {
     };
   });
 
-  console.log("lpstatParsata", lpstatMap);
+  //console.log("lpstatParsata", lpstatMap);
   return lpstatMap;
 };
 
@@ -145,7 +145,12 @@ lpstat = function () {
   return lpstatList;
 };
 
+cancelAll = function() {
+let args = ["-a"];
+let cancelAll = spawnSync('cancel', args, {encoding:'utf-8'});
+return cancelAll;
 
+};
 
 module.exports = {
   lpadmin,
@@ -153,4 +158,5 @@ module.exports = {
   lp,
   lpstatJobs,
   lpq,
+  cancelAll
 };

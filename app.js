@@ -21,6 +21,7 @@ app.get("/home", (req, res) => {
 
 app.get("/lpq", (req, res) => {
   const name = cups.lpstat()
+  console.log('Nome stampante',name);
   const command = cups.lpq();
   const job = cups.lpstatJobs();
   res.render("lpqView", {
@@ -62,6 +63,8 @@ app.get("/lpadmin", (req, res) => {
     command
   });
 });
+
+
 
 ///home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt
 ///home/finsoft/ProgettoStampanti/file/file.txt
