@@ -14,7 +14,7 @@
   <h2><%= name.printername %> Jobs List</h2>
 </div>
   <div class="col-2">
-  <select id="volume" class="form-select-sm" onchange="onChange();">
+  <select id="select" class="form-select-sm">
     <% for ( var i = 0; i<name.length; i++ ) { %>
         <option value="<%= name[i] %>"> <%= name[i] %> </option>
         <% } %>
@@ -22,8 +22,8 @@
   </div>
  </div>
 </div>
-  <div class="table-responsive" style="padding: 20px 20px 0px 20px;" >
-    <table class="table table-hover table-striped table-borderless">
+  <div id="records" class="table-responsive table-hover table-striped table-borderless" style="padding: 20px 20px 0px 20px;" >
+    <!-- <table class="table table-hover table-striped table-borderless">
       <thead>
         <tr class='table-dark'>
           <th scope="col">Job Rank</th>
@@ -45,7 +45,7 @@
           </tr>
         <% } %>
       </tbody>
-    </table>
+    </table> -->
   </div>
 
     <div class="table-responsive" style="padding: 20px 20px 50px 20px;" >
@@ -71,8 +71,42 @@
     </table>
   </div>
   <%- include('../views/partials/footer.ejs') %>
-  <script>function onChange(){
-    console.log("ciao");
-  }</script>
+  <script>
+
+$(function(){ 
+
+$("#select").on('change', function()
+{ 
+  var nomeStampante = $(this).val();
+  console.log(nomeStampante)
+
+  $.ajax
+  ({
+    method: "GET", 
+    url: "lpq.js",
+    error: function()
+      {
+          alert("Error");
+      }
+  }).done(function( data ) { 
+
+    var result= JSON.parse(data); 
+    console.log(result)
+
+    var string="<table> <thead><tr class='table-dark'> <th>Job Rank</th> <th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th><tr>";
+
+    $.each( result, function( key, value ) { 
+
+      string += "<tr> <td>"+value['rank']+"</td><td>"+value['owner']+"</td><td>"+value['identifier']+"</td><td>"+value['files']+"</td><td>"+value['files']+"</td> </tr>"; 
+          }); 
+
+        string += '</table>'; 
+
+      $("#records").html(string); 
+  }); 
+}); 
+});
+  </script>
+  <script type="text/javascript" src="/../api/ajaxGet.js"></script>
   </body>
 </html>

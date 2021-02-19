@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cups = require("./api/cupsApis.js")
+const lpq = require("./api/lpq.js")
 
 app.listen(3000);
 app.set("view engine", "ejs");
@@ -21,8 +22,8 @@ app.get("/home", (req, res) => {
 
 app.get("/lpq", (req, res) => {
   const name = cups.lpstat()
-  console.log('Nome stampante',name);
-  const command = cups.lpq();
+  const command = lpq(name);
+  //console.log(command);
   const job = cups.lpstatJobs();
   res.render("lpqView", {
     command,
@@ -51,7 +52,7 @@ app.get("/lpstat", (req, res) => {
 
 app.get("/lp", (req, res) => {
   const command = lp("/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt");
-  console.log("command", command);
+  //console.log("command", command);
   res.render("lpView", {
     command,
   });

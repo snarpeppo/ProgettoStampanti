@@ -1,4 +1,5 @@
 const spawnSync = require("child_process").spawnSync;
+const execSync = require("child_process").execSync;
 const utils = require("../utils/utils.js");
 //const writeSync = require("fs").writeSync;
 
@@ -63,35 +64,35 @@ lpadmin = function (name, description, location) {
   return stdoutSpawnSync;
 };
 
-lpq = function () {
-  let self = this;
-  self = utils.list()[4];
-  let args = ["-P", self];
-  //console.log('args', args);
+// lpq = function () {
+//   let self = this;
+//   self = utils.list()[4];
+//   let args = ["-P", self];
+//   //console.log('args', args);
 
-  let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
-  //console.log('lpq',lpq);
- // console.log("stdoutlpq", lpq.stdout);
-  let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
-  //console.log('stdoutSpawnSync',stdoutSpawnSync);
-  stdoutSpawnSync.shift();
-  stdoutSpawnSync.shift();
- // console.log("stdout", stdoutSpawnSync);
+//   let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
+//   //console.log('lpq',lpq);
+//  // console.log("stdoutlpq", lpq.stdout);
+//   let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
+//   //console.log('stdoutSpawnSync',stdoutSpawnSync);
+//   stdoutSpawnSync.shift();
+//   stdoutSpawnSync.shift();
+//  // console.log("stdout", stdoutSpawnSync);
 
-  let InfoJob = stdoutSpawnSync.map(function (line) {
-    line = line.split(/ +/);
-   // console.log(line);
-    return {
-      rank: line[0] === "active" ? line[0] : parseInt(line[0].slice(0, -2)),
-      owner: line[1],
-      identifier: parseInt(line[2]),
-      files: line[3],
-      totalSize: parseInt(line[4]),
-    };
-  });
+//   let InfoJob = stdoutSpawnSync.map(function (line) {
+//     line = line.split(/ +/);
+//    // console.log(line);
+//     return {
+//       rank: line[0] === "active" ? line[0] : parseInt(line[0].slice(0, -2)),
+//       owner: line[1],
+//       identifier: parseInt(line[2]),
+//       files: line[3],
+//       totalSize: parseInt(line[4]),
+//     };
+//   });
 
-  return InfoJob;
-};
+//   return InfoJob;
+// };
 
 lpstatJobs = function () {
   let args = ["-o"];
@@ -146,8 +147,9 @@ lpstat = function () {
 };
 
 cancelAll = function() {
-let args = ["-a"];
-let cancelAll = spawnSync('cancel', args, {encoding:'utf-8'});
+
+let args = ["-gn"];
+let cancelAll = spawnSync('id', args, {encoding:'utf-8'});
 
 console.log(cancelAll);
 return cancelAll;
@@ -158,6 +160,6 @@ module.exports = {
   lpstat,
   lp,
   lpstatJobs,
-  lpq,
+  //lpq,
   cancelAll
 };
