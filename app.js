@@ -72,7 +72,5 @@ app.get("/cancelAll", (req, res) => {
   });
 });
 
-
-
 ///home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt
 ///home/finsoft/ProgettoStampanti/file/file.txt

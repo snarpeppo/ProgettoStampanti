@@ -29,7 +29,7 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  self = utils.list()[4];
+  self = utils.list()[6];
   args.push("-d", self);
   console.log("args", args);
   args.push("--");
@@ -37,7 +37,7 @@ lp = function (filePath, options) {
   console.log("args2", args);
   //console.log("filepath", filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-   console.log("lp", lp);
+  console.log("lp", lp);
 
   let input = lp.stdout;
 
@@ -98,10 +98,10 @@ lpstatJobs = function () {
   let args = ["-o"];
   let lpstat = spawnSync("lpstat", args, { encoding: "utf-8" });
   //console.log('lpstat',lpstat)
- // console.log("stdoutlpstat", lpstat.stdout);
+  // console.log("stdoutlpstat", lpstat.stdout);
   lpstatParsata = utils.parseStdout(lpstat.stdout);
   // lpstatParsata = JSON.parse(lpstat.stdout);
- // console.log("parsata", lpstatParsata);
+  // console.log("parsata", lpstatParsata);
 
   let lpstatMap = lpstatParsata.map(function (line) {
     line = line.split(/ +/);
@@ -146,13 +146,12 @@ lpstat = function () {
   return lpstatList;
 };
 
-cancelAll = function() {
+cancelAll = function () {
+  let args = ["-a"];
+  let cancelAll = spawnSync("cancel", args, { encoding: "utf-8" });
 
-let args = ["-gn"];
-let cancelAll = spawnSync('id', args, {encoding:'utf-8'});
-
-console.log(cancelAll);
-return cancelAll;
+  console.log(cancelAll);
+  return cancelAll;
 };
 
 module.exports = {
