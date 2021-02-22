@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
+
 const cups = require("./api/cupsApis.js")
 const lpq = require("./api/lpq.js")
+
+app.use(express.static('api'))
 
 app.listen(3000);
 app.set("view engine", "ejs");

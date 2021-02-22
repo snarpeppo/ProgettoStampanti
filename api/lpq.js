@@ -1,5 +1,10 @@
+const utils  = require("../utils/utils.js");
 const spawnSync = require("child_process").spawnSync;
-const utils = require("../utils/utils.js");
+
+// parseStdout = function (data) {
+//   if (!data) return [];
+//   return data.toString().replace(/\n$/, "").split("\n");
+// };
 
 lpq = function (name) {
     let self = this;
@@ -10,7 +15,7 @@ lpq = function (name) {
     let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
     //console.log('lpq',lpq);
    // console.log("stdoutlpq", lpq.stdout);
-    let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
+    let stdoutSpawnSync = parseStdout(lpq.stdout);
     //console.log('stdoutSpawnSync',stdoutSpawnSync);
     stdoutSpawnSync.shift();
     stdoutSpawnSync.shift();
@@ -27,7 +32,7 @@ lpq = function (name) {
         totalSize: parseInt(line[4]),
       };
     });
-  
+  console.log(InfoJob);
     return InfoJob;
   };
 
