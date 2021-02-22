@@ -54,7 +54,8 @@ app.get("/lpstat", (req, res) => {
 // });
 
 app.get("/lp", (req, res) => {
-  const command = lp("/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt");
+//  const command = lp("/home/finsoft/ProgettoStampanti/file/file.txt");
+  const command = lp("/home/finsoft/ProgettoStampanti/file/file.pdf");
   //console.log("command", command);
   res.render("lpView", {
     command,
@@ -71,6 +72,13 @@ app.get("/lpadmin", (req, res) => {
 app.get("/cancelAll", (req, res) => {
   const command = cups.cancelAll();
   res.render("cancelAllView", {
+    command,
+  });
+});
+
+app.get("/lprm", (req, res) => {
+  const command = cups.lprm();
+  res.render("lprmView", {
     command,
   });
 });

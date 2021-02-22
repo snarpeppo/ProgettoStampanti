@@ -29,7 +29,7 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  self = utils.list()[6];
+  self = utils.list()[7];
   args.push("-d", self);
   console.log("args", args);
   args.push("--");
@@ -154,11 +154,20 @@ cancelAll = function () {
   return cancelAll;
 };
 
+lprm = function () {
+  let args = ["-"];
+  let cancelAll = spawnSync("lprm", args, { encoding: "utf-8" });
+
+  console.log(cancelAll);
+  return cancelAll;
+};
+
 module.exports = {
   lpadmin,
   lpstat,
   lp,
   lpstatJobs,
   //lpq,
-  cancelAll
+  cancelAll,
+  lprm
 };
