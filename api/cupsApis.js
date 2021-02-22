@@ -147,8 +147,8 @@ lpstat = function () {
 };
 
 cancelAll = function () {
-  let args = ["-a"];
-  let cancelAll = spawnSync("cancel", args, { encoding: "utf-8" });
+  let args = ["printerprova-180"];
+  let cancelAll = spawnSync("cancel",args, { encoding: "utf-8" });
 
   console.log(cancelAll);
   return cancelAll;
