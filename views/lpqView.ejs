@@ -14,7 +14,7 @@
   <h2><%= name.printername %> Jobs List</h2>
 </div>
   <div class="col-2">
-  <select id="select" class="form-select-sm">
+  <select id="select" class="form-select-sm" >
     <% for ( var i = 0; i<name.length; i++ ) { %>
         <option value="<%= name[i] %>"> <%= name[i] %> </option>
         <% } %>
@@ -24,27 +24,7 @@
 </div>
   <div style="padding: 20px 20px 0px 20px;" >
     <table id="records" class="table table-hover table-striped table-borderless">
-     <!--  <thead>
-        <tr class='table-dark'>
-          <th scope="col">Job Rank</th>
-          <th scope="col">Job Commissioner</th>
-          <th scope="col">Job ID</th>
-          <th scope="col">Job File Name</th>
-          <th scope="col">Job Size</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <% for(var i=0; i<command.length; i++){ %>
-          <tr>
-            <th scope="row"><%= command[i].rank %></th>
-            <th scope="row"><%= command[i].owner %></th>
-            <th scope="row"><%= command[i].identifier %></th>
-            <th scope="row"><%= command[i].files %></th>
-            <th scope="row"><%= command[i].totalSize %></th>
-          </tr>
-        <% } %>
-    </tbody> --> 
+    
     </table> 
   </div>
   <div class="container-fluid" style="padding: 20px 0px 0px 20px;">
@@ -80,38 +60,38 @@
     </table>
   </div>
   <%- include('../views/partials/footer.ejs') %>
-  <!-- <script>
+  <script>
 
-// $(function(){ 
+$(function(){ 
 
-// $("#select").on('change', function()
-// { 
-//   var nomeStampante = $(this).val();
-//   console.log(nomeStampante)
+$("#select").on('change', function()
+{ 
+  var nomeStampante = $(this).val();
+  //console.log(nomeStampante)
 
-//   $.ajax
-//   ({
-//     method: "GET", 
-//     url: "/lpqGet",
-//     data: { 
-//       printername:nomeStampante
-//   },
-//     error: function()
-//       {
-//           alert("Error");
-//       }
-//   }).done(function( data ) { 
+  $.ajax
+  ({
+    method: "GET", 
+    url: "/lpqGet",
+    data: { 
+      printername:nomeStampante
+  },
+    error: function()
+      {
+          alert("Error");
+      }
+  }).done(function( data ) { 
 
-//     var string="<thead><tr class='table-dark'> <th>Job Rank</th> <th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th></thead><tbody>";
-//     $.each( data, function( key, value ) { 
-//       string += "<tr><td>"+value['rank']+"</td><td>"+value['owner']+"</td><td>"+value['identifier']+"</td><td>"+value['files']+"</td><td>"+value['totalSize']+"</td></tr>"; 
-//           }); 
-//         string += ' </tbody></table>'; 
-//       $("#records").html(string); 
-//   }); 
-// }); 
-// });
-  </script> -->
+    var string="<thead><tr class='table-dark'> <th>Job Rank</th> <th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th></thead><tbody>";
+    $.each( data, function( key, value ) { 
+      string += "<tr><td>"+value['rank']+"</td><td>"+value['owner']+"</td><td>"+value['identifier']+"</td><td>"+value['files']+"</td><td>"+value['totalSize']+"</td></tr>"; 
+          }); 
+        string += ' </tbody></table>'; 
+      $("#records").html(string); 
+  }); 
+}); 
+});
+  </script> 
    <script type="text/javascript" src="../api/ajaxGet.js"></script>
   </body>
 </html>

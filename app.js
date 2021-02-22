@@ -25,19 +25,15 @@ app.get("/home", (req, res) => {
 
 app.get("/lpq", (req, res) => {
   const name = cups.lpstat()
-  const command = lpq(name);
-  //console.log(command);
   const job = cups.lpstatJobs();
   res.render("lpqView", {
-    command,
     job,
-    name,
+    name
   });
 });
 
 app.get('/lpqGet',(req,res)=> {
   const name = lpq(req.query.printername);
-  console.log(req.query.printername);
   res.send(name);
 })
 

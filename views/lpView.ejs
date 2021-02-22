@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
- <%- include('../views/partials/header.ejs') %>
+  <%- include('../views/partials/header.ejs') %>
 
   <body>
 
@@ -10,15 +10,15 @@
     <div class="mb-3, container-fluid" style="margin-right: 50%; padding: 20px 20px 20px 20px;">
       <div class="row" style="width: 100%;">
         <div class="col-4">
-      <h2>Select file to print</h2>
+          <h2>Select file to print</h2>
+        </div>
+        <div class="col-4">
+          <label for="formFile" class="form-label">
+          <input class="form-control" type="file" id="formFile">
+          </label>
+        </div>
       </div>
-    <div class="col-4">
-      <label for="formFile" class="form-label">
-      <input class="form-control" type="file" id="formFile">
-    </label>
     </div>
-  </div>
-</div>
 
 
     <div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">
