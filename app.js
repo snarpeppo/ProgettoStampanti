@@ -35,6 +35,12 @@ app.get("/lpq", (req, res) => {
   });
 });
 
+app.get('/lpqGet',(req,res)=> {
+  const name = lpq(req.query.printername);
+  console.log(req.query.printername);
+  res.send(name);
+})
+
 app.get("/classes", (req, res) => {
   res.render("classes");
 });

@@ -1,4 +1,6 @@
-const utils  = require("../utils/utils.js");
+ const utils  = require("../utils/utils.js");
+//import {parseStdout} from '../utils/utils.js';
+//console.log(parseStdout);
 const spawnSync = require("child_process").spawnSync;
 
 // parseStdout = function (data) {
@@ -10,13 +12,13 @@ lpq = function (name) {
     let self = this;
     self = name;
     let args = ["-P", self];
-    //console.log('args', args);
+    console.log('args', args);
   
     let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
-    //console.log('lpq',lpq);
-   // console.log("stdoutlpq", lpq.stdout);
-    let stdoutSpawnSync = parseStdout(lpq.stdout);
-    //console.log('stdoutSpawnSync',stdoutSpawnSync);
+    console.log('lpq',lpq);
+    console.log("stdoutlpq", lpq.stdout);
+    let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
+    console.log('stdoutSpawnSync',stdoutSpawnSync);
     stdoutSpawnSync.shift();
     stdoutSpawnSync.shift();
    // console.log("stdout", stdoutSpawnSync);

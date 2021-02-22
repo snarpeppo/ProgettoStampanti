@@ -29,7 +29,7 @@ lp = function (filePath, options) {
   let self = this;
   //console.log(self);
   let args = utils.buildArgs(options);
-  self = utils.list()[6];
+  self = utils.list()[4];
   args.push("-d", self);
   console.log("args", args);
   args.push("--");
@@ -147,8 +147,8 @@ lpstat = function () {
 };
 
 cancelAll = function () {
-  let args = ["-a"];
-  let cancelAll = spawnSync("cancel", args, { encoding: "utf-8" });
+  let args = ["printerprova-180"];
+  let cancelAll = spawnSync("cancel",args, { encoding: "utf-8" });
 
   console.log(cancelAll);
   return cancelAll;

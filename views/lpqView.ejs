@@ -22,7 +22,7 @@
   </div>
  </div>
 </div>
-  <div id="records" class="table-responsive table-hover table-striped table-borderless" style="padding: 20px 20px 0px 20px;" >
+  <div id="records" style="padding: 20px 20px 0px 20px;" >
     <!-- <table class="table table-hover table-striped table-borderless">
       <thead>
         <tr class='table-dark'>
@@ -91,17 +91,17 @@ $("#select").on('change', function()
   $.ajax
   ({
     method: "GET", 
-    url: "lpq.js",
+    url: "/lpqGet",
+    data: { 
+      printername:nomeStampante
+  },
     error: function()
       {
           alert("Error");
       }
   }).done(function( data ) { 
 
-     var result= JSON.stringify(data); 
-    
-
-    var string="<table> <thead><tr class='table-dark'> <th>Job Rank</th> <th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th><tr>";
+    var string="<table class='table-responsive table-hover table-striped table-borderless'> <thead><tr class='table-dark'> <th>Job Rank</th> <th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th><tr>";
 
     $.each( data, function( key, value ) { 
 
@@ -115,6 +115,7 @@ $("#select").on('change', function()
 }); 
 });
   </script>
-  <script type="text/javascript" src="/../api/ajaxGet.js"></script>
+  <!-- <script type="text/javascript" src="/../api/ajaxGet.js"></script>
+  <script src="../utils/utils.js"></script> -->
   </body>
 </html>
