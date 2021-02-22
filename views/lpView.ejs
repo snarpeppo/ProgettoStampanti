@@ -13,10 +13,13 @@
       <h2>Select file to print</h2>
       </div>
     <div class="col-4">
-      <label for="formFile" class="form-label">
+     <label for="formFile" class="form-label">
       <input class="form-control" type="file" id="formFile">
-    </label>
+     </label>
     </div>
+    <div class="col-4">
+     <a href="lp" id="file" class="btn btn btn-secondary">Print</a>
+   </div>
   </div>
 </div>
 
@@ -30,4 +33,34 @@
 
   <%- include('../views/partials/footer.ejs') %>
 
+<script>
+
+$(function(){ 
+
+$("#file").on('click', function()
+{ 
+var input = document.getElementById("file").val();  
+console.log(file);
+
+  $.ajax
+  ({
+    method: "GET", 
+    url: "/lpGet",
+    data: { 
+      file:input
+  },
+    error: function()
+      {
+          alert("Error");
+      }
+  }).done(function( data ) { 
+
+    
+      $("#records").html(string); 
+  }); 
+}); 
+});
+
+</script>
+  </body>
 </html>

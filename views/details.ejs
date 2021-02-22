@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../views/partials/header.ejs') %>
+
+  <body>
+    <%- include('../views/partials/nav.ejs') %>
+
+    <h2 style="padding: 20px 20px 0px 20px">Printer Details</h2>
+
+    <div class="mb-3, container-fluid" style="margin-right: 50%; padding: 20px 20px 20px 20px;">
+        <div class="row" style="width: 100%;">
+          <div class="col-4">
+        <h2>Select file to print</h2>
+        </div>
+      <div class="col-4">
+       <label for="formFile" class="form-label">
+        <input class="form-control" type="file" id="formFile">
+       </label>
+      </div>
+      <div class="col-4">
+       <a href="filepath" class="btn btn btn-secondary">Print</a>
+     </div>
+    </div>
+  </div>
+
+
+
+  </body>
+  <%- include('../views/partials/footer.ejs') %>
+</html>

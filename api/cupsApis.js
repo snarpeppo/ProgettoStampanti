@@ -27,7 +27,7 @@ const utils = require("../utils/utils.js");
 //print da file
 lp = function (filePath, options) {
   let self = this;
-  //console.log(self);
+  console.log(self);
   let args = utils.buildArgs(options);
   self = utils.list()[7];
   args.push("-d", self);
@@ -35,7 +35,7 @@ lp = function (filePath, options) {
   args.push("--");
   args.push(filePath);
   console.log("args2", args);
-  //console.log("filepath", filePath);
+  console.log("filepath", filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
   console.log("lp", lp);
 
@@ -121,6 +121,8 @@ lpstatJobs = function () {
       printername: line[0],
       owner: line[1],
       date:
+        line[2] +
+        " " +
         line[3] +
         " " +
         parseInt(line[4]) +

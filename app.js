@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 
-const cups = require("./api/cupsApis.js")
-const lpq = require("./api/lpq.js")
+const cups = require("./api/cupsApis.js");
+const lpq = require("./api/lpq.js");
 
-app.use(express.static('api'))
+app.use(express.static("api"));
 
 app.listen(3000);
 app.set("view engine", "ejs");
@@ -24,8 +24,8 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/lpq", (req, res) => {
-  const name = cups.lpstat()
-  const command = lpq(name);
+  const name = cups.lpstat();
+  const command = lpq();
   //console.log(command);
   const job = cups.lpstatJobs();
   res.render("lpqView", {
@@ -35,11 +35,11 @@ app.get("/lpq", (req, res) => {
   });
 });
 
-app.get('/lpqGet',(req,res)=> {
+app.get("/lpqGet", (req, res) => {
   const name = lpq(req.query.printername);
   console.log(req.query.printername);
   res.send(name);
-})
+});
 
 app.get("/classes", (req, res) => {
   res.render("classes");
@@ -60,12 +60,17 @@ app.get("/lpstat", (req, res) => {
 // });
 
 app.get("/lp", (req, res) => {
-//  const command = lp("/home/finsoft/ProgettoStampanti/file/file.txt");
-  const command = lp("/home/finsoft/ProgettoStampanti/file/file.pdf");
-  //console.log("command", command);
+  const command = cups.lp("/home/finsoft/ProgettoStampanti/file/file.txt");
+  console.log("command", command);
   res.render("lpView", {
     command,
   });
+});
+
+app.get("/lpGet", (req, res) => {
+  const file = cups.lp(req.query.filepath);
+  console.log(req.query.filepath);
+  res.send(file);
 });
 
 app.get("/lpadmin", (req, res) => {
@@ -87,6 +92,10 @@ app.get("/lprm", (req, res) => {
   res.render("lprmView", {
     command,
   });
+});
+
+app.get("/details", (req, res) => {
+  res.render("details");
 });
 
 ///home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt
