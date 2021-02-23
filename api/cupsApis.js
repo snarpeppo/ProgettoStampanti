@@ -153,7 +153,7 @@ cancelAll = function () {
   //args.push('finsoft');
   //let cancelAll = spawnSync("cancel",args, { encoding: "utf-8", shell:"/home/finsoft" });
   let cancelAll = spawnSync("cancel", args, { encoding: "utf-8", shell: '/home/finsoft'});
-  console.log(cancelAll.shell);
+  //console.log(cancelAll.shell);
  // let uid = spawnSync('id', args, { encoding: "utf-8"});
   console.log(cancelAll);
   return cancelAll;
