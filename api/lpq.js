@@ -10,7 +10,7 @@ lpq = function (name) {
     console.log('args', args);
   
     let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
-    // console.log('lpq',lpq);
+    console.log('lpq',lpq);
     // console.log("stdoutlpq", lpq.stdout);
     let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
     // console.log('stdoutSpawnSync',stdoutSpawnSync);
