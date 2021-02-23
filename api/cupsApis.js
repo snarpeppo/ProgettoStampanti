@@ -29,7 +29,7 @@ lp = function (filePath, options) {
   let self = this;
   console.log(self);
   let args = utils.buildArgs(options);
-  self = utils.list()[7];
+  self = utils.list()[4];
   args.push("-d", self);
   console.log("args", args);
   args.push("--");
@@ -149,16 +149,19 @@ lpstat = function () {
 };
 
 cancelAll = function () {
-  let args = ["printerprova-180"];
-  let cancelAll = spawnSync("cancel",args, { encoding: "utf-8" });
-
+  let args = ["-u"];
+  //args.push('finsoft');
+  //let cancelAll = spawnSync("cancel",args, { encoding: "utf-8", shell:"/home/finsoft" });
+  let cancelAll = spawnSync("cancel", args, { encoding: "utf-8", shell: '/home/finsoft'});
+  console.log(cancelAll.shell);
+ // let uid = spawnSync('id', args, { encoding: "utf-8"});
   console.log(cancelAll);
   return cancelAll;
 };
 
 lprm = function () {
   let args = ["-"];
-  let cancelAll = spawnSync("lprm", args, { encoding: "utf-8" });
+  
 
   console.log(cancelAll);
   return cancelAll;
