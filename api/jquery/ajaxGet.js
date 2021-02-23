@@ -3,12 +3,12 @@ $(function(){
   $("#select").on('change', function()
   { 
     var nomeStampante = $(this).val();
-    // console.log(nomeStampante)
+    //console.log(nomeStampante)
   
     $.ajax
     ({
       method: "GET", 
-      url: "/lpq",
+      url: "/lpqGet",
       data: { 
         printername:nomeStampante
     },
