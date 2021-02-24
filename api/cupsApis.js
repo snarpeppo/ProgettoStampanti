@@ -28,7 +28,7 @@ const utils = require("../utils/utils.js");
 lp = function (filePath) {
   let self = this;
   self = utils.list()[7];
-  let args=["-d", self];
+  let args = ["-d", self];
   console.log(self);
   console.log("args", args);
   args.push("--");
@@ -40,7 +40,6 @@ lp = function (filePath) {
 
   let input = lp.stdout;
 
-  
   let inputParsed = utils.parseStdout(input);
   console.log("input", inputParsed);
   return inputParsed;
@@ -148,18 +147,20 @@ lpstat = function () {
 
 cancelAll = function () {
   let args = ["-u"];
-  args.push('root');
+  args.push("root");
   //let cancelAll = spawnSync("cancel",args, { encoding: "utf-8", shell:"/home/finsoft" });
-  let cancelAll = spawnSync("cancel", args, { encoding: "utf-8", shell: '/home/finsoft'});
+  let cancelAll = spawnSync("cancel", args, {
+    encoding: "utf-8",
+    shell: "/home/finsoft",
+  });
   //console.log(cancelAll.shell);
- // let uid = spawnSync('id', args, { encoding: "utf-8"});
+  // let uid = spawnSync('id', args, { encoding: "utf-8"});
   console.log(cancelAll);
   return cancelAll;
 };
 
 lprm = function () {
   let args = ["-"];
-  
 
   console.log(cancelAll);
   return cancelAll;
@@ -172,5 +173,5 @@ module.exports = {
   lpstatJobs,
   //lpq,
   cancelAll,
-  lprm
+  lprm,
 };

@@ -54,6 +54,7 @@ app.get("/lpstat", (req, res) => {
   });
 });
 
+
 // lp routes
 app.get("/lp", (req, res) => {
   res.render("lpView");
