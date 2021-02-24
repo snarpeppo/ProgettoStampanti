@@ -21,55 +21,14 @@
           <input type='submit'id="button" class="btn btn btn-secondary"></a>
         </div>
       </div>
-    </div>
+    </div> 
 
-
-    <!-- <div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;"> -->
       <div id="result">
-
+        <!-- alert -->
       </div> 
-     
-    <!-- </div> -->
 
   <%- include('../views/partials/footer.ejs') %>
 
-<script>
-$(function(){ 
-  $("#button").click( function( event )
- { 
-  var input = document.getElementById('browseFile');
-  console.log(input.files[0]);
-
-  var formData = new FormData();
-
-    formData.append("fileToPrint", input.files[0]);
-
-  //  console.log('sono dentro');
-  //  var path = $( "#browseFile" ).val();
-  // // var path = '/home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt'
-  //   //var path = (window.URL || window.webkitURL).createObjectURL(value);
-  //   console.log(path);
-  
-  $.ajax
-  ({
-    method: "POST", 
-    url: "/lpPost",
-    data: formData,
-    processData:false,
-    contentType:false,
-    error: function()
-      {
-          alert("Error");
-          
-      },
-      success: function(x){
-        console.log(x);
-        $("#result").html(x); 
-      }
-  });
-  });
- });
-
-</script>
-  </body>
+<script type="text/javascript" src="../api/lpPost.js"></script>
+</body>
 </html>

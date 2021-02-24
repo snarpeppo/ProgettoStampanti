@@ -53,12 +53,6 @@ app.get("/lpstat", (req, res) => {
   });
 });
 
-// app.get("/lpstatJobs", (req, res) => {
-//   const jobs = lpstatJobs();
-//   res.render("lpstatView", {
-//     jobs
-//   });
-// });
 
 app.get("/lp", (req, res) => {
   res.render("lpView");
@@ -74,6 +68,10 @@ app.post("/lpPost", (req, res) => {
   console.log(req.files.fileToPrint.tempFilePath);
   const file = cups.lp(req.files.fileToPrint.tempFilePath);
   res.status(200).send(file);
+});
+
+app.get("/api/lpPost.js", (req, res) => {
+  res.sendFile('./api/jquery/lpPost.js', { root: __dirname });
 });
 
 app.get("/api/ajaxGet.js", (req, res) => {
