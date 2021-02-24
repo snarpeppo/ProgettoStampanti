@@ -7,26 +7,24 @@
 
     <%- include('../views/partials/nav.ejs') %>
       
-    <div class="mb-3, container-fluid" style="margin-right: 50%; padding: 20px 20px 20px 20px;">
-      <div class="row" style="width: 100%;">
-        <div class="col-2">
+    <div class="mb-3, container-fluid" style="padding: 20px 20px 20px 20px;">
           <h2>Select file to print</h2>
-        </div>
-        <div class="col-2">
+          <div class="row g-3">
+        <div class="col-auto" style="padding-top: 20px">
           <label for="formFile" class="form-label">
           <input class="form-control" type="file" id="browseFile">
           </label>
         </div>
-        <div class="col-2">
+        <div class="col-auto" style="padding-top: 20px;">
           <input type='submit'id="button" class="btn btn btn-secondary"></a>
         </div>
       </div>
     </div> 
 
     <form>
-      <div class="mb-3, container-fluid" style= "padding: 20px 20px 20px 20px">
+      <div class="mb-3, container-fluid" style= "padding: 0px 20px 20px 20px">
          <label for="exampleNumberOfCopies1" class="form-label">Number of Copies:</label>
-         <div class="col-2">
+         <div class="col-1">
           <input value="1" type="number" class="form-control" id="exampleNumberOfCopies1" aria-describedby="settingsHelp">
          </div>
          <div id="settingsHelp" class="form-text">Select how many times you want to print your file.</div>
@@ -43,7 +41,7 @@
         </label>
       </div>
       <div id="settingsHelp" class="form-text">Choose Monochrome or Color setting to print your file.</div>
-        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit Changes</button>
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit settings and print</button>
     </div>
     </form>
 
