@@ -103,5 +103,3 @@ app.get("/details", (req, res) => {
   res.render("details");
 });
 
-///home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt
-///home/finsoft/ProgettoStampanti/file/file.txt
