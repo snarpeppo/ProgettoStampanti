@@ -25,26 +25,24 @@ const utils = require("../utils/utils.js");
 
 // };
 //print da file
-lp = function (filePath, options) {
+lp = function (filePath) {
   let self = this;
+  self = utils.list()[4];
+  let args=["-d", self];
   console.log(self);
-  let args = utils.buildArgs(options);
-  self = utils.list()[7];
-  args.push("-d", self);
   console.log("args", args);
   args.push("--");
   args.push(filePath);
-  console.log("args2", args);
+  //console.log("args2", args);
   console.log("filepath", filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
   console.log("lp", lp);
 
   let input = lp.stdout;
 
-  console.log("input", input);
+  
   let inputParsed = utils.parseStdout(input);
-  //console.log(inputParsed);
-  //console.log("input", inputFiltered);
+  console.log("input", inputParsed);
   return inputParsed;
 };
 

@@ -14,53 +14,21 @@
         </div>
         <div class="col-2">
           <label for="formFile" class="form-label">
-          <input class="form-control" type="file" id="formFile">
+          <input class="form-control" type="file" id="browseFile">
           </label>
         </div>
         <div class="col-2">
-          <div class="btn btn btn-secondary">Print</div>
+          <input type='submit'id="button" class="btn btn btn-secondary"></a>
         </div>
       </div>
-    </div>
+    </div> 
 
-
-    <div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">
-      <strong>Print Successful!</strong> You should check Jobs.
-      <p><%= command %></p>
-    </div>
-
-   
+      <div id="result">
+        <!-- alert -->
+      </div> 
 
   <%- include('../views/partials/footer.ejs') %>
 
-<script>
-
-$(function(){ 
-
-$("#file").on('click', function()
-{ 
-var input = document.getElementById("file").val();  
-console.log(file);
-
-  $.ajax
-  ({
-    method: "GET", 
-    url: "/lpGet",
-    data: { 
-      file:input
-  },
-    error: function()
-      {
-          alert("Error");
-      }
-  }).done(function( data ) { 
-
-    
-      $("#records").html(string); 
-  }); 
-}); 
-});
-
-</script>
-  </body>
+<script type="text/javascript" src="../api/lpPost.js"></script>
+</body>
 </html>

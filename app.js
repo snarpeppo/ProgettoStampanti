@@ -1,10 +1,15 @@
 const express = require("express");
 const app = express();
+const fileUpload = require("express-fileupload");
 
 const cups = require("./api/cupsApis.js");
 const lpq = require("./api/lpq.js");
 
 app.use(express.static("api"));
+app.use(fileUpload({
+  useTempFiles : true,
+  tempFileDir : '/tmp/'
+}));
 
 app.listen(3000);
 app.set("view engine", "ejs");
@@ -48,25 +53,29 @@ app.get("/lpstat", (req, res) => {
   });
 });
 
-// app.get("/lpstatJobs", (req, res) => {
-//   const jobs = lpstatJobs();
-//   res.render("lpstatView", {
-//     jobs
-//   });
-// });
 
 app.get("/lp", (req, res) => {
-  const command = cups.lp("/home/finsoft/ProgettoStampanti/file/file.txt");
-  console.log("command", command);
-  res.render("lpView", {
-    command,
-  });
+  res.render("lpView");
 });
 
 app.get("/lpGet", (req, res) => {
   const file = cups.lp(req.query.filepath);
-  console.log(req.query.filepath);
+  console.log('lp',req.query.filepath);
   res.send(file);
+});
+
+app.post("/lpPost", (req, res) => {
+  console.log(req.files.fileToPrint.tempFilePath);
+  const file = cups.lp(req.files.fileToPrint.tempFilePath);
+  res.status(200).send(file);
+});
+
+app.get("/api/lpPost.js", (req, res) => {
+  res.sendFile('./api/jquery/lpPost.js', { root: __dirname });
+});
+
+app.get("/api/ajaxGet.js", (req, res) => {
+  res.sendFile('./api/jquery/ajaxGet.js', { root: __dirname });
 });
 
 app.get("/lpadmin", (req, res) => {
