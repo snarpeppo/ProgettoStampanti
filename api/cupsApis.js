@@ -148,7 +148,7 @@ lpstat = function () {
 
 cancelAll = function () {
   let args = ["-u"];
-  //args.push('finsoft');
+  args.push('root');
   //let cancelAll = spawnSync("cancel",args, { encoding: "utf-8", shell:"/home/finsoft" });
   let cancelAll = spawnSync("cancel", args, { encoding: "utf-8", shell: '/home/finsoft'});
   //console.log(cancelAll.shell);
