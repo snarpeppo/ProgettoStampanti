@@ -103,5 +103,3 @@ app.get("/lprm", (req, res) => {
 app.get("/details", (req, res) => {
   res.render("details");
 });
-
-
