@@ -4,22 +4,17 @@
 
   <body>
     <%- include('../views/partials/nav.ejs') %>
-
-    <div
-      class="mb-3, container-fluid"
-      style="margin-right: 50%; padding: 20px 20px 20px 20px"
-    >
-      <div class="row" style="width: 100%">
-        <div class="col-2">
+      
+    <div class="mb-3, container-fluid" style="padding: 20px 20px 20px 20px;">
           <h2>Select file to print</h2>
-        </div>
-        <div class="col-2">
+          <div class="row g-3">
+        <div class="col-auto" style="padding-top: 20px">
           <label for="formFile" class="form-label">
             <input class="form-control" type="file" id="browseFile" />
           </label>
         </div>
-        <div class="col-2">
-          <input type="submit" id="button" class="btn btn btn-secondary" />
+        <div class="col-auto" style="padding-top: 20px;">
+          <input type='submit'id="button" class="btn btn btn-secondary"></a>
         </div>
       </div>
     </div>
