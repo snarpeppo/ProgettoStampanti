@@ -287,7 +287,7 @@ list = function () {
   });
 
   let listaParsata = parseStdout(listaStampanti);
-  
+
   let listaSoloPrinters = listaParsata.filter(function (line) {
     return line.match(line.match(/^printer/) || line.match(/^impressora/));
   });
@@ -317,5 +317,5 @@ module.exports = {
   buildArgs,
   parseStdout,
   match,
-  list
+  list,
 };

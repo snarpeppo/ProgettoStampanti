@@ -1,0 +1,10 @@
+{
+  
+  "tabWidth": 2,
+  "editor.formatOnSave": false,
+  "useTabs": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
