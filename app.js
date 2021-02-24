@@ -13,21 +13,17 @@ app.use(fileUpload({
 
 app.listen(3000);
 app.set("view engine", "ejs");
-
+// home Routes
 app.get("/", (req, res) => {
   res.redirect("/home");
   res.render("home");
 });
 
-// app.get("/index", (req, res) => {
-//   res.redirect("/home");
-//   res.render("index");
-// });
 
 app.get("/home", (req, res) => {
   res.render("home");
 });
-
+// lpq Routes
 app.get("/lpq", (req, res) => {
   const name = cups.lpstat()
   const job = cups.lpstatJobs();
@@ -42,10 +38,15 @@ app.get("/lpqGet", (req, res) => {
   res.send(name);
 });
 
+app.get("/api/ajaxGet.js", (req, res) => {
+  res.sendFile('./api/jquery/ajaxGet.js', { root: __dirname });
+});
+// classes Routes
 app.get("/classes", (req, res) => {
   res.render("classes");
 });
 
+// lpstat routes
 app.get("/lpstat", (req, res) => {
   const command = cups.lpstat();
   res.render("lpstatView", {
@@ -53,7 +54,7 @@ app.get("/lpstat", (req, res) => {
   });
 });
 
-
+// lp routes
 app.get("/lp", (req, res) => {
   res.render("lpView");
 });
@@ -74,9 +75,7 @@ app.get("/api/lpPost.js", (req, res) => {
   res.sendFile('./api/jquery/lpPost.js', { root: __dirname });
 });
 
-app.get("/api/ajaxGet.js", (req, res) => {
-  res.sendFile('./api/jquery/ajaxGet.js', { root: __dirname });
-});
+// lpadmin routes
 
 app.get("/lpadmin", (req, res) => {
   const command = cups.lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
@@ -85,6 +84,7 @@ app.get("/lpadmin", (req, res) => {
   });
 });
 
+// cancelall routes
 app.get("/cancelAll", (req, res) => {
   const command = cups.cancelAll();
   res.render("cancelAllView", {
@@ -103,5 +103,4 @@ app.get("/details", (req, res) => {
   res.render("details");
 });
 
-///home/finsoft/ProgettoStampantiLinux/ProgettoStampanti/file/file.txt
-///home/finsoft/ProgettoStampanti/file/file.txt
+
