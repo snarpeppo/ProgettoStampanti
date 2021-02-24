@@ -27,7 +27,7 @@ const utils = require("../utils/utils.js");
 //print da file
 lp = function (filePath) {
   let self = this;
-  self = utils.list()[4];
+  self = utils.list()[7];
   let args=["-d", self];
   console.log(self);
   console.log("args", args);
