@@ -14,7 +14,7 @@ $(function () {
       },
     }).done(function (data) {
       var string =
-        "<thead><tr class='table-dark'> <th>Job Rank</th> <th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th></thead><tbody>";
+        "<thead><tr class='table-dark'><th>Job Rank</th><th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th></thead><tbody>";
       $.each(data, function (key, value) {
         string +=
           "<tr><td>" +
