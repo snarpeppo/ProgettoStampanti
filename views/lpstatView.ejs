@@ -16,16 +16,17 @@
           <th scope="col" style="padding-left: 20px;">Name</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
       </div>
 
         <% for(var i=0; i<command.length; i++){ %>
-          <tr onclick="document.location = 'details';">
-            <th><%= command[i] %></th>
+          <tr id="printer">
+            <th onclick="onPrinterDetail('<%= command[i] %>')"><%= command[i] %></th>
           </tr>
         <% } %>
       </tbody>
     </table>
+    <script type="text/javascript" src="../api/jquery/onPrinterDetail.js"></script>
   </body>
 
   <%- include('../views/partials/footer.ejs') %>

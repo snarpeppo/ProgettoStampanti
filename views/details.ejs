@@ -6,7 +6,7 @@
     <%- include('../views/partials/nav.ejs') %>
 
     <h2 style="padding: 20px 20px 0px 20px">Printer Details</h2>
-
+      
       <!-- <div class="col-2" style="padding: 40px 20px 20px 0px">
       <select onchange="location = this.value" class="form-select form-select-sm" aria-label=".form-select-sm example">
         <option selected>Printer Settings</option>
@@ -17,7 +17,13 @@
         <option value="lpq">Cancel all jobs</option>
       </select> 
     </div> -->
-
+    <p><%= name %></p>
+   
+    <th scope="row"></th><%= info.printerstatus %></th>
+    <th scope="row"><%= info.description %></th>
+    <th scope="row"><%= info.printerstatus2 %></th>
+    <th scope="row"><%= info.location %></th>
+    <th scope="row"><%= info.interface %></th>
   </body>
   <%- include('../views/partials/footer.ejs') %>
 </html>

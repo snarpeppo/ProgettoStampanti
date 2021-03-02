@@ -38,7 +38,7 @@ app.get("/lpqGet", (req, res) => {
   res.send(name);
 });
 
-app.get("/api/ajaxGet.js", (req, res) => {
+app.get("/api/jquery/ajaxGet.js", (req, res) => {
   res.sendFile('./api/jquery/ajaxGet.js', { root: __dirname });
 });
 // classes Routes
@@ -60,11 +60,6 @@ app.get("/lp", (req, res) => {
   res.render("lpView");
 });
 
-app.get("/lpGet", (req, res) => {
-  const file = cups.lp(req.query.filepath);
-  console.log('lp',req.query.filepath);
-  res.send(file);
-});
 
 app.post("/lpPost", (req, res) => {
   console.log(req.files.fileToPrint.tempFilePath);
@@ -72,7 +67,7 @@ app.post("/lpPost", (req, res) => {
   res.status(200).send(file);
 });
 
-app.get("/api/lpPost.js", (req, res) => {
+app.get("/api/jquery/lpPost.js", (req, res) => {
   res.sendFile('./api/jquery/lpPost.js', { root: __dirname });
 });
 
@@ -99,9 +94,25 @@ app.get("/lprm", (req, res) => {
     command,
   });
 });
-
+//details routes
 app.get("/details", (req, res) => {
-  res.render("details");
+  const name = req.query.printerName;
+  const info = cups.lpstatInfo(name);
+  //console.log(req.query.printerName);
+  res.render("details",{
+    name,
+    info
+  });
 });
+
+app.get("/printerGet", (req, res) => {
+  const name = cups.lpstat(req.query.printername);
+  res.send(name);
+});
+
+app.get("/api/jquery/onPrinterDetail.js", (req, res) => {
+  res.sendFile('./api/jquery/onPrinterDetail.js', { root: __dirname });
+});
+
 
 

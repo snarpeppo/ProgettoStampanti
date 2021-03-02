@@ -1,5 +1,5 @@
 $(function () {
-  $("#button").click(function (event) {
+  $("#button").on('click',function () {
     var input = document.getElementById("browseFile");
     console.log(input.files[0]);
     var formData = new FormData();

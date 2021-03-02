@@ -27,7 +27,7 @@ const utils = require("../utils/utils.js");
 //print da file
 lp = function (filePath) {
   let self = this;
-  self = utils.list()[7];
+  self = utils.list()[4];
   let args = ["-d", self];
   console.log(self);
   console.log("args", args);
@@ -102,19 +102,7 @@ lpstatJobs = function () {
 
   let lpstatMap = lpstatParsata.map(function (line) {
     line = line.split(/ +/);
-    //console.log('line',line);
     return {
-      //    printername: line[0],
-      //    bytes: parseInt(line[2]),
-      //    owner: line[1],
-      //    day: line[3],
-      //    dayNum: parseInt(line[4]),
-      //    month: line[5],
-      //    year: parseInt(line[6]),
-      //    clock: line[7],
-      //    hourClock: line[8],
-      //    timezone: line[9]
-
       printername: line[0],
       owner: line[1],
       date:
@@ -145,6 +133,44 @@ lpstat = function () {
   return lpstatList;
 };
 
+lpstatInfo = function (name) {
+  let args = ["-l", "-p"];
+  args.push(name);
+  let lpstatInfo = spawnSync("lpstat", args, {
+    encoding: "utf-8",
+  });
+  
+  let lpstatInfoStdout = lpstatInfo.stdout;
+  let lpstatInfoParsed = utils.parseStdout(lpstatInfoStdout);
+  lpstatInfoParsed.shift();
+  let lpstatInfoMap = lpstatInfoParsed.map(function(line){
+    line = line.replace(/.+?(?<=:)/, "").trim();
+    console.log(line);
+    return line;
+  });
+  
+  console.log('parsed',lpstatInfoMap)
+
+  let details = {
+    printerstatus:lpstatInfoMap[0],
+    description:lpstatInfoMap[4],
+    printerstatus2: lpstatInfoMap[5],
+    location: lpstatInfoMap[6],
+    interface: lpstatInfoMap[8],
+  }
+
+  
+
+  //let newDetails = JSON.stringify(details);
+  
+  //console.log('details',newDetails);
+  //console.log(lpstatInfoParsed[6]);
+ // let string = JSON.stringify(lpstatInfoParsed);
+  
+
+  return details;
+};
+
 cancelAll = function () {
   let args = ["-u"];
   args.push("root");
@@ -171,6 +197,7 @@ module.exports = {
   lpstat,
   lp,
   lpstatJobs,
+  lpstatInfo,
   //lpq,
   cancelAll,
   lprm,

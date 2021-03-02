@@ -295,6 +295,8 @@ list = function () {
   let listaSoloNomi = listaSoloPrinters.map(function (printer) {
     return printer.match(/(?: \S+)/)[0].trim();
   });
+  
+  //console.log(listaSoloNomiParsata)
 
   return listaSoloNomi;
 };
