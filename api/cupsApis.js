@@ -1,5 +1,4 @@
 const spawnSync = require("child_process").spawnSync;
-const execSync = require("child_process").execSync;
 const utils = require("../utils/utils.js");
 //const writeSync = require("fs").writeSync;
 
@@ -25,24 +24,42 @@ const utils = require("../utils/utils.js");
 
 // };
 //print da file
-lp = function (filePath) {
+lp = function (options,filePath) {
   let self = this;
   self = utils.list()[4];
   let args = ["-d", self];
-  console.log(self);
-  console.log("args", args);
-  args.push("--");
-  args.push(filePath);
-  //console.log("args2", args);
-  console.log("filepath", filePath);
-  let lp = spawnSync("lp", args, { encoding: "utf-8" });
-  console.log("lp", lp);
+  // console.log(self);
+  // console.log("args", args);
+  console.log('options',options);
+  console.log(Object.keys(options).length);
 
-  let input = lp.stdout;
-
-  let inputParsed = utils.parseStdout(input);
-  console.log("input", inputParsed);
-  return inputParsed;
+  let optionCopyNumber = ['-n',parseInt(options.copyNumber)];
+  //console.log(optionCopyNumber);
+  args.push(optionCopyNumber);
+  let optionSize = ['-o media=',options.size];
+  //console.log(optionSize);
+  args.push(optionSize);
+  let optionQuality = ['-o print-quality=',options.quality];
+  //console.log(optionQuality);
+  args.push(optionQuality);
+  let optionSide = ['-o sides=',options.side];
+  //console.log(optionSide);
+  args.push(optionSide);
+  
+   // args.push("--");
+    args.push(filePath);
+    console.log("args", args);
+    console.log("filepath", filePath);
+    let lp = spawnSync("lp", args, { encoding: "utf-8" });
+    console.log("lp", lp);
+  
+    let input = lp.stdout;
+  
+    let inputParsed = utils.parseStdout(input);
+    console.log("input", inputParsed);
+    return inputParsed;
+   
+  
 };
 
 lpadmin = function (name, description, location) {
