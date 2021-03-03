@@ -11,7 +11,7 @@ app.use(fileUpload({
   tempFileDir : '/tmp/'
 }));
 
-app.listen(3001);
+app.listen(3000);
 app.set("view engine", "ejs");
 // home Routes
 app.get("/", (req, res) => {
