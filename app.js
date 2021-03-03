@@ -63,7 +63,8 @@ app.get("/lp", (req, res) => {
 
 app.post("/lpPost", (req, res) => {
   console.log(req.files.fileToPrint.tempFilePath);
-  const file = cups.lp(req.files.fileToPrint.tempFilePath);
+  const options = req.body;
+  const file = cups.lp(options , req.files.fileToPrint.tempFilePath);
   res.status(200).send(file);
 });
 
