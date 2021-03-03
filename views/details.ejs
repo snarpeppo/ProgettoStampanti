@@ -5,21 +5,22 @@
   <body>
     <%- include('../views/partials/nav.ejs') %>
 
-    <h2 style="padding: 20px 20px 0px 20px"><p><%= name %></p> Details</h2>
-      
-      <!-- <div class="col-2" style="padding: 40px 20px 20px 0px">
-      <select onchange="location = this.value" class="form-select form-select-sm" aria-label=".form-select-sm example">
-        <option selected>Printer Settings</option>
-        <option value="lpq">Modify printer</option>
-        <option value="lpq">Delete printer</option>
-        <option value="lpq">Set default options</option>
-        <option value="lpq">Pause printer</option>
-        <option value="lpq">Cancel all jobs</option>
-      </select> 
-    </div> -->
-    <p><%= name %></p>
+    <div style="padding: 20px 20px 0px 20px;" >
+      <h2 style="padding-bottom: 20px;"> <p><%= name %></p></h2>
+    <table class="table table-hover table-responsive table-borderless table-striped">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col" style="padding-left: 20px;">Status</th>
+          <th scope="col" style="padding-left: 20px;">Description</th>
+          <th scope="col" style="padding-left: 20px;">Status2</th>
+          <th scope="col" style="padding-left: 20px;">Location</th>
+          <th scope="col" style="padding-left: 20px;">Interface</th>
+        </tr>
+      </thead>
+      <tbody >
+      </div>
    
-    <th scope="row"></th><%= info.printerstatus %></th>
+    <th scope="row" style="padding-left: 20px;"><%= info.printerstatus %></th>
     <th scope="row"><%= info.description %></th>
     <th scope="row"><%= info.printerstatus2 %></th>
     <th scope="row"><%= info.location %></th>
