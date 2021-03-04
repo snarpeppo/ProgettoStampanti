@@ -11,13 +11,15 @@ ajax = function (option) {
     },
   }).done(function (data) {
     var string =
-      "<thead><tr class='table-dark'><th>Printer Name</th><th>Job Commissioner</th><th>Date</th></thead><tbody>";
+      "<thead><tr class='table-dark'><th>Printer Name</th><th>Job Commissioner</th><th>File Size</th><th>Date</th></thead><tbody>";
     $.each(data, function (key, value) {
       string +=
         "<tr><td>" +
         value["printername"] +
         "</td><td>" +
         value["owner"] +
+        "</td><td>" +
+        value["fileSize"] +
         "</td><td>" +
         value["date"] +
         "</td></tr>";
