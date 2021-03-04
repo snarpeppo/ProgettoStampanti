@@ -26,17 +26,17 @@ const utils = require("../utils/utils.js");
 //print da file
 lp = function (options, filePath) {
   let self = this;
-  self = utils.list()[4];
+  self = utils.list()[2];
   let args = ["-d", self];
   // console.log(self);
   // console.log("args", args);
   console.log("options", options);
   console.log(Object.keys(options).length);
 
-  let optionCopyNumber = ["-n", parseInt(options.copyNumber)];
-  //console.log(optionCopyNumber);
-  args.push(optionCopyNumber);
-  let optionSize = ["-o media=", options.size];
+  // let optionCopyNumber = ['-n',parseInt(options.copyNumber)];
+  // //console.log(optionCopyNumber);
+  // args.push(optionCopyNumber);
+  let optionSize = ['-o media=',options.size];
   //console.log(optionSize);
   args.push(optionSize);
   let optionQuality = ["-o print-quality=", options.quality];
@@ -157,8 +157,9 @@ lpstatInfo = function (name) {
 
   let lpstatInfoStdout = lpstatInfo.stdout;
   let lpstatInfoParsed = utils.parseStdout(lpstatInfoStdout);
-  lpstatInfoParsed.shift();
-  let lpstatInfoMap = lpstatInfoParsed.map(function (line) {
+   lpstatInfoParsed.shift();
+  console.log(lpstatInfoParsed);
+  let lpstatInfoMap = lpstatInfoParsed.map(function(line){
     line = line.replace(/.+?(?<=:)/, "").trim();
     console.log(line);
     return line;
@@ -166,30 +167,32 @@ lpstatInfo = function (name) {
 
   console.log("parsed", lpstatInfoMap);
 
-  let details = {
-    printerstatus: lpstatInfoMap[0],
-    description: lpstatInfoMap[4],
-    printerstatus2: lpstatInfoMap[5],
-    location: lpstatInfoMap[6],
-    interface: lpstatInfoMap[8],
-  };
-
-  //let newDetails = JSON.stringify(details);
-
-  //console.log('details',newDetails);
-  //console.log(lpstatInfoParsed[6]);
-  // let string = JSON.stringify(lpstatInfoParsed);
-
+  if(lpstatInfoMap[0] === ''){
+    let details = {
+      printerstatus:lpstatInfoMap[4],
+      description:lpstatInfoMap[3],
+      location: lpstatInfoMap[5],
+      interface: lpstatInfoMap[7],
+  }
   return details;
+    }else{
+      let details = {
+        printerstatus:lpstatInfoMap[0],
+        description:lpstatInfoMap[4],
+        location: lpstatInfoMap[6],
+        interface: lpstatInfoMap[8],
+      }
+      return details;
+  }
 };
 
 cancelAll = function () {
   let args = ["-u"];
-  args.push("root");
+  args.push("finsoft");
   //let cancelAll = spawnSync("cancel",args, { encoding: "utf-8", shell:"/home/finsoft" });
   let cancelAll = spawnSync("cancel", args, {
     encoding: "utf-8",
-    shell: "/home/finsoft",
+     shell: true,
   });
   //console.log(cancelAll.shell);
   // let uid = spawnSync('id', args, { encoding: "utf-8"});

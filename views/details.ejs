@@ -7,24 +7,22 @@
 
     <div style="padding: 20px 20px 0px 20px;" >
       <h2 style="padding-bottom: 20px;"> <p><%= name %></p></h2>
-      <table class="table table-hover table-responsive table-borderless table-striped">
-        <thead>
-          <tr class="table-dark">
-            <th scope="col" style="padding-left: 20px;">Status</th>
-            <th scope="col" style="padding-left: 20px;">Description</th>
-            <th scope="col" style="padding-left: 20px;">Status2</th>
-            <th scope="col" style="padding-left: 20px;">Location</th>
-            <th scope="col" style="padding-left: 20px;">Interface</th>
-          </tr>
-        </thead>
-
-        <th scope="row" style="padding-left: 20px;"><%= info.printerstatus %></th>
-        <th scope="row" style="padding-left: 20px;"><%= info.description %></th>
-        <th scope="row" style="padding-left: 20px;"><%= info.printerstatus2 %></th>
-        <th scope="row" style="padding-left: 20px;"><%= info.location %></th>
-        <th scope="row" style="padding-left: 20px;"><%= info.interface %></th>
+    <table class="table table-hover table-responsive table-borderless table-striped">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col" style="padding-left: 20px;">Status</th>
+          <th scope="col" style="padding-left: 20px;">Description</th>
+          <th scope="col" style="padding-left: 20px;">Location</th>
+          <th scope="col" style="padding-left: 20px;">Interface</th>
+        </tr>
+      </thead>
       <tbody >
-    </div>    
+      </div>
+   
+    <th scope="row" style="padding-left: 20px;"><%= info.printerstatus %></th>
+    <th scope="row"><%= info.description %></th>
+    <th scope="row"><%= info.location %></th>
+    <th scope="row"><%= info.interface %></th>
   </body>
 
   <%- include('../views/partials/footer.ejs') %>
