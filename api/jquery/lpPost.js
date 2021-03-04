@@ -1,18 +1,19 @@
 $(function () {
   $("#button").on("click", function () {
+    var name = $("#select").val();
     var input = document.getElementById("browseFile");
     var copie = $("#numberOfCopies").val();
-   
     var selected = $("#formLp input[type='radio']:checked");
     console.log(selected[0].value);
     console.log(copie);
     console.log(input.files[0]);
     var formData = new FormData();
+    formData.append("printerName", name);
     formData.append("fileToPrint", input.files[0]);
     formData.append("copyNumber", copie[0]);
-    formData.append("size",selected[0].value);
-    formData.append("quality",selected[1].value);
-    formData.append("side",selected[2].value);
+    formData.append("size", selected[0].value);
+    formData.append("quality", selected[1].value);
+    formData.append("side", selected[2].value);
 
     $.ajax({
       method: "POST",

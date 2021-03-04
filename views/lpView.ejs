@@ -4,6 +4,21 @@
 
   <body>
     <%- include('../views/partials/nav.ejs') %>
+    
+    <div class="container-fluid" style="padding: 1% 0% 0% 1%;">
+      <div class="row" style="width: 100%;">
+        <div class="col-auto">
+      <h2> Choose your printer: </h2>
+    </div>
+      <div class="col-auto">
+      <select id="select" class="form-select-sm" >
+        <% for ( var i = 0; i<name.length; i++ ) { %>
+            <option value="<%= name[i] %>"> <%= name[i] %></option>
+            <% } %>
+        </select>
+      </div>
+     </div>
+    </div>
       
     <div class="mb-3, container-fluid" style="padding: 20px 20px 20px 20px;">
           <h2>Select file to print</h2>
@@ -177,5 +192,6 @@
     <%- include('../views/partials/footer.ejs') %>
 
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
+    <!-- <script type="text/javascript" src="../api/jquery/lpGet.js"></script> -->
   </body>
 </html>
