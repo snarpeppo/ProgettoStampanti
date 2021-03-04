@@ -27,10 +27,8 @@ app.get("/home", (req, res) => {
 // lpq Routes
 app.get("/lpq", (req, res) => {
   const name = cups.lpstat();
-  const job = cups.lpstatJobs();
   res.render("lpqView", {
-    job,
-    name,
+    name
   });
 });
 
@@ -42,6 +40,17 @@ app.get("/lpqGet", (req, res) => {
 app.get("/api/jquery/ajaxGet.js", (req, res) => {
   res.sendFile("./api/jquery/ajaxGet.js", { root: __dirname });
 });
+
+app.get("/lpstatCompleted", (req, res) => {
+  const option = cups.lpstatCompleted(req.query.preference);
+  res.send(option);
+});
+
+app.get("/api/jquery/lpstatCompletedGet.js", (req, res) => {
+  res.sendFile("./api/jquery/lpstatCompletedGet.js", { root: __dirname });
+});
+
+
 // classes Routes
 app.get("/classes", (req, res) => {
   res.render("classes");
@@ -62,15 +71,6 @@ app.get("/lp", (req, res) => {
     name
   });
 });
-
-// app.get("/lpPostName", (req, res) => {
-//   const name = lp(req.query.printername ,options, );
-//   res.send(name);
-// });
-
-// app.get("/api/jquery/lpPostName.js", (req, res) => {
-//   res.sendFile('./api/jquery/lpPostName.js', { root: __dirname });
-// });
 
 
 app.post("/lpPost", (req, res) => {

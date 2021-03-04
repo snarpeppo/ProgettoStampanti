@@ -25,24 +25,21 @@ const utils = require("../utils/utils.js");
 // };
 //print da file
 lp = function (name, options, filePath) {
-  // let args = ["-d", utils.list()[2]];
   let args = ["-d", name];
   console.log("args", args);
+  let option = "-o";
 
-  console.log(Object.keys(options).length);
-  console.log("options", options);
-  // let optionCopyNumber = ['-n',parseInt(options.copyNumber)];
-  // //console.log(optionCopyNumber);
-  // args.push(optionCopyNumber);
-  let optionSize = ["-o media=", options.size];
-  //console.log(optionSize);
-  args.push(optionSize);
-  let optionQuality = ["-o print-quality=", options.quality];
-  //console.log(optionQuality);
-  args.push(optionQuality);
-  let optionSide = ["-o sides=", options.side];
-  //console.log(optionSide);
-  args.push(optionSide);
+  args.push("-n");
+  args.push(options.copyNumber);
+
+  args.push(option);
+  args.push("media=" + options.size);
+
+  args.push(option);
+  args.push("print-quality=" + options.quality);
+
+  args.push(option);
+  args.push("sides=" + options.side);
 
   // args.push("--");
   args.push(filePath);
@@ -51,15 +48,12 @@ lp = function (name, options, filePath) {
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
   console.log("lp", lp);
 
-  let input = lp.stdout;
-
-  let inputParsed = utils.parseStdout(input);
+  let inputParsed = utils.parseStdout(lp.stdout);
   console.log("input", inputParsed);
   return inputParsed;
 };
 
 lpadmin = function (name, description, location) {
-  let self = this;
   let args = ["-p", name];
 
   args.push("-D", description);
@@ -72,6 +66,40 @@ lpadmin = function (name, description, location) {
 
   console.log(stdoutSpawnSync);
   return stdoutSpawnSync;
+};
+
+lpstatCompleted = function (option) {
+  let args = ["-W", option];
+  console.log("args", args);
+  let lpstatCompleted = spawnSync("lpstat", args, { encoding: "utf-8" });
+  console.log(lpstatCompleted);
+  let stdoutCompleted = utils.parseStdout(lpstatCompleted.stdout);
+  console.log(stdoutCompleted);
+
+  let lpstatCompletedMap = stdoutCompleted.map(function (line) {
+    line = line.split(/ +/);
+    return {
+      printername: line[0],
+      owner: line[1],
+      fileSize: line[2],
+      date:
+        line[3] +
+        " " +
+        parseInt(line[4]) +
+        " " +
+        line[5] +
+        " " +
+        parseInt(line[6]) +
+        " " +
+        line[7] +
+        " " +
+        line[8] +
+        " " +
+        line[9],
+    };
+  });
+  console.log(lpstatCompletedMap);
+  return lpstatCompletedMap;
 };
 
 // lpq = function () {
@@ -103,43 +131,6 @@ lpadmin = function (name, description, location) {
 
 //   return InfoJob;
 // };
-
-lpstatJobs = function () {
-  let args = ["-o"];
-  let lpstat = spawnSync("lpstat", args, { encoding: "utf-8" });
-  //console.log('lpstat',lpstat)
-  // console.log("stdoutlpstat", lpstat.stdout);
-  lpstatParsata = utils.parseStdout(lpstat.stdout);
-  // lpstatParsata = JSON.parse(lpstat.stdout);
-  // console.log("parsata", lpstatParsata);
-
-  let lpstatMap = lpstatParsata.map(function (line) {
-    line = line.split(/ +/);
-    return {
-      printername: line[0],
-      owner: line[1],
-      date:
-        line[2] +
-        " " +
-        line[3] +
-        " " +
-        parseInt(line[4]) +
-        " " +
-        line[5] +
-        " " +
-        parseInt(line[6]) +
-        " " +
-        line[7] +
-        " " +
-        line[8] +
-        " " +
-        line[9],
-    };
-  });
-
-  //console.log("lpstatParsata", lpstatMap);
-  return lpstatMap;
-};
 
 lpstat = function () {
   let lpstatList = utils.list();
@@ -211,8 +202,8 @@ module.exports = {
   lpadmin,
   lpstat,
   lp,
-  lpstatJobs,
   lpstatInfo,
+  lpstatCompleted,
   //lpq,
   cancelAll,
 };

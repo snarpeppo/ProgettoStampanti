@@ -1,8 +1,6 @@
 const utils  = require("../utils/utils.js");
 const spawnSync = require("child_process").spawnSync;
 
-
-
 lpq = function (name) {
     let self = this;
     self = name;
