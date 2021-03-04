@@ -11,47 +11,41 @@
       <h2> Choose your printer: </h2>
     </div>
       <div class="col-auto">
-      <select id="select" class="form-select-sm" >
+      <select id="select" class="form-select">
         <% for ( var i = 0; i<name.length; i++ ) { %>
             <option value="<%= name[i] %>"> <%= name[i] %></option>
             <% } %>
         </select>
       </div>
-     </div>
-    </div>
-      
-    <div class="mb-3, container-fluid" style="padding: 20px 20px 20px 20px;">
-          <h2>Select file to print</h2>
-          <div class="row g-3">
-        <div class="col-auto" style="padding-top: 20px">
-          <label for="formFile" class="form-label">
-            <input class="form-control" type="file" id="browseFile" />
-          </label>
-        </div>
-        <div class="col-auto" style="padding-top: 20px;">
-          <input type='submit'id="button" class="btn btn btn-secondary"></a>
-        </div>
+      <div class="col-auto">
+        <input type='submit'id="button" class="btn btn-outline-secondary"></a>
       </div>
+     </div>
     </div>
 
     <form id="formLp">
-      <div class="mb-3, container-fluid" style="padding: 0px 20px 20px 20px">
-        <label for="numberOfCopies1" class="form-label"
-          >Number of Copies:
+        <div class="mb-3, container-fluid" style="padding: 2% 1% 1% 1%;">
+          <div class="col-2">
+          <label class="form-label">Select file to print:</label>
+        </div>
+          <div class="col-2">
+          <label for="formFile" class="form-label">
+            <input class="form-control" type="file" id="browseFile"/>
           </label>
+        </div>
+        <div class="col-2" style="padding-top: 1%">
+        <label for="numberOfCopies1" class="form-label">Number of copies:</label>
+      </div>
         <div class="col-2">
           <input 
             value="1"
             type="number"
             class="form-control"
             id="numberOfCopies"
-            aria-describedby="settingsCopies"
           />
         </div>
-        <div id="settingsHelp" class="form-text">
-          Select how many times you want to print your file.
-        </div>
-        <div class="form-check" style="padding-top: 20px">
+        <div id="settingsHelp" class="form-text">Select how many times you want to print your file.</div>
+        <div class="form-check" style="padding-top: 1%">
           <input
           value="a4";
             class="form-check-input"
@@ -59,9 +53,7 @@
             name="flexSizeDefault"
             id="flexSizeDefault1"
           />
-          <label class="form-check-label" for="flexSizeDefault1">
-            A4 format
-          </label>
+          <label class="form-check-label" for="flexSizeDefault1">A4 format</label>
         </div>
         <div class="form-check">
           <input
@@ -72,9 +64,7 @@
             id="flexSizeDefault2"
             checked
           />
-          <label class="form-check-label" for="flexSizeDefault2">
-            Letter format
-          </label>
+          <label class="form-check-label" for="flexSizeDefault2">Letter format</label>
         </div>
 
         <div class="form-check">
@@ -86,15 +76,11 @@
             id="flexSizeDefault3"
             checked
           />
-          <label class="form-check-label" for="flexSizeDefault3">
-            Legal format
-          </label>
+          <label class="form-check-label" for="flexSizeDefault3">Legal format</label>
         </div>
       
-        <div id="settingsHelp" class="form-text">
-          Specifies the output size of the printed file.
-        </div>
-        <div class="form-check" style="padding-top: 10px">
+        <div id="settingsHelp" class="form-text">Specifies the output size of the printed file.</div>
+        <div class="form-check" style="padding-top: 1%">
           <input
             value="draft";
             class="form-check-input"
@@ -102,9 +88,7 @@
             name="flexQualityDefault"
             id="flexQualityDefault1"
           />
-          <label class="form-check-label" for="flexQualityDefault1">
-            Print quality: Draft
-          </label>
+          <label class="form-check-label" for="flexQualityDefault1">Print quality: Draft</label>
         </div>
         <div class="form-check">
           <input
@@ -114,9 +98,7 @@
             name="flexQualityDefault"
             id="flexQualityDefault2"
           />
-          <label class="form-check-label" for="flexQualityDefault2">
-            Print quality: Normal
-          </label>
+          <label class="form-check-label" for="flexQualityDefault2">Print quality: Normal</label>
         </div>
         <div class="form-check">
           <input
@@ -127,13 +109,9 @@
             id="flexQualityDefault3"
             checked
           />
-          <label class="form-check-label" for="flexQualityDefault3">
-            Print quality: Best
-          </label>
+          <label class="form-check-label" for="flexQualityDefault3">Print quality: Best</label>
         </div>
-        <div id="settingsHelp" class="form-text" style="padding-bottom: 10px">
-          Specifies the output quality to draft, normal, or best.
-        </div>
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Specifies the output quality to draft, normal, or best.</div>
         <div class="form-check">
           <input
             value="one-sided";
@@ -142,13 +120,9 @@
             name="flexSideDefault"
             id="flexSideDefault1"
           />
-          <label class="form-check-label" for="flexSideDefault1">
-            Print sides: one-sided
-          </label>
+          <label class="form-check-label" for="flexSideDefault1">Print sides: one-sided</label>
         </div>
-        <div id="settingsHelp" class="form-text" style="padding-bottom: 10px">
-          Prints on one side of the paper.
-        </div>
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints on one side of the paper.</div>
         <div class="form-check">
           <input
           value="two-sided-long-edge";
@@ -158,13 +132,9 @@
             id="flexSideDefault2"
             checked
           />
-          <label class="form-check-label" for="flexSideDefault2">
-            Print sides: two-sided-long-edge
-          </label>
+          <label class="form-check-label" for="flexSideDefault2">Print sides: two-sided-long-edge</label>
         </div>
-        <div id="settingsHelp" class="form-text" style="padding-bottom: 10px">
-          Prints on both sides of the paper for portrait output.
-        </div>
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints on both sides of the paper for portrait output.</div>
         <div class="form-check">
           <input
           value="two-sided-short-edge";
@@ -173,13 +143,92 @@
             name="flexSideDefault"
             id="flexSideDefault3"
           />
-          <label class="form-check-label" for="flexSideDefault3">
-            Print sides: two-sided-short-edge
-          </label>
+          <label class="form-check-label" for="flexSideDefault3">Print sides: two-sided-short-edge</label>
         </div>
-        <div id="settingsHelp" class="form-text" style="padding-bottom: 10px">
-          Prints on both sides of the paper for landscape output.
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints on both sides of the paper for landscape output.</div>
+        <div class="form-check" style="padding-top: 1%">
+          <input
+          value="a4";
+            class="form-check-input"
+            type="radio"
+            name="flexSizeDefault"
+            id="flexSizeDefault1"
+          />
+          <label class="form-check-label" for="flexSizeDefault1">None</label>
         </div>
+        <div class="form-check">
+          <input
+            value="letter";
+            class="form-check-input"
+            type="radio"
+            name="flexSizeDefault"
+            id="flexSizeDefault2"
+            checked
+          />
+          <label class="form-check-label" for="flexSizeDefault2">Classified</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            value="legal";
+            class="form-check-input"
+            type="radio"
+            name="flexSizeDefault"
+            id="flexSizeDefault3"
+            checked
+          />
+          <label class="form-check-label" for="flexSizeDefault3">Confidential</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            value="legal";
+            class="form-check-input"
+            type="radio"
+            name="flexSizeDefault"
+            id="flexSizeDefault3"
+            checked
+          />
+          <label class="form-check-label" for="flexSizeDefault3">Secret</label>
+        </div>
+      
+        <div class="form-check">
+          <input
+            value="legal";
+            class="form-check-input"
+            type="radio"
+            name="flexSizeDefault"
+            id="flexSizeDefault3"
+            checked
+          />
+          <label class="form-check-label" for="flexSizeDefault3">Standard</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            value="legal";
+            class="form-check-input"
+            type="radio"
+            name="flexSizeDefault"
+            id="flexSizeDefault3"
+            checked
+          />
+          <label class="form-check-label" for="flexSizeDefault3">Topsecret</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            value="legal";
+            class="form-check-input"
+            type="radio"
+            name="flexSizeDefault"
+            id="flexSizeDefault3"
+            checked
+          />
+          <label class="form-check-label" for="flexSizeDefault3">Unclassified</label>
+        </div>
+
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints a banner with the document. The banner can be "none" "classified", "confidential", "secret", "standard", "topsecret", or "unclassified".</div>
       </div>
     </div>
   </div>
@@ -188,9 +237,10 @@
     <div id="result">
       <!-- alert -->
     </div>
-    <%- include('../views/partials/footer.ejs') %>
-
+    
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
     <!-- <script type="text/javascript" src="../api/jquery/lpGet.js"></script> -->
+
+    <%- include('../views/partials/footer.ejs') %>
   </body>
 </html>
