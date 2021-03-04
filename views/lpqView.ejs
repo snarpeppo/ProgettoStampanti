@@ -12,7 +12,7 @@
   <h2><%= name.printername %> Jobs List</h2>
 </div>
   <div class="col-auto">
-  <select id="select" class="form-select-sm" >
+  <select id="select" class="form-select" >
     <% for ( var i = 0; i<name.length; i++ ) { %>
         <option value="<%= name[i] %>"><%= name[i] %></option>
         <% } %>
@@ -31,8 +31,14 @@
   <h2>All Printer Jobs List</h2>
 </div>
   <div class="col-auto">
+    <select class="form-select">
+      <option selected>Show all queued jobs</option>
+      <option value="1">Show all completed jobs</option>
+    </select>
+  </div>
+  <div class="col-auto">
     <a href="cancelAll" class="btn btn btn-secondary">Delete all jobs</a>
-</div>
+  </div>
 </div>
 </div>
     <div class="container-fluid" style="padding: 1% 1% 2% 1%;" >
