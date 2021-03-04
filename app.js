@@ -6,10 +6,12 @@ const cups = require("./api/cupsApis.js");
 const lpq = require("./api/lpq.js");
 
 app.use(express.static("api"));
-app.use(fileUpload({
-  useTempFiles : true,
-  tempFileDir : '/tmp/'
-}));
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  })
+);
 
 app.listen(3000);
 app.set("view engine", "ejs");
@@ -19,17 +21,16 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-
 app.get("/home", (req, res) => {
   res.render("home");
 });
 // lpq Routes
 app.get("/lpq", (req, res) => {
-  const name = cups.lpstat()
+  const name = cups.lpstat();
   const job = cups.lpstatJobs();
   res.render("lpqView", {
     job,
-    name
+    name,
   });
 });
 
@@ -39,7 +40,7 @@ app.get("/lpqGet", (req, res) => {
 });
 
 app.get("/api/jquery/ajaxGet.js", (req, res) => {
-  res.sendFile('./api/jquery/ajaxGet.js', { root: __dirname });
+  res.sendFile("./api/jquery/ajaxGet.js", { root: __dirname });
 });
 // classes Routes
 app.get("/classes", (req, res) => {
@@ -53,7 +54,6 @@ app.get("/lpstat", (req, res) => {
     command,
   });
 });
-
 
 // lp routes
 app.get("/lp", (req, res) => {
@@ -84,7 +84,7 @@ app.post("/lpPost", (req, res) => {
 });
 
 app.get("/api/jquery/lpPost.js", (req, res) => {
-  res.sendFile('./api/jquery/lpPost.js', { root: __dirname });
+  res.sendFile("./api/jquery/lpPost.js", { root: __dirname });
 });
 
 // lpadmin routes
@@ -104,20 +104,14 @@ app.get("/cancelAll", (req, res) => {
   });
 });
 
-app.get("/lprm", (req, res) => {
-  const command = cups.lprm();
-  res.render("lprmView", {
-    command,
-  });
-});
 //details routes
 app.get("/details", (req, res) => {
   const name = req.query.printerName;
   const info = cups.lpstatInfo(name);
   //console.log(req.query.printerName);
-  res.render("details",{
+  res.render("details", {
     name,
-    info
+    info,
   });
 });
 
@@ -127,8 +121,5 @@ app.get("/printerGet", (req, res) => {
 });
 
 app.get("/api/jquery/onPrinterDetail.js", (req, res) => {
-  res.sendFile('./api/jquery/onPrinterDetail.js', { root: __dirname });
+  res.sendFile("./api/jquery/onPrinterDetail.js", { root: __dirname });
 });
-
-
-

@@ -215,5 +215,4 @@ module.exports = {
   lpstatInfo,
   //lpq,
   cancelAll,
-  lprm,
 };
