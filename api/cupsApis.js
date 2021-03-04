@@ -24,42 +24,40 @@ const utils = require("../utils/utils.js");
 
 // };
 //print da file
-lp = function (options,filePath) {
+lp = function (options, filePath) {
   let self = this;
   self = utils.list()[4];
   let args = ["-d", self];
   // console.log(self);
   // console.log("args", args);
-  console.log('options',options);
+  console.log("options", options);
   console.log(Object.keys(options).length);
 
-  let optionCopyNumber = ['-n',parseInt(options.copyNumber)];
+  let optionCopyNumber = ["-n", parseInt(options.copyNumber)];
   //console.log(optionCopyNumber);
   args.push(optionCopyNumber);
-  let optionSize = ['-o media=',options.size];
+  let optionSize = ["-o media=", options.size];
   //console.log(optionSize);
   args.push(optionSize);
-  let optionQuality = ['-o print-quality=',options.quality];
+  let optionQuality = ["-o print-quality=", options.quality];
   //console.log(optionQuality);
   args.push(optionQuality);
-  let optionSide = ['-o sides=',options.side];
+  let optionSide = ["-o sides=", options.side];
   //console.log(optionSide);
   args.push(optionSide);
-  
-   // args.push("--");
-    args.push(filePath);
-    console.log("args", args);
-    console.log("filepath", filePath);
-    let lp = spawnSync("lp", args, { encoding: "utf-8" });
-    console.log("lp", lp);
-  
-    let input = lp.stdout;
-  
-    let inputParsed = utils.parseStdout(input);
-    console.log("input", inputParsed);
-    return inputParsed;
-   
-  
+
+  // args.push("--");
+  args.push(filePath);
+  console.log("args", args);
+  console.log("filepath", filePath);
+  let lp = spawnSync("lp", args, { encoding: "utf-8" });
+  console.log("lp", lp);
+
+  let input = lp.stdout;
+
+  let inputParsed = utils.parseStdout(input);
+  console.log("input", inputParsed);
+  return inputParsed;
 };
 
 lpadmin = function (name, description, location) {
@@ -156,34 +154,31 @@ lpstatInfo = function (name) {
   let lpstatInfo = spawnSync("lpstat", args, {
     encoding: "utf-8",
   });
-  
+
   let lpstatInfoStdout = lpstatInfo.stdout;
   let lpstatInfoParsed = utils.parseStdout(lpstatInfoStdout);
   lpstatInfoParsed.shift();
-  let lpstatInfoMap = lpstatInfoParsed.map(function(line){
+  let lpstatInfoMap = lpstatInfoParsed.map(function (line) {
     line = line.replace(/.+?(?<=:)/, "").trim();
     console.log(line);
     return line;
   });
-  
-  console.log('parsed',lpstatInfoMap)
+
+  console.log("parsed", lpstatInfoMap);
 
   let details = {
-    printerstatus:lpstatInfoMap[0],
-    description:lpstatInfoMap[4],
+    printerstatus: lpstatInfoMap[0],
+    description: lpstatInfoMap[4],
     printerstatus2: lpstatInfoMap[5],
     location: lpstatInfoMap[6],
     interface: lpstatInfoMap[8],
-  }
-
-  
+  };
 
   //let newDetails = JSON.stringify(details);
-  
+
   //console.log('details',newDetails);
   //console.log(lpstatInfoParsed[6]);
- // let string = JSON.stringify(lpstatInfoParsed);
-  
+  // let string = JSON.stringify(lpstatInfoParsed);
 
   return details;
 };
@@ -217,5 +212,4 @@ module.exports = {
   lpstatInfo,
   //lpq,
   cancelAll,
-  lprm,
 };
