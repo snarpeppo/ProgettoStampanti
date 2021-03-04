@@ -6,10 +6,12 @@ const cups = require("./api/cupsApis.js");
 const lpq = require("./api/lpq.js");
 
 app.use(express.static("api"));
-app.use(fileUpload({
-  useTempFiles : true,
-  tempFileDir : '/tmp/'
-}));
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  })
+);
 
 app.listen(3000);
 app.set("view engine", "ejs");

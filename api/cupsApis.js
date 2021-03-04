@@ -36,7 +36,7 @@ lp = function (options, filePath) {
   // let optionCopyNumber = ['-n',parseInt(options.copyNumber)];
   // //console.log(optionCopyNumber);
   // args.push(optionCopyNumber);
-  let optionSize = ['-o media=',options.size];
+  let optionSize = ["-o media=", options.size];
   //console.log(optionSize);
   args.push(optionSize);
   let optionQuality = ["-o print-quality=", options.quality];
@@ -157,9 +157,9 @@ lpstatInfo = function (name) {
 
   let lpstatInfoStdout = lpstatInfo.stdout;
   let lpstatInfoParsed = utils.parseStdout(lpstatInfoStdout);
-   lpstatInfoParsed.shift();
+  lpstatInfoParsed.shift();
   console.log(lpstatInfoParsed);
-  let lpstatInfoMap = lpstatInfoParsed.map(function(line){
+  let lpstatInfoMap = lpstatInfoParsed.map(function (line) {
     line = line.replace(/.+?(?<=:)/, "").trim();
     console.log(line);
     return line;
@@ -167,22 +167,22 @@ lpstatInfo = function (name) {
 
   console.log("parsed", lpstatInfoMap);
 
-  if(lpstatInfoMap[0] === ''){
+  if (lpstatInfoMap[0] === "") {
     let details = {
-      printerstatus:lpstatInfoMap[4],
-      description:lpstatInfoMap[3],
+      printerstatus: lpstatInfoMap[4],
+      description: lpstatInfoMap[3],
       location: lpstatInfoMap[5],
       interface: lpstatInfoMap[7],
-  }
-  return details;
-    }else{
-      let details = {
-        printerstatus:lpstatInfoMap[0],
-        description:lpstatInfoMap[4],
-        location: lpstatInfoMap[6],
-        interface: lpstatInfoMap[8],
-      }
-      return details;
+    };
+    return details;
+  } else {
+    let details = {
+      printerstatus: lpstatInfoMap[0],
+      description: lpstatInfoMap[4],
+      location: lpstatInfoMap[6],
+      interface: lpstatInfoMap[8],
+    };
+    return details;
   }
 };
 
@@ -192,7 +192,7 @@ cancelAll = function () {
   //let cancelAll = spawnSync("cancel",args, { encoding: "utf-8", shell:"/home/finsoft" });
   let cancelAll = spawnSync("cancel", args, {
     encoding: "utf-8",
-     shell: true,
+    shell: true,
   });
   //console.log(cancelAll.shell);
   // let uid = spawnSync('id', args, { encoding: "utf-8"});
