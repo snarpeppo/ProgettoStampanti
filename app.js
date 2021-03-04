@@ -57,13 +57,29 @@ app.get("/lpstat", (req, res) => {
 
 // lp routes
 app.get("/lp", (req, res) => {
-  res.render("lpView");
+  const name = cups.lpstat()
+  res.render("lpView",{
+    name
+  });
 });
+
+// app.get("/lpPostName", (req, res) => {
+//   const name = lp(req.query.printername ,options, );
+//   res.send(name);
+// });
+
+// app.get("/api/jquery/lpPostName.js", (req, res) => {
+//   res.sendFile('./api/jquery/lpPostName.js', { root: __dirname });
+// });
+
 
 app.post("/lpPost", (req, res) => {
   console.log(req.files.fileToPrint.tempFilePath);
+  console.log(req.body.printerName);
+  const name = req.body.printerName;
+  delete req.body.printerName;
   const options = req.body;
-  const file = cups.lp(options, req.files.fileToPrint.tempFilePath);
+  const file = cups.lp(name, options , req.files.fileToPrint.tempFilePath);
   res.status(200).send(file);
 });
 

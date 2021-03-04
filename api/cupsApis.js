@@ -24,15 +24,13 @@ const utils = require("../utils/utils.js");
 
 // };
 //print da file
-lp = function (options, filePath) {
-  let self = this;
-  self = utils.list()[2];
-  let args = ["-d", self];
-  // console.log(self);
-  // console.log("args", args);
-  console.log("options", options);
-  console.log(Object.keys(options).length);
+lp = function (name, options, filePath) {
+  // let args = ["-d", utils.list()[2]];
+  let args = ["-d", name];
+  console.log("args", args);
 
+  console.log(Object.keys(options).length);
+  console.log("options", options);
   // let optionCopyNumber = ['-n',parseInt(options.copyNumber)];
   // //console.log(optionCopyNumber);
   // args.push(optionCopyNumber);
@@ -161,7 +159,6 @@ lpstatInfo = function (name) {
   console.log(lpstatInfoParsed);
   let lpstatInfoMap = lpstatInfoParsed.map(function (line) {
     line = line.replace(/.+?(?<=:)/, "").trim();
-    console.log(line);
     return line;
   });
 
@@ -169,7 +166,10 @@ lpstatInfo = function (name) {
 
   if (lpstatInfoMap[0] === "") {
     let details = {
-      printerstatus: lpstatInfoMap[4],
+      printerstatus:
+        lpstatInfoMap[4] === "none"
+          ? (lpstatInfoMap[4] = "Active")
+          : lpstatInfoMap[4],
       description: lpstatInfoMap[3],
       location: lpstatInfoMap[5],
       interface: lpstatInfoMap[7],
