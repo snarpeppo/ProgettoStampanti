@@ -26,17 +26,11 @@
     <form id="formLp">
         <div class="mb-3, container-fluid" style="padding: 2% 1% 1% 1%;">
           <div class="col-2">
-          <label class="form-label">Select file to print:</label>
-        </div>
-          <div class="col-2">
           <label for="formFile" class="form-label">
             <input class="form-control" type="file" id="browseFile"/>
           </label>
         </div>
         <div class="col-2" style="padding-top: 1%">
-        <label for="numberOfCopies1" class="form-label">Number of copies:</label>
-      </div>
-        <div class="col-2">
           <input 
             value="1"
             type="number"
@@ -151,21 +145,21 @@
           value="a4";
             class="form-check-input"
             type="radio"
-            name="flexSizeDefault"
-            id="flexSizeDefault1"
+            name="flexBannerDefault"
+            id="flexBannerDefault1"
           />
-          <label class="form-check-label" for="flexSizeDefault1">None</label>
+          <label class="form-check-label" for="flexBannerDefault1">None</label>
         </div>
         <div class="form-check">
           <input
             value="letter";
             class="form-check-input"
             type="radio"
-            name="flexSizeDefault"
-            id="flexSizeDefault2"
+            name="flexBannerDefault"
+            id="flexBannerDefault2"
             checked
           />
-          <label class="form-check-label" for="flexSizeDefault2">Classified</label>
+          <label class="form-check-label" for="flexBannerDefault2">Classified</label>
         </div>
 
         <div class="form-check">
@@ -173,11 +167,10 @@
             value="legal";
             class="form-check-input"
             type="radio"
-            name="flexSizeDefault"
-            id="flexSizeDefault3"
-            checked
+            name="flexBannerDefault"
+            id="flexBannerDefault3"
           />
-          <label class="form-check-label" for="flexSizeDefault3">Confidential</label>
+          <label class="form-check-label" for="flexBannerDefault3">Confidential</label>
         </div>
 
         <div class="form-check">
@@ -185,11 +178,10 @@
             value="legal";
             class="form-check-input"
             type="radio"
-            name="flexSizeDefault"
-            id="flexSizeDefault3"
-            checked
+            name="flexBannerDefault"
+            id="flexBannerDefault4"
           />
-          <label class="form-check-label" for="flexSizeDefault3">Secret</label>
+          <label class="form-check-label" for="flexBannerDefault4">Secret</label>
         </div>
       
         <div class="form-check">
@@ -197,11 +189,10 @@
             value="legal";
             class="form-check-input"
             type="radio"
-            name="flexSizeDefault"
-            id="flexSizeDefault3"
-            checked
+            name="flexBannerDefault"
+            id="flexBannerDefault5"
           />
-          <label class="form-check-label" for="flexSizeDefault3">Standard</label>
+          <label class="form-check-label" for="flexBannerDefault5">Standard</label>
         </div>
 
         <div class="form-check">
@@ -209,11 +200,10 @@
             value="legal";
             class="form-check-input"
             type="radio"
-            name="flexSizeDefault"
-            id="flexSizeDefault3"
-            checked
+            name="flexBannerDefault"
+            id="flexBannerDefault6"
           />
-          <label class="form-check-label" for="flexSizeDefault3">Topsecret</label>
+          <label class="form-check-label" for="flexBannerDefault6">Topsecret</label>
         </div>
 
         <div class="form-check">
@@ -221,14 +211,58 @@
             value="legal";
             class="form-check-input"
             type="radio"
-            name="flexSizeDefault"
-            id="flexSizeDefault3"
-            checked
+            name="flexBannerDefault"
+            id="flexBannerDefault7"
           />
-          <label class="form-check-label" for="flexSizeDefault3">Unclassified</label>
+          <label class="form-check-label" for="flexBannerDefault7">Unclassified</label>
         </div>
 
         <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints a banner with the document. The banner can be "none" "classified", "confidential", "secret", "standard", "topsecret", or "unclassified".</div>
+        <div class="form-check">
+          <input
+            value="one-sided";
+            class="form-check-input"
+            type="radio"
+            name="flexRotationDefault"
+            id="flexRotationDefault1"
+            checked
+          />
+          <label class="form-check-label" for="flexRotationDefault1">None</label>
+        </div>
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Not prints the job in landscape.</div>
+        <div class="form-check">
+          <input
+          value="two-sided-long-edge";
+            class="form-check-input"
+            type="radio"
+            name="flexRotationDefault"
+            id="flexRotationDefault2"
+          />
+          <label class="form-check-label" for="flexRotationDefault2">Rotated 90 degrees counter-clockwise</label>
+        </div>
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints the job in landscape.</div>
+        <div class="form-check">
+          <input
+          value="two-sided-long-edge";
+            class="form-check-input"
+            type="radio"
+            name="flexRotationDefault"
+            id="flexRotationDefault3"
+          />
+          <label class="form-check-label" for="flexRotationDefault3">Rotated 90 degrees clockwise</label>
+        </div>
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints the job in landscape.</div>
+        <div class="form-check">
+          <input
+          value="two-sided-short-edge";
+            class="form-check-input"
+            type="radio"
+            name="flexRotationDefault"
+            id="flexRotationDefault4"
+          />
+          <label class="form-check-label" for="flexRotationDefault4">Rotated 180 degrees</label>
+        </div>
+        <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">Prints the job in reverse portrait.</div>
       </div>
     </div>
   </div>
