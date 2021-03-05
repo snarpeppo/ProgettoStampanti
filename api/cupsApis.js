@@ -26,7 +26,6 @@ const utils = require("../utils/utils.js");
 //print da file
 lp = function (name, options, filePath) {
   let args = ["-d", name];
-  console.log("args", args);
   let option = "-o";
 
   args.push("-n");
@@ -41,23 +40,20 @@ lp = function (name, options, filePath) {
   args.push(option);
   args.push("sides=" + options.side);
 
-  // args.push("--");
   args.push(filePath);
-  console.log("args", args);
-  console.log("filepath", filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-  console.log("lp", lp);
 
   let inputParsed = utils.parseStdout(lp.stdout);
-  console.log("input", inputParsed);
   return inputParsed;
 };
 
 lpadmin = function (name, description, location) {
   let args = ["-p", name];
 
-  args.push("-D", description);
-  args.push("-L", location);
+  args.push("-D");
+  args.push(description);
+  args.push("-L");
+  args.push(location);
   console.log(args);
 
   let lpadmin = spawnSync("lpadmin", args, { encoding: "utf-8" });
@@ -70,12 +66,8 @@ lpadmin = function (name, description, location) {
 
 lpstatCompleted = function (option) {
   let args = ["-W", option];
-  console.log("args", args);
   let lpstatCompleted = spawnSync("lpstat", args, { encoding: "utf-8" });
-  console.log(lpstatCompleted);
   let stdoutCompleted = utils.parseStdout(lpstatCompleted.stdout);
-  console.log(stdoutCompleted);
-
   let lpstatCompletedMap = stdoutCompleted.map(function (line) {
     line = line.split(/ +/);
     return {
@@ -147,7 +139,6 @@ lpstatInfo = function (name) {
   let lpstatInfoStdout = lpstatInfo.stdout;
   let lpstatInfoParsed = utils.parseStdout(lpstatInfoStdout);
   lpstatInfoParsed.shift();
-  console.log(lpstatInfoParsed);
   let lpstatInfoMap = lpstatInfoParsed.map(function (line) {
     line = line.replace(/.+?(?<=:)/, "").trim();
     return line;
@@ -187,13 +178,6 @@ cancelAll = function () {
   });
   //console.log(cancelAll.shell);
   // let uid = spawnSync('id', args, { encoding: "utf-8"});
-  console.log(cancelAll);
-  return cancelAll;
-};
-
-lprm = function () {
-  let args = ["-"];
-
   console.log(cancelAll);
   return cancelAll;
 };
