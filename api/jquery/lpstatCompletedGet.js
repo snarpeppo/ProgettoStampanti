@@ -1,5 +1,4 @@
-// window.onload = $(function () {
-ajax = function (option) {
+ajaxLpstat = function (option) {
   $.ajax({
     method: "GET",
     url: "/lpstatCompleted",
@@ -30,10 +29,10 @@ ajax = function (option) {
 };
 jQuery(window).on("load", function () {
     var option = $("#selectJobs").val();
-    ajax(option);
+    ajaxLpstat(option);
   $("#selectJobs").on("change", function () {
     var option = $("#selectJobs").val();
-    ajax(option);
+    ajaxLpstat(option);
     console.log(option);
   });
 });
