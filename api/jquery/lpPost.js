@@ -5,6 +5,11 @@ $(function () {
     var copie = $("#numberOfCopies").val();
     var selected = $("#formLp input[type='radio']:checked");
     console.log(selected[0].value);
+    console.log(selected[1].value);
+    console.log(selected[2].value);
+    console.log(selected[3].value);
+    console.log(selected[4].value);
+    console.log(selected[5].value);
     console.log(copie);
     console.log(input.files[0]);
     var formData = new FormData();
@@ -14,9 +19,9 @@ $(function () {
     formData.append("size", selected[0].value);
     formData.append("quality", selected[1].value);
     formData.append("side", selected[2].value);
-    formData.append("job-sheets", selected[3].value);
-    formData.append("orientation-requested", selected[4].value);
-    formData.append("number-up", selected[5].value);
+    formData.append("banner", selected[3].value);
+    formData.append("orientation", selected[4].value);
+    formData.append("number", selected[5].value);
 
     $.ajax({
       method: "POST",
