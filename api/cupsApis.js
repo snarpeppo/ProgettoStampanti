@@ -27,6 +27,9 @@ const utils = require("../utils/utils.js");
 lp = function (name, options, filePath) {
   let args = ["-d", name];
   let option = "-o";
+  console.log("banner", options.banner);
+  console.log("orientetion", options.orientation);
+  console.log("number", options.number);
 
   args.push("-n");
   args.push(options.copyNumber);
@@ -40,28 +43,33 @@ lp = function (name, options, filePath) {
   args.push(option);
   args.push("sides=" + options.side);
 
-  if(!options.banner === 'none'){
-    args.push(option);
-    args.push("job-sheets=" + options.banner);
-  }
-
-  if(!options.orientation === 'none'){
+  console.log("args prima di orientation", args);
+  if (options.orientation !== "None") {
     args.push(option);
     args.push("orientation-requested=" + options.orientation);
+    console.log("args dentro orientation", args);
   }
 
-  if(!options.number === 'none' ){
+  console.log("args prima di number", args);
+  if (options.number !== "None") {
     args.push(option);
     args.push("number-up=" + options.number);
+    console.log("args dentro number", args);
   }
- 
 
+  console.log("args prima di banner", args);
+  if (options.banner !== "None") {
+    args.push(option);
+    args.push("job-sheets=" + options.banner);
+    console.log("args dentro di banner", args);
+  }
 
+  console.log("tutti", args);
   args.push(filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-
+  console.log("lp", lp);
   let inputParsed = utils.parseStdout(lp.stdout);
-  console.log(args)
+
   return inputParsed;
 };
 
@@ -116,20 +124,20 @@ lpq = function (name) {
   let self = this;
   self = name;
   let args = ["-P", self];
-//  console.log('args', args);
+  //  console.log('args', args);
 
   let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
   //console.log('lpq',lpq);
-   console.log("stdoutlpq", lpq.stdout);
+  console.log("stdoutlpq", lpq.stdout);
   let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
-  console.log('stdoutSpawnSync',stdoutSpawnSync);
+  console.log("stdoutSpawnSync", stdoutSpawnSync);
   stdoutSpawnSync.shift();
   stdoutSpawnSync.shift();
- // console.log("stdout", stdoutSpawnSync);
+  // console.log("stdout", stdoutSpawnSync);
 
   let InfoJob = stdoutSpawnSync.map(function (line) {
     line = line.split(/ +/);
-   // console.log(line);
+    // console.log(line);
     return {
       rank: line[0] === "active" ? line[0] : parseInt(line[0].slice(0, -2)),
       owner: line[1],
@@ -138,10 +146,9 @@ lpq = function (name) {
       totalSize: parseInt(line[4]),
     };
   });
-console.log(InfoJob);
+  console.log(InfoJob);
   return InfoJob;
 };
-
 
 lpstat = function () {
   let lpstatList = utils.list();
