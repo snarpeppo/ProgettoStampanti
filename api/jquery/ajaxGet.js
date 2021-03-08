@@ -9,7 +9,11 @@ ajaxLpq = function (nomeStampante) {
       alert("Error");
     },
   }).done(function (data) {
-    var string =
+    console.log(Object.keys(data).length);
+    if (Object.keys(data).length > 0) {
+      $("#records").show();
+      $("#empty").hide();
+      var string =
       "<thead><tr class='table-dark'><th>Job Rank</th><th>Job Commissioner</th><th>Job ID</th><th>Job File Name</th><th>Job Size</th></thead><tbody>";
     $.each(data, function (key, value) {
       string +=
@@ -27,6 +31,15 @@ ajaxLpq = function (nomeStampante) {
     });
     string += " </tbody></table>";
     $("#records").html(string);
+     
+    } else {
+      $("#empty").show();
+      $("#records").hide();
+      var string = "<h3>";
+      string += "This printer has no active jobs yet";
+      string += " </h3>";
+      $("#empty").html(string);
+    }
   });
 };
 jQuery(window).on("load", function () {
@@ -38,3 +51,5 @@ jQuery(window).on("load", function () {
     ajaxLpq(nomeStampante);
   });
 });
+
+

@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
 const fileUpload = require("express-fileupload");
-
 const cups = require("./api/cupsApis.js");
-const lpq = require("./api/lpq.js");
+
 
 app.use(express.static("api"));
 app.use(
@@ -33,7 +32,7 @@ app.get("/lpq", (req, res) => {
 });
 
 app.get("/lpqGet", (req, res) => {
-  const name = lpq(req.query.printername);
+  const name = cups.lpq(req.query.printername);
   res.send(name);
 });
 
