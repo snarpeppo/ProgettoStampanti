@@ -14,6 +14,9 @@ $(function () {
     formData.append("size", selected[0].value);
     formData.append("quality", selected[1].value);
     formData.append("side", selected[2].value);
+    formData.append("job-sheets", selected[3].value);
+    formData.append("orientation-requested", selected[4].value);
+    formData.append("number-up", selected[5].value);
 
     $.ajax({
       method: "POST",

@@ -40,10 +40,28 @@ lp = function (name, options, filePath) {
   args.push(option);
   args.push("sides=" + options.side);
 
+  if(!options.banner === 'none'){
+    args.push(option);
+    args.push("job-sheets=" + options.banner);
+  }
+
+  if(!options.orientation === 'none'){
+    args.push(option);
+    args.push("orientation-requested=" + options.orientation);
+  }
+
+  if(!options.number === 'none' ){
+    args.push(option);
+    args.push("number-up=" + options.number);
+  }
+ 
+
+
   args.push(filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
 
   let inputParsed = utils.parseStdout(lp.stdout);
+  console.log(args)
   return inputParsed;
 };
 
