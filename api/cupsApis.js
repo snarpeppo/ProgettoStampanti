@@ -27,50 +27,49 @@ const utils = require("../utils/utils.js");
 lp = function (name, options, filePath) {
   let args = ["-d", name];
   let option = "-o";
-  console.log("banner", options.banner);
-  console.log("orientetion", options.orientation);
-  console.log("number", options.number);
-
-  args.push("-n");
-  args.push(options.copyNumber);
-
-  args.push(option);
-  args.push("media=" + options.size);
-
-  args.push(option);
-  args.push("print-quality=" + options.quality);
-
-  args.push(option);
-  args.push("sides=" + options.side);
-
-  console.log("args prima di orientation", args);
-  if (options.orientation !== "None") {
+ 
+    args.push("-n");
+    args.push(options.copyNumber);
+  
     args.push(option);
-    args.push("orientation-requested=" + options.orientation);
-    console.log("args dentro orientation", args);
-  }
-
-  console.log("args prima di number", args);
-  if (options.number !== "None") {
+    args.push("media=" + options.size);
+  
     args.push(option);
-    args.push("number-up=" + options.number);
-    console.log("args dentro number", args);
-  }
-
-  console.log("args prima di banner", args);
-  if (options.banner !== "None") {
+    args.push("print-quality=" + options.quality);
+  
     args.push(option);
-    args.push("job-sheets=" + options.banner);
-    console.log("args dentro di banner", args);
-  }
+    args.push("sides=" + options.side);
+  
+    console.log("args prima di orientation", args);
+    if (options.orientation !== "None") {
+      args.push(option);
+      args.push("orientation-requested=" + options.orientation);
+      console.log("args dentro orientation", args);
+    }
+  
+    console.log("args prima di number", args);
+    if (options.number !== "None") {
+      args.push(option);
+      args.push("number-up=" + options.number);
+      console.log("args dentro number", args);
+    }
+  
+    console.log("args prima di banner", args);
+    if (options.banner !== "None") {
+      args.push(option);
+      args.push("job-sheets=" + options.banner);
+      console.log("args dentro di banner", args);
+    }
+  
+    console.log("tutti", args);
+    args.push(filePath);
+    let lp = spawnSync("lp", args, { encoding: "utf-8" });
+    console.log("lp", lp);
+    let inputParsed = utils.parseStdout(lp.stdout);
+  
+    return inputParsed;
 
-  console.log("tutti", args);
-  args.push(filePath);
-  let lp = spawnSync("lp", args, { encoding: "utf-8" });
-  console.log("lp", lp);
-  let inputParsed = utils.parseStdout(lp.stdout);
-
-  return inputParsed;
+  
 };
 
 lpadmin = function (name, description, location) {

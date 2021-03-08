@@ -33,11 +33,19 @@ $(function () {
         alert("Error");
       },
       success: function (request) {
-        var string =
-          '<div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
-        string += "<p> Job added, navigate to Jobs to see it in the list</p>";
-        string += "<p>" + request + "</p>";
-        $("#result").html(string);
+        if (request == "") {
+          var string =
+            '<div class="alert alert-danger alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
+          string += "<p> Number of copys wrong, set a valid number</p>";
+          string += "<p>" + request + "</p>";
+          $("#result").html(string);
+          } else {
+          var string =
+            '<div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
+          string += "<p> Job added, navigate to Jobs to see it in the list</p>";
+          string += "<p>" + request + "</p>";
+          $("#result").html(string);
+        }
       },
     });
   });
