@@ -130,12 +130,12 @@ app.get("/profiles", (req, res) => {
   });
 });
 
-app.get("/lpoptionGet", (req, res) => {
+app.get("/profilePost", (req, res) => {
   console.log(req.query.printername)
   const profile = cups.lpoption(req.query.printername);
   res.send(profile);
 });
 
-app.get("/api/jquery/lpoptionGet.js", (req, res) => {
+app.get("/api/jquery/profilePost.js", (req, res) => {
   res.sendFile("./api/jquery/lpoptionGet.js", { root: __dirname });
 });
