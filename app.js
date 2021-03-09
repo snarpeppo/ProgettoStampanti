@@ -124,7 +124,10 @@ app.get("/profiles", (req, res) => {
 });
 
 app.post("/profilePost", (req, res) => {
-  console.log(req.body)
+  const name = req.body.profileName;
+  const options = req.body;
+  const profile = cups.profiler(name,options);
+  res.status(200).send(profile);
   
   // const profile = cups.lpoption(req.query.printername);
   // res.send(profile);

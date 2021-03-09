@@ -1,5 +1,7 @@
 const spawnSync = require("child_process").spawnSync;
 const utils = require("../utils/utils.js");
+const fs =  require('fs');
+
 //const writeSync = require("fs").writeSync;
 
 // print da buffer
@@ -219,6 +221,18 @@ cancelAll = function () {
   return cancelAll;
 };
 
+profiler =  function(profile, options){
+  fs.writeFile('./' + profile +'.json', options, err => {
+    if (err) {
+        console.log('Error writing file', err)
+    } else {
+        console.log('Successfully wrote file')
+    }
+});
+
+};
+
+
 module.exports = {
   lpadmin,
   lpstat,
@@ -228,4 +242,5 @@ module.exports = {
   lpq,
   lpoption,
   cancelAll,
+  profiler,
 };

@@ -21,7 +21,7 @@ $(function () {
       $.ajax({
         method: "POST",
         url: "/profilePost",
-        data: formData,
+        data: profile,formData,
         processData: false,
         contentType: false,
         error: function () {
