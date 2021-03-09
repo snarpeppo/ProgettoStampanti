@@ -114,14 +114,7 @@ app.get("/details", (req, res) => {
   });
 });
 
-app.get("/printerGet", (req, res) => {
-  const name = cups.lpstat(req.query.printername);
-  res.send(name);
-});
 
-app.get("/api/jquery/onPrinterDetail.js", (req, res) => {
-  res.sendFile("./api/jquery/onPrinterDetail.js", { root: __dirname });
-});
 
 app.get("/profiles", (req, res) => {
   const name = cups.lpstat();
@@ -130,12 +123,13 @@ app.get("/profiles", (req, res) => {
   });
 });
 
-app.get("/profilePost", (req, res) => {
-  console.log(req.query.printername)
-  const profile = cups.lpoption(req.query.printername);
-  res.send(profile);
+app.post("/profilePost", (req, res) => {
+  console.log(req.body)
+  
+  // const profile = cups.lpoption(req.query.printername);
+  // res.send(profile);
 });
 
 app.get("/api/jquery/profilePost.js", (req, res) => {
-  res.sendFile("./api/jquery/lpoptionGet.js", { root: __dirname });
+  res.sendFile("./api/jquery/profilePost.js", { root: __dirname });
 });
