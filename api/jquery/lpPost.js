@@ -17,9 +17,9 @@ $(function () {
     formData.append("fileToPrint", input.files[0]);
     formData.append("copyNumber", copie[0]);
     formData.append("size", selected[0].value);
-    formData.append("quality", selected[1].value);
-    formData.append("side", selected[2].value);
-    formData.append("banner", selected[3].value);
+    formData.append("side", selected[1].value);
+    formData.append("banner", selected[2].value);
+    formData.append("quality", selected[3].value);
     formData.append("orientation", selected[4].value);
     formData.append("number", selected[5].value);
     
