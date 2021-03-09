@@ -5,7 +5,19 @@
   <body>
     <%- include('../views/partials/nav.ejs') %>
 
-      <h2 style="width: 100%; padding: 1% 1% 0% 1%">Manage profiles</h2>
+    <div class="container-fluid" style="padding: 1% 1% 0% 1%;">
+      <div class="row" style="width: 100%;">
+        <div class="col-auto">
+          <h2>Manage profiles</h2>
+        </div>
+        <div class="col-auto">
+          <input type='submit'id="button" class="btn btn-outline-secondary" value="Save changes"></a>
+        </div>
+      </div>
+      <div id="#">
+        <!-- alert -->
+      </div>
+    </div>
 
     <div class="col-auto" style="width: 100%; padding: 1% 80% 0% 1%;">
         <select id="select" class="form-select">
@@ -30,7 +42,7 @@
                 <%- include('../views/options/orientation-requested.ejs') %>
               </div>
               <div class="col-4">
-                
+
                 <%- include('../views/options/number.ejs') %>
               </div>
             </div>
