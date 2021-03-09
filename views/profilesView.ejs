@@ -14,11 +14,9 @@
           <input type='submit'id="button" class="btn btn-outline-secondary" value="Save changes"></a>
         </div>
       </div>
-      <div id="#">
-        <!-- alert -->
+      <div id="profile">
       </div>
     </div>
-
     <div class="col-auto" style="width: 100%; padding: 1% 80% 0% 1%;">
       <label for="inputText" class="form-label">Nome profilo</label>
         <input type="text" value="Profilo 1" id="inputText" class="form-control">
@@ -29,11 +27,7 @@
           <option value="<%= name[i] %>"><%= name[i] %></option>
         <% } %>
       </select>
-    </div>
-
-        <div id="profile">
-        </div>
-      
+    </div>      
         <form id="formLp">
           <div class="container-fluid" style="padding: 1% 0% 0% 1%;">
             <div class="row" style="width: 100%;">
@@ -52,7 +46,6 @@
               </div>
             </div>
         </form>
-
     <%- include('../views/partials/footer.ejs') %>
     <script type="text/javascript" src="../api/jquery/profilePost.js"></script>
   </body>

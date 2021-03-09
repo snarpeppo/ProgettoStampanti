@@ -1,6 +1,6 @@
 const spawnSync = require("child_process").spawnSync;
 const utils = require("../utils/utils.js");
-const fs =  require('fs');
+const fs = require("fs");
 
 //const writeSync = require("fs").writeSync;
 
@@ -29,49 +29,47 @@ const fs =  require('fs');
 lp = function (name, options, filePath) {
   let args = ["-d", name];
   let option = "-o";
- 
-    args.push("-n");
-    args.push(options.copyNumber);
-  
-    args.push(option);
-    args.push("media=" + options.size);
-  
-    args.push(option);
-    args.push("print-quality=" + options.quality);
-  
-    args.push(option);
-    args.push("sides=" + options.side);
-  
-    console.log("args prima di orientation", args);
-    if (options.orientation !== "None") {
-      args.push(option);
-      args.push("orientation-requested=" + options.orientation);
-      console.log("args dentro orientation", args);
-    }
-  
-    console.log("args prima di number", args);
-    if (options.number !== "None") {
-      args.push(option);
-      args.push("number-up=" + options.number);
-      console.log("args dentro number", args);
-    }
-  
-    console.log("args prima di banner", args);
-    if (options.banner !== "None") {
-      args.push(option);
-      args.push("job-sheets=" + options.banner);
-      console.log("args dentro di banner", args);
-    }
-  
-    console.log("tutti", args);
-    args.push(filePath);
-    let lp = spawnSync("lp", args, { encoding: "utf-8" });
-    console.log("lp", lp);
-    let inputParsed = utils.parseStdout(lp.stdout);
-  
-    return inputParsed;
 
-  
+  args.push("-n");
+  args.push(options.copyNumber);
+
+  args.push(option);
+  args.push("media=" + options.size);
+
+  args.push(option);
+  args.push("print-quality=" + options.quality);
+
+  args.push(option);
+  args.push("sides=" + options.side);
+
+  console.log("args prima di orientation", args);
+  if (options.orientation !== "None") {
+    args.push(option);
+    args.push("orientation-requested=" + options.orientation);
+    console.log("args dentro orientation", args);
+  }
+
+  console.log("args prima di number", args);
+  if (options.number !== "None") {
+    args.push(option);
+    args.push("number-up=" + options.number);
+    console.log("args dentro number", args);
+  }
+
+  console.log("args prima di banner", args);
+  if (options.banner !== "None") {
+    args.push(option);
+    args.push("job-sheets=" + options.banner);
+    console.log("args dentro di banner", args);
+  }
+
+  console.log("tutti", args);
+  args.push(filePath);
+  let lp = spawnSync("lp", args, { encoding: "utf-8" });
+  console.log("lp", lp);
+  let inputParsed = utils.parseStdout(lp.stdout);
+
+  return inputParsed;
 };
 
 lpadmin = function (name, description, location) {
@@ -195,17 +193,17 @@ lpstatInfo = function (name) {
   }
 };
 
-lpoption = function(name){
+lpoption = function (name) {
   let args = ["-p", name];
   args.push("-l");
 
   lpoption = spawnSync("lpoptions", args, {
-    encoding : "utf-8"
+    encoding: "utf-8",
   });
-  console.log('lpoptions',lpoption);
+  console.log("lpoptions", lpoption);
   var lpoptionParsed = utils.parseStdout(lpoption.stdout);
   return lpoptionParsed;
-}
+};
 
 cancelAll = function () {
   let args = ["-u"];
@@ -221,17 +219,31 @@ cancelAll = function () {
   return cancelAll;
 };
 
-profiler =  function(profile, options){
-  fs.writeFile('./' + profile +'.json', options, err => {
+profiler = function (profile, options) {
+  const profileJson = JSON.stringify(options, null, 2);
+  const outputDir = "./public/profiles/";
+
+ let profileWrite = fs.writeFile(outputDir + profile + ".json", profileJson, (err) => {
     if (err) {
-        console.log('Error writing file', err)
+      console.log("Error writing file", err);
     } else {
-        console.log('Successfully wrote file')
+      console.log("Successfully wrote file");
     }
-});
+  });
+  
+  // return profileWrite;
 
+  // let outputProfile = fs.readFile(
+  //   outputDir + profile + ".json",
+  //   "utf-8",
+  //   (err, data) => {
+  //     if (err) {
+  //       throw err;
+  //     }
+  //     console.log(data);
+  //   }
+  // );
 };
-
 
 module.exports = {
   lpadmin,

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const fileUpload = require("express-fileupload");
 const cups = require("./api/cupsApis.js");
+const fs = require("fs");
 
 
 app.use(express.static("api"));
@@ -61,6 +62,10 @@ app.get("/lpstat", (req, res) => {
   res.render("lpstatView", {
     command,
   });
+});
+
+app.get("/api/jquery/onPrinterDetail.js", (req, res) => {
+  res.sendFile("./api/jquery/onPrinterDetail.js", { root: __dirname });
 });
 
 // lp routes
@@ -126,12 +131,31 @@ app.get("/profiles", (req, res) => {
 app.post("/profilePost", (req, res) => {
   const name = req.body.profileName;
   const options = req.body;
+  console.log(options);
   const profile = cups.profiler(name,options);
   res.status(200).send(profile);
-  
-  // const profile = cups.lpoption(req.query.printername);
-  // res.send(profile);
 });
+
+app.get("/profileGetSelected", (req, res) => {
+  const name = req.body.profileName;
+  const options = req.body;
+  console.log(options);
+  const profile = cups.profiler(name,options);
+  res.status(200).send(profile);
+});
+
+app.get("/api/jquery/profileGetSelected.js", (req, res) => {
+  res.sendFile("./api/jquery/profileGetSelected.js", { root: __dirname });
+});
+
+
+app.get("/profileGet/:profileName", (req,res,) =>{
+let profileData = fs.readFileSync("./public/profiles/" + req.params.profileName + '.json');
+let profile = JSON.parse(profileData);
+profile.options = JSON.parse(profile.options);
+res.setHeader('Content-Type', 'application/json');
+res.status(200).send(profile);
+})
 
 app.get("/api/jquery/profilePost.js", (req, res) => {
   res.sendFile("./api/jquery/profilePost.js", { root: __dirname });
