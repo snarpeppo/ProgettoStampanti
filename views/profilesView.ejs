@@ -5,16 +5,40 @@
   <body>
     <%- include('../views/partials/nav.ejs') %>
 
-    <div class="col-auto">
-        <select id="select" class="form-select" >
+      <h2 style="width: 100%; padding: 1% 1% 0% 1%">Manage profiles</h2>
+
+    <div class="col-auto" style="width: 100%; padding: 1% 80% 0% 1%;">
+        <select id="select" class="form-select">
           <% for ( var i = 0; i<name.length; i++ ) { %>
               <option value="<%= name[i] %>"><%= name[i] %></option>
               <% } %>
-          </select>
-        </div>
+        </select>
+    </div>
         <div id="profile">
-
         </div>
+      
+        <form id="formLp">
+          <div class="container-fluid" style="padding: 1% 0% 0% 1%;">
+            <div class="row" style="width: 100%;">
+              <div class="col-4">
+                <%- include('../views/options/size.ejs') %>
+                <%- include('../views/options/quality.ejs') %>
+                <%- include('../views/options/side.ejs') %>
+              </div>
+              <div class="col-4">
+                <%- include('../views/options/banner.ejs') %>
+                <%- include('../views/options/orientation-requested.ejs') %>
+              </div>
+              <div class="col-4">
+                
+                <%- include('../views/options/number.ejs') %>
+              </div>
+            </div>
+        </form>
+
+
+
+
 
     <%- include('../views/partials/footer.ejs') %>
     <script type="text/javascript" src="../api/jquery/lpoptionGet.js"></script>
