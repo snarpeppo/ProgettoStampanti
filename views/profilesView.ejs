@@ -6,53 +6,68 @@
     <%- include('../views/partials/nav.ejs') %>
 
     <div class="container-fluid" style="padding: 1% 1% 0% 1%;">
-      <div class="row" style="width: 100%;">
-        <div class="col-auto">
           <h2>Manage profiles</h2>
-        </div>
-        <div class="col-auto">
-          <input type='submit'id="button" class="btn btn-outline-secondary" value="Save changes"></a>
-        </div>
-      </div>
+
       <div id="#">
         <!-- alert -->
       </div>
-    </div>
 
-    <div class="col-auto" style="width: 100%; padding: 1% 80% 0% 1%;">
-      <label for="inputText" class="form-label">Profile name</label>
+    <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
+    <div class="row" style="width: 100%;">
+      <div class="col-4">
+        <label for="inputText" class="form-label">Profile name</label>
+      </div>
+      <div class="col-4">
+        <label for="inputText" class="form-label">Selected Printer</label>
+      </div>
+      <div class="row" style="width: 100%;"></div>
+      <div class="col-4">
         <input type="text" value="Profilo 1" id="inputText" class="form-control">
+      </div>
+        <div class="col-4">
+          <select id="select" class="form-select">
+            <% for ( var i = 0; i<name.length; i++ ) { %>
+              <option value="<%= name[i] %>"><%= name[i] %></option>
+            <% } %>
+          </select>
+      </div>
+      <div class="col-4">
+        <input type='submit'id="button" class="btn btn-outline-secondary" value="Save changes"></a>
+      </div>
     </div>
-    <div class="col-auto" style="width: 100%; padding: 1% 80% 0% 1%;">
-      <label for="inputText" class="form-label">Selected Printer</label>
-      <select id="select" class="form-select">
-        <% for ( var i = 0; i<name.length; i++ ) { %>
-          <option value="<%= name[i] %>"><%= name[i] %></option>
-        <% } %>
-      </select>
-    </div>
+  </div>
 
         <div id="profile">
         </div>
-      
+
         <form id="formLp">
-          <div class="container-fluid" style="padding: 1% 0% 0% 1%;">
+          <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
             <div class="row" style="width: 100%;">
               <div class="col-4">
+                <%- include('../views/options/numberOfCopies.ejs') %>
                 <%- include('../views/options/size.ejs') %>
-                <%- include('../views/options/quality.ejs') %>
+              </div>
+              <div class="col-4">
                 <%- include('../views/options/side.ejs') %>
               </div>
               <div class="col-4">
                 <%- include('../views/options/banner.ejs') %>
+              </div>
+            </div>
+            <div class="row" style="width: 100%;">
+              <div class="col-4" style="padding-top: 1%">
+                <%- include('../views/options/quality.ejs') %>
+              </div>
+              <div class="col-4" style="padding-top: 1%">
                 <%- include('../views/options/orientation-requested.ejs') %>
               </div>
-              <div class="col-4">
-
+              <div class="col-4" style="padding-top: 1%">
                 <%- include('../views/options/number.ejs') %>
               </div>
             </div>
         </form>
+
+</div>
 
     <%- include('../views/partials/footer.ejs') %>
     <script type="text/javascript" src="../api/jquery/profilePost.js"></script>
