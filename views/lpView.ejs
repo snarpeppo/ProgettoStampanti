@@ -23,23 +23,35 @@
       <div id="result">
         <!-- alert -->
       </div>
-
-    <form id="formLp">
-      <%- include('../views/options/browseFile.ejs') %>  
-      <%- include('../views/options/numberOfCopies.ejs') %>  
-      <%- include('../views/options/size.ejs') %> 
-      <%- include('../views/options/quality.ejs') %>
-      <%- include('../views/options/side.ejs') %>
-      <%- include('../views/options/banner.ejs') %> 
-      <%- include('../views/options/orientation-requested.ejs') %>
-      <%- include('../views/options/number.ejs') %>
-    </form>
-    
+    </div>
   </div>
-</div>
+  
+  <form id="formLp">
+  <div class="container-fluid" style="padding: 2% 0% 0% 1%;">
+    <div class="row" style="width: 100%;">
+      <div class="col-12">
+        <%- include('../views/options/browseFile.ejs') %>
+        <%- include('../views/options/numberOfCopies.ejs') %>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <div class="row" style="width: 100%;">
+      <div class="col-4">
+        <%- include('../views/options/size.ejs') %>
+        <%- include('../views/options/quality.ejs') %>
+        <%- include('../views/options/side.ejs') %>
+      </div>
+      <div class="col-4">
+        <%- include('../views/options/banner.ejs') %>
+        <%- include('../views/options/orientation-requested.ejs') %>
+      </div>
+      <div class="col-4">
+        <%- include('../views/options/number.ejs') %>
+      </div>
+    </div>
+</form>
 
-   
-    
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
     <!-- <script type="text/javascript" src="../api/jquery/lpGet.js"></script> -->
 
