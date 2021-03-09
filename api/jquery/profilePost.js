@@ -2,12 +2,11 @@
 $(function () {
     $("#button").on("click", function () {
       var name = $("#select").val();
-      var profile = $("#profileName").val();
-      // var copie = $("#numberOfCopies").val();
+      var profile = $("#inputText").val();
       var selected = $("#formLp input[type='radio']:checked");
       var formData = new FormData();
       formData.append("profileName", profile);
-      formData.append("settaggio",JSON.stringify({
+      formData.append("options",JSON.stringify({
         printerName: name,
         size: selected[0].value,
         quality: selected[1].value,
@@ -28,7 +27,11 @@ $(function () {
             alert('error');
         },
         success: function (request) {
-          $("#profile").html(request);
+          var string =
+          '<div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
+          string += "<p> Profile saved successfully</p>";
+          
+          $("#profile").html(string);
           },
         });
       });
