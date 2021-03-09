@@ -20,16 +20,17 @@
     </div>
 
     <div class="col-auto" style="width: 100%; padding: 1% 80% 0% 1%;">
-        <select id="select" class="form-select">
-          <% for ( var i = 0; i<name.length; i++ ) { %>
-              <option value="<%= name[i] %>"><%= name[i] %></option>
-              <% } %>
-        </select>
+      <label for="inputText" class="form-label">Nome profilo</label>
+        <input type="text" value="Profilo 1" id="inputText" class="form-control">
+    </div>
+    <div class="col-auto" style="width: 100%; padding: 1% 80% 0% 1%;">
+      <select id="select" class="form-select">
+        <% for ( var i = 0; i<name.length; i++ ) { %>
+          <option value="<%= name[i] %>"><%= name[i] %></option>
+        <% } %>
+      </select>
     </div>
 
-    <textarea id="profileName">
-
-    </textarea>
         <div id="profile">
         </div>
       
