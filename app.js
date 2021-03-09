@@ -122,3 +122,20 @@ app.get("/printerGet", (req, res) => {
 app.get("/api/jquery/onPrinterDetail.js", (req, res) => {
   res.sendFile("./api/jquery/onPrinterDetail.js", { root: __dirname });
 });
+
+app.get("/profiles", (req, res) => {
+  const name = cups.lpstat();
+  res.render("profilesView", {
+    name
+  });
+});
+
+app.get("/lpoptionGet", (req, res) => {
+  console.log(req.query.printername)
+  const profile = cups.lpoption(req.query.printername);
+  res.send(profile);
+});
+
+app.get("/api/jquery/lpoptionGet.js", (req, res) => {
+  res.sendFile("./api/jquery/lpoptionGet.js", { root: __dirname });
+});

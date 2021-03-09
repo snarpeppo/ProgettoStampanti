@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../views/partials/header.ejs') %>
+
+  <body>
+    <%- include('../views/partials/nav.ejs') %>
+
+    <div class="col-auto">
+        <select id="select" class="form-select" >
+          <% for ( var i = 0; i<name.length; i++ ) { %>
+              <option value="<%= name[i] %>"><%= name[i] %></option>
+              <% } %>
+          </select>
+        </div>
+        <div id="profile">
+
+        </div>
+
+    <%- include('../views/partials/footer.ejs') %>
+    <script type="text/javascript" src="../api/jquery/lpoptionGet.js"></script>
+  </body>
+</html>

@@ -22,6 +22,7 @@ $(function () {
     formData.append("banner", selected[3].value);
     formData.append("orientation", selected[4].value);
     formData.append("number", selected[5].value);
+    
 
     $.ajax({
       method: "POST",
@@ -30,13 +31,16 @@ $(function () {
       processData: false,
       contentType: false,
       error: function () {
-        alert("Error");
+        var string =
+        '<div class="alert alert-danger alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
+      string += "<p>Missing file to print, please select one!</p>";
+      $("#result").html(string);
       },
       success: function (request) {
         if (request == "") {
           var string =
             '<div class="alert alert-danger alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
-          string += "<p> Number of copys wrong, set a valid number</p>";
+          string += "<p>Please insert the correct amout of copys!</p>";
           $("#result").html(string);
           } else {
           var string =

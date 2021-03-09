@@ -193,6 +193,18 @@ lpstatInfo = function (name) {
   }
 };
 
+lpoption = function(name){
+  let args = ["-p", name];
+  args.push("-l");
+
+  lpoption = spawnSync("lpoptions", args, {
+    encoding : "utf-8"
+  });
+  console.log('lpoptions',lpoption);
+  var lpoptionParsed = utils.parseStdout(lpoption.stdout);
+  return lpoptionParsed;
+}
+
 cancelAll = function () {
   let args = ["-u"];
   args.push("finsoft");
@@ -214,5 +226,6 @@ module.exports = {
   lpstatInfo,
   lpstatCompleted,
   lpq,
+  lpoption,
   cancelAll,
 };

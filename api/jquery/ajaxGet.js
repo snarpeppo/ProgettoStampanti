@@ -36,7 +36,7 @@ ajaxLpq = function (nomeStampante) {
       $("#empty").show();
       $("#records").hide();
       var string = "<h3>";
-      string += "This printer has no active jobs yet";
+      string +=  nomeStampante + " has no active jobs yet";
       string += " </h3>";
       $("#empty").html(string);
     }
