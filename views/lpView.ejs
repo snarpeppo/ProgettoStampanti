@@ -54,14 +54,14 @@
       </div>
     </div>
 
+    <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
+      <div class="row" style="width: 100%;">
+        <div class="col-4">
+          <%- include('../views/options/numberOfCopies.ejs') %>
     <form id="formLp">
-      <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
-        <div class="row" style="width: 100%;">
-          <div class="col-4">
-            <%- include('../views/options/numberOfCopies.ejs') %>
-            <%- include('../views/options/size.ejs') %>
-          </div>
-          <div class="col-4">
+          <%- include('../views/options/size.ejs') %>
+        </div>
+        <div class="col-4">
             <%- include('../views/options/side.ejs') %>
           </div>
           <div class="col-4">
@@ -79,8 +79,8 @@
             <%- include('../views/options/number.ejs') %>
           </div>
         </div>
-      </div>
     </form>
+    </div>
   </div>
 
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
