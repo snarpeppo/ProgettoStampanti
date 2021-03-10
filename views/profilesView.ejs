@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../views/partials/header.ejs') %>
+  <%- include('../views/partials/nav.ejs') %>
 
   <body>
-    <%- include('../views/partials/nav.ejs') %>
-
     <div class="container-fluid" style="padding: 1% 1% 0% 1%;">
           <h2>Manage profiles</h2>
 
@@ -22,7 +21,7 @@
       </div>
       <div class="row" style="width: 100%;"></div>
       <div class="col-4">
-        <div class="col-8">
+        <div class="col-4">
         <input type="text" value="Profilo 1" id="inputText" class="form-control">
       </div>
       </div>
@@ -68,8 +67,9 @@
             </div>
         </form>
     </div>
-
-    <%- include('../views/partials/footer.ejs') %>
+    
     <script type="text/javascript" src="../api/jquery/profilePost.js"></script>
   </body>
+
+  <%- include('../views/partials/footer.ejs') %>
 </html>

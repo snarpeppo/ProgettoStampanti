@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../views/partials/header.ejs') %>
+  <%- include('../views/partials/nav.ejs') %>
 
   <body>
-    <%- include('../views/partials/nav.ejs') %>
-
     <div class="container-fluid" style="padding: 1% 0% 0% 1%;">
       <h2>Quick print</h2>
 
@@ -12,12 +11,11 @@
         <!-- alert -->
       </div>
 
-        
       <div class="col-4" style="width: 100%; padding: 1% 0% 0% 0%">
         <h4>Selected profile</h4>
       </div>
       <div class="col-4">
-        <div class="col-8">
+        <div class="col-4">
           <select id="selectProfile" class="form-select">
             <% for ( var i = 0; i<profile.length; i++ ) { %>
                 <option value="<%= profile[i] %>"> <%= profile[i] %></option>
@@ -56,14 +54,14 @@
       </div>
     </div>
 
+    <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
+      <div class="row" style="width: 100%;">
+        <div class="col-4">
+          <%- include('../views/options/numberOfCopies.ejs') %>
     <form id="formLp">
-      <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
-        <div class="row" style="width: 100%;">
-          <div class="col-4">
-            <%- include('../views/options/numberOfCopies.ejs') %>
-            <%- include('../views/options/size.ejs') %>
-          </div>
-          <div class="col-4">
+          <%- include('../views/options/size.ejs') %>
+        </div>
+        <div class="col-4">
             <%- include('../views/options/side.ejs') %>
           </div>
           <div class="col-4">
@@ -81,14 +79,14 @@
             <%- include('../views/options/number.ejs') %>
           </div>
         </div>
-      </div>
     </form>
+    </div>
   </div>
 
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
     <script type="text/javascript" src="../api/jquery/profileGet.js"></script>
     <!-- <script type="text/javascript" src="../api/jquery/lpGet.js"></script> -->
-
-    <%- include('../views/partials/footer.ejs') %>
   </body>
+
+  <%- include('../views/partials/footer.ejs') %>
 </html>
