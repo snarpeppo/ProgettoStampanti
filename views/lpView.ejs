@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../views/partials/header.ejs') %>
+  <%- include('../views/partials/nav.ejs') %>
 
   <body>
-    <%- include('../views/partials/nav.ejs') %>
-
     <div class="container-fluid" style="padding: 1% 0% 0% 1%;">
       <h2>Quick print</h2>
 
@@ -12,7 +11,6 @@
         <!-- alert -->
       </div>
 
-        
       <div class="col-4" style="width: 100%; padding: 1% 0% 0% 0%">
         <h4>Selected profile</h4>
       </div>
@@ -88,7 +86,7 @@
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
     <script type="text/javascript" src="../api/jquery/profileGet.js"></script>
     <!-- <script type="text/javascript" src="../api/jquery/lpGet.js"></script> -->
-
-    <%- include('../views/partials/footer.ejs') %>
   </body>
+
+  <%- include('../views/partials/footer.ejs') %>
 </html>

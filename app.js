@@ -160,4 +160,3 @@ res.status(200).send(profile);
 app.get("/api/jquery/profileGet.js", (req, res) => {
   res.sendFile("./api/jquery/profileGet.js", { root: __dirname });
 });
-
