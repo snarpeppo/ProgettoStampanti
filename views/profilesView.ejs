@@ -15,27 +15,33 @@
     <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
     <div class="row" style="width: 100%;">
       <div class="col-4">
-        <label for="inputText" class="form-label">Profile name</label>
+        <h4>Profile name</h4>
       </div>
       <div class="col-4">
-        <label for="inputText" class="form-label">Selected Printer</label>
+        <h4>Selected Printer</h4>
       </div>
       <div class="row" style="width: 100%;"></div>
       <div class="col-4">
+        <div class="col-6">
         <input type="text" value="Profilo 1" id="inputText" class="form-control">
       </div>
+      </div>
         <div class="col-4">
-          <select id="select" class="form-select">
-            <% for ( var i = 0; i<name.length; i++ ) { %>
-              <option value="<%= name[i] %>"><%= name[i] %></option>
-            <% } %>
-          </select>
+          <div class="col-11">
+            <select id="select" class="form-select">
+              <% for ( var i = 0; i<name.length; i++ ) { %>
+                <option value="<%= name[i] %>"> <%= name[i] %></option>
+              <% } %>
+            </select>
+          </div>
       </div>
       <div class="col-4">
-        <input type='submit'id="button" class="btn btn-outline-secondary" value="Save changes"></a>
+        <div class="col-4">
+          <input type='submit'id="button" class="btn btn-outline-secondary" value="Save changes"></a>
+        </div>
       </div>
     </div>
-  </div>
+    </div>
 
         <div id="profile">
         </div>
@@ -67,7 +73,7 @@
             </div>
         </form>
 
-</div>
+    </div>
 
     <%- include('../views/partials/footer.ejs') %>
     <script type="text/javascript" src="../api/jquery/profilePost.js"></script>
