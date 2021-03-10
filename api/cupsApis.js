@@ -219,25 +219,23 @@ cancelAll = function () {
   return cancelAll;
 };
 
-readJson = function(){
-
+readJson = function () {
   const outputDir = "./public/profiles/";
 
- const filesName =  fs.readdirSync(outputDir, (err, files) => {
-    let arrayJson = [];
-    files.forEach(file => {
-      arrayJson.push(file);
-    }); 
-    return arrayJson;
+  const filesName = fs.readdirSync(outputDir);
+  let arrayJson = [];
+  filesName.forEach((file) => {
+    arrayJson.push(file.split(".json")[0]);
   });
-  return filesName;
-}
+  
+  return arrayJson;
+};
 
 profiler = function (profile, options) {
   const profileJson = JSON.stringify(options, null, 2);
   const outputDir = "./public/profiles/";
 
- fs.writeFile(outputDir + profile + ".json", profileJson, (err) => {
+  fs.writeFile(outputDir + profile + ".json", profileJson, (err) => {
     if (err) {
       console.log("Error writing file", err);
     } else {

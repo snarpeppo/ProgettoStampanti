@@ -152,9 +152,8 @@ app.get("/api/jquery/profileCreate.js", (req, res) => {
 app.get("/profileGet/:profileName", (req,res,) =>{
 let profileData = fs.readFileSync("./public/profiles/" + req.params.profileName + '.json');
 let profile = JSON.parse(profileData);
-profile.options = JSON.parse(profile.options);
 res.setHeader('Content-Type', 'application/json');
-res.status(200).send(profile);
+res.status(200).send(profile.options);
 })
 
 app.get("/api/jquery/profileGet.js", (req, res) => {

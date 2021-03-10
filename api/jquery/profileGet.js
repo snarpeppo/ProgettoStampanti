@@ -1,15 +1,31 @@
 $(function () {
   $("#selectProfile").on("change", function () {
-    console.log(options.data[1].printerName);
+    var profile = $("#selectProfile").val();
+    var path = "/profileGet/" + profile;
+    $.getJSON(path, function (json) {
+      $("#selectPrinter").val(json.printerName);
+      $(`input[name='flexSizeDefault'][value='${json.size}']`).prop('checked', true);
+      $(`input[name='flexSideDefault'][value='${json.side}']`).prop('checked', true);
+      $(`input[name='flexBannerDefault'][value='${json.banner}']`).prop('checked', true);
+      $(`input[name='flexBannerDefault'][value='${json.banner}']`).prop('checked', true);
+      $(`input[name='flexQualityDefault'][value='${json.quality}']`).prop('checked', true);
+      $(`input[name='flexOrientation-RequestedDefault'][value='${json.orientation}']`).prop('checked', true);
+      $(`input[name='flexNumberDefault'][value='${json.number}']`).prop('checked', true);
+    });
+    return;
     $.ajax({
       method: "GET",
-      url: "/profileGet/:profileName",
+      url: "/profileGet",
       dataType: "json",
-      data: data,
+      data: {
+        profileName: profile,
+      },
       error: function () {
         alert("Error");
       },
-      success: function (data) {},
+      success: function (data) {
+        console.log(data);
+      },
     });
   });
 });
