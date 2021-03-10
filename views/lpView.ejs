@@ -12,59 +12,78 @@
         <!-- alert -->
       </div>
 
-    <div class="container-fluid" style="padding: 1% 0% 0% 0%;">
-      <div class="col-3">
-        <select id="selectProfile" class="form-select">
-          <% for ( var i = 0; i<profile.length; i++ ) { %>
-              <option value="<%= profile[i] %>"> <%= profile[i] %></option>
-              <% } %>
+        
+      <div class="col-4">
+        <h4>Selected profile</h4>
+      </div>
+      <div class="col-4">
+        <div class="col-8">
+          <select id="selectProfile" class="form-select">
+            <% for ( var i = 0; i<profile.length; i++ ) { %>
+                <option value="<%= profile[i] %>"> <%= profile[i] %></option>
+                <% } %>
           </select>
         </div>
-    </div>
-
-
-    <div class="container-fluid" style="padding: 2% 0% 0% 0%;"></div>
-      <div class="row" style="width: 100%;">
-        <div class="col-4">
-          <%- include('../views/options/printer.ejs') %>
-        </div>
-        <div class="col-4">
-          <%- include('../views/options/browseFile.ejs') %>
-        </div>
-        <div class="col-4">
-          <%- include('../views/options/sendRequestButton.ejs') %>
-        </div>
       </div>
     </div>
 
-  <form id="formLp">
-    <div class="container-fluid" style="padding: 2% 0% 0% 1%;">
-      <div class="row" style="width: 100%;">
+    <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
+      <div class="row" style="width: 100%; padding: 1% 0% 0% 0%">
         <div class="col-4">
-          <%- include('../views/options/numberOfCopies.ejs') %>
-          <%- include('../views/options/size.ejs') %>
+            <h4>Selected printer</h4>
         </div>
         <div class="col-4">
-          <%- include('../views/options/side.ejs') %>
+            <h4>Selected file</h4>
         </div>
         <div class="col-4">
-          <%- include('../views/options/banner.ejs') %>
         </div>
       </div>
-      <div class="row" style="width: 100%;">
-        <div class="col-4" style="padding-top: 1%">
-          <%- include('../views/options/quality.ejs') %>
-        </div>
-        <div class="col-4" style="padding-top: 1%">
-          <%- include('../views/options/orientation-requested.ejs') %>
-        </div>
-        <div class="col-4" style="padding-top: 1%">
-          <%- include('../views/options/number.ejs') %>
-        </div>
+        <div class="row" style="width: 100%;">
+          <div class="col-4">
+            <div class="col-8">
+              <select id="select" class="form-select">
+                <% for ( var i = 0; i<name.length; i++ ) { %>
+                  <option value="<%= name[i] %>"> <%= name[i] %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          <div class="col-4">
+            <%- include('../views/options/browseFile.ejs') %>
+          </div>
+          <div class="col-4">
+            <input type='submit'id="button" class="btn btn-outline-secondary" value="Send Request"></a>
+          </div>
       </div>
     </div>
-  </form>
 
+    <form id="formLp">
+      <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
+        <div class="row" style="width: 100%;">
+          <div class="col-4">
+            <%- include('../views/options/numberOfCopies.ejs') %>
+            <%- include('../views/options/size.ejs') %>
+          </div>
+          <div class="col-4">
+            <%- include('../views/options/side.ejs') %>
+          </div>
+          <div class="col-4">
+            <%- include('../views/options/banner.ejs') %>
+          </div>
+        </div>
+        <div class="row" style="width: 100%;">
+          <div class="col-4" style="padding-top: 1%">
+            <%- include('../views/options/quality.ejs') %>
+          </div>
+          <div class="col-4" style="padding-top: 1%">
+            <%- include('../views/options/orientation-requested.ejs') %>
+          </div>
+          <div class="col-4" style="padding-top: 1%">
+            <%- include('../views/options/number.ejs') %>
+          </div>
+        </div>
+      </div>
+    </form>
     </div>
 
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
