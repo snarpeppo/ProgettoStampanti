@@ -219,30 +219,31 @@ cancelAll = function () {
   return cancelAll;
 };
 
+readJson = function(){
+
+  const outputDir = "./public/profiles/";
+
+ const filesName =  fs.readdirSync(outputDir, (err, files) => {
+    let arrayJson = [];
+    files.forEach(file => {
+      arrayJson.push(file);
+    }); 
+    return arrayJson;
+  });
+  return filesName;
+}
+
 profiler = function (profile, options) {
   const profileJson = JSON.stringify(options, null, 2);
   const outputDir = "./public/profiles/";
 
- let profileWrite = fs.writeFile(outputDir + profile + ".json", profileJson, (err) => {
+ fs.writeFile(outputDir + profile + ".json", profileJson, (err) => {
     if (err) {
       console.log("Error writing file", err);
     } else {
       console.log("Successfully wrote file");
     }
   });
-  
-  // return profileWrite;
-
-  // let outputProfile = fs.readFile(
-  //   outputDir + profile + ".json",
-  //   "utf-8",
-  //   (err, data) => {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     console.log(data);
-  //   }
-  // );
 };
 
 module.exports = {
@@ -255,4 +256,5 @@ module.exports = {
   lpoption,
   cancelAll,
   profiler,
+  readJson,
 };

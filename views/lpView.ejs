@@ -14,9 +14,9 @@
 
     <div class="container-fluid" style="padding: 1% 0% 0% 0%;">
       <div class="col-3">
-        <select id="select" class="form-select">
-          <% for ( var i = 0; i<name.length; i++ ) { %>
-              <option value="<%= name[i] %>"> <%= name[i] %></option>
+        <select id="selectProfile" class="form-select">
+          <% for ( var i = 0; i<profile.length; i++ ) { %>
+              <option value="<%= profile[i] %>"> <%= profile[i] %></option>
               <% } %>
           </select>
         </div>
@@ -68,6 +68,7 @@
     </div>
 
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
+    <script type="text/javascript" src="../api/jquery/profileGet.js"></script>
     <!-- <script type="text/javascript" src="../api/jquery/lpGet.js"></script> -->
 
     <%- include('../views/partials/footer.ejs') %>

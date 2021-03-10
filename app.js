@@ -70,9 +70,11 @@ app.get("/api/jquery/onPrinterDetail.js", (req, res) => {
 
 // lp routes
 app.get("/lp", (req, res) => {
+  const profile = cups.readJson();
   const name = cups.lpstat()
   res.render("lpView",{
-    name
+    name,
+    profile
   });
 });
 
@@ -136,7 +138,11 @@ app.post("/profilePost", (req, res) => {
   res.status(200).send(profile);
 });
 
-app.get("/profileGetSelected", (req, res) => {
+app.get("/api/jquery/profilePost.js", (req, res) => {
+  res.sendFile("./api/jquery/profilePost.js", { root: __dirname });
+});
+
+app.get("/profileCreate", (req, res) => {
   const name = req.body.profileName;
   const options = req.body;
   console.log(options);
@@ -144,8 +150,8 @@ app.get("/profileGetSelected", (req, res) => {
   res.status(200).send(profile);
 });
 
-app.get("/api/jquery/profileGetSelected.js", (req, res) => {
-  res.sendFile("./api/jquery/profileGetSelected.js", { root: __dirname });
+app.get("/api/jquery/profileCreate.js", (req, res) => {
+  res.sendFile("./api/jquery/profileCreate.js", { root: __dirname });
 });
 
 
@@ -157,6 +163,7 @@ res.setHeader('Content-Type', 'application/json');
 res.status(200).send(profile);
 })
 
-app.get("/api/jquery/profilePost.js", (req, res) => {
-  res.sendFile("./api/jquery/profilePost.js", { root: __dirname });
+app.get("/api/jquery/profileGet.js", (req, res) => {
+  res.sendFile("./api/jquery/profileGet.js", { root: __dirname });
 });
+

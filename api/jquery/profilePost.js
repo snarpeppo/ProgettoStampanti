@@ -26,7 +26,7 @@ $(function () {
         error: function () {
             alert('error');
         },
-        success: function (request) {
+        success: function () {
           var string =
           '<div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
           string += "<p> Profile saved successfully</p>";

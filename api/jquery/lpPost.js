@@ -1,6 +1,6 @@
 $(function () {
   $("#button").on("click", function () {
-    var name = $("#select").val();
+    var name = $("#selectPrinter").val();
     var input = document.getElementById("browseFile");
     var copie = $("#numberOfCopies").val();
     var selected = $("#formLp input[type='radio']:checked");
