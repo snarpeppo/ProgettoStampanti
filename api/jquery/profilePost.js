@@ -26,13 +26,13 @@ $(function () {
       processData: false,
       contentType: false,
       error: function () {
-        alert('error');
+        alert("error");
       },
       success: function () {
-          var string =
-            '<div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
-          string += "<p> Profile saved successfully</p>";
-          $("#profile").html(string);
+        var string =
+          '<div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
+        string += "<p> Profile saved successfully</p>";
+        $("#profile").html(string);
       },
     });
   });

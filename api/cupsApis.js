@@ -247,9 +247,9 @@ profiler = function (profile, options) {
 deleteProfile = function (profile) {
   const outputDir = "./public/profiles/";
   try {
-    fs.unlinkSync(outputDir + profile);
-  } catch(err) {
-    console.log(err)
+    fs.unlinkSync(`${outputDir}${profile}.json`);
+  } catch (err) {
+    console.log(err);
   }
 };
 

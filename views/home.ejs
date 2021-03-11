@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../views/partials/header.ejs') %>
+  <%- include('../views/partials/header.ejs') %> 
   <%- include('../views/partials/nav.ejs') %>
 
   <body>
-    <div class="container-fluid" style="width: 100%; padding: 0% 1% 0% 1%;">
+    <div class="container-fluid" style="width: 100%; padding: 0% 1% 0% 1%">
       <h2 style="padding: 1% 0% 0% 0%">Printers</h2>
       <div style="padding: 1% 0% 1% 0%">
-        <button href="lpadmin" class="btn btn-outline-secondary" disabled>Add a printer</button>
+        <button href="lpadmin" class="btn btn-outline-secondary" disabled>
+          Add a printer
+        </button>
         <a href="lpstat" class="btn btn-outline-secondary">Manage printers</a>
         <a href="lp" class="btn btn-outline-secondary">Quick print</a>
-    </div>
+      </div>
 
-    <h2 style="padding: 1% 0% 0% 0%">Profiles</h2>
-    <div style="padding: 1% 0% 1% 0%">
-      <a href="profiles" class="btn btn-outline-secondary">Manage profiles</a>
-    </div>
+      <h2 style="padding: 1% 0% 0% 0%">Profiles</h2>
+      <div style="padding: 1% 0% 1% 0%">
+        <a href="profiles" class="btn btn-outline-secondary">Manage profiles</a>
+      </div>
 
       <h2 style="padding: 1% 0% 0% 0%">Jobs</h2>
       <div style="padding: 1% 0% 1% 0%">
         <a href="lpq" class="btn btn-outline-secondary">Manage jobs</a>
-        <button href="cancelAll" class="btn btn-outline-secondary" disabled>Delete all jobs</button>
+        <button href="cancelAll" class="btn btn-outline-secondary" disabled>
+          Delete all jobs
+        </button>
       </div>
-
     </div>
   </body>
-  
+
   <%- include('../views/partials/footer.ejs') %>
 </html>
