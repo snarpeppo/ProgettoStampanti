@@ -227,7 +227,7 @@ readJson = function () {
   filesName.forEach((file) => {
     arrayJson.push(file.split(".json")[0]);
   });
-  
+
   return arrayJson;
 };
 
@@ -244,6 +244,15 @@ profiler = function (profile, options) {
   });
 };
 
+deleteProfile = function (profile) {
+  const outputDir = "./public/profiles/";
+  try {
+    fs.unlinkSync(outputDir + profile);
+  } catch(err) {
+    console.log(err)
+  }
+};
+
 module.exports = {
   lpadmin,
   lpstat,
@@ -255,4 +264,5 @@ module.exports = {
   cancelAll,
   profiler,
   readJson,
+  deleteProfile,
 };
