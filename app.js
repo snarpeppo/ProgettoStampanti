@@ -120,8 +120,9 @@ app.get("/details", (req, res) => {
 
 app.get("/profiles", (req, res) => {
   const name = cups.lpstat();
+  const profile = cups.readJson();
   res.render("profilesView", {
-    name
+    name, profile
   });
 });
 

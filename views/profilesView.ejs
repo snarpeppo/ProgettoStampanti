@@ -14,26 +14,27 @@
 
     <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
       <div class="row" style="width: 100%;">
-        <div class="col-4">
+        <div class="col-6">
           <h4>Selected profile</h4>
         </div>
-        <div class="col-4">
-        </div>
-        <div class="col-4">
+        <div class="col-6">
         </div>
         <div class="row" style="width: 100%;">
-          <div class="col-4">
-
+          <div class="col-2">
+            <div class="col-auto">
+              <select id="selectProfile" class="form-select">
+                <% for ( var i = 0; i<profile.length; i++ ) { %>
+                    <option value="<%= profile[i] %>"> <%= profile[i] %></option>
+                    <% } %>
+              </select>
+              </div>
           </div>
-          <div class="col-4">
-            <input type='submit'id="button" class="btn btn-outline-secondary" value="Save changes"></a>
+          <div class="col-2">
+            <input type='submit'id="delete" class="btn btn-outline-secondary" value="Delete profile"></a>
           </div>
-          <div class="col-4">
-        </div>
       </div>
     </div>
 
-    <br>
     <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
     <div class="row" style="width: 100%;">
       <div class="col-4">
