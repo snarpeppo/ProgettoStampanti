@@ -137,24 +137,21 @@ app.get("/api/jquery/profilePost.js", (req, res) => {
   res.sendFile("./api/jquery/profilePost.js", { root: __dirname });
 });
 
-app.get("/profileCreate", (req, res) => {
-  const name = req.body.profileName;
-  const options = req.body;
-  console.log(options);
-  const profile = cups.profiler(name,options);
-  res.status(200).send(profile);
-});
 
-app.get("/api/jquery/profileCreate.js", (req, res) => {
-  res.sendFile("./api/jquery/profileCreate.js", { root: __dirname });
-});
+app.get("/profileDelete", (req,res,) =>{
+  const name = req.body.profileName;
+  const remove = cups.deleteProfile(name);
+  res.status(200).send(remove);
+  })
+
+
 
 app.get("/profileGet/:profileName", (req,res,) =>{
 let profileData = fs.readFileSync("./public/profiles/" + req.params.profileName + '.json');
 let profile = JSON.parse(profileData);
 res.setHeader('Content-Type', 'application/json');
 res.status(200).send(profile.options);
-})
+});
 
 app.get("/api/jquery/profileGet.js", (req, res) => {
   res.sendFile("./api/jquery/profileGet.js", { root: __dirname });
