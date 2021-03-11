@@ -22,7 +22,6 @@ $(function () {
     formData.append("quality", selected[3].value);
     formData.append("orientation", selected[4].value);
     formData.append("number", selected[5].value);
-    
 
     $.ajax({
       method: "POST",
@@ -32,9 +31,9 @@ $(function () {
       contentType: false,
       error: function () {
         var string =
-        '<div class="alert alert-danger alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
-      string += "<p>Missing file to print, please select one!</p>";
-      $("#result").html(string);
+          '<div class="alert alert-danger alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
+        string += "<p>Missing file to print, please select one!</p>";
+        $("#result").html(string);
       },
       success: function (request) {
         if (request == "") {
@@ -42,7 +41,7 @@ $(function () {
             '<div class="alert alert-danger alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
           string += "<p>Please insert the correct amout of copys!</p>";
           $("#result").html(string);
-          } else {
+        } else {
           var string =
             '<div class="alert alert-success alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';
           string += "<p> Job added, navigate to Jobs to see it in the list</p>";
