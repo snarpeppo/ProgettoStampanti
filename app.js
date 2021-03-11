@@ -139,10 +139,16 @@ app.get("/api/jquery/profilePost.js", (req, res) => {
 
 
 app.get("/profileDelete", (req,res,) =>{
-  const name = req.body.profileName;
+  const name = req.query.profile;
   const remove = cups.deleteProfile(name);
   res.status(200).send(remove);
-  })
+  });
+
+  app.get("/api/jquery/profileDelete.js", (req, res) => {
+    res.sendFile("./api/jquery/profileDelete.js", { root: __dirname });
+  });
+
+
 
 
 
