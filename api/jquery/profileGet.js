@@ -4,34 +4,12 @@ $(function () {
     var path = "/profileGet/" + profile;
     $.getJSON(path, function (json) {
       $("#selectPrinter").val(json.printerName);
-      $(`option[id='flexSizeDefault'][value='${json.size}']`).prop(
-        "checked",
-        true
-      );
-      $(`input[name='flexSideDefault'][value='${json.side}']`).prop(
-        "checked",
-        true
-      );
-      $(`input[name='flexBannerDefault'][value='${json.banner}']`).prop(
-        "checked",
-        true
-      );
-      $(`input[name='flexBannerDefault'][value='${json.banner}']`).prop(
-        "checked",
-        true
-      );
-      $(`input[name='flexQualityDefault'][value='${json.quality}']`).prop(
-        "checked",
-        true
-      );
-      $(`input[name='flexOrientation-RequestedDefault'][value='${json.orientation}']`).prop(
-        "checked",
-         true
-      );
-      $(`input[name='flexNumberDefault'][value='${json.number}']`).prop(
-        "checked",
-        true
-      );
+      $("#SizeDefault").val(json.size);
+      $("#SideDefault").val(json.side);
+      $("#BannerDefault").val(json.banner);
+      $("#QualityDefault").val(json.quality);
+      $("#OrientationDefault").val(json.orientation);
+      $("#NumberDefault").val(json.number);
     });
   });
 });
