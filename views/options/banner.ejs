@@ -2,98 +2,17 @@
 <html>
   <div>
     <h4>Job sheets</h4>
-    <div class="form-check">
-      <input
-        value="None"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexBannerDefault"
-        id="flexBannerDefault1"
-        checked
-      />
-      <label class="form-check-label" for="flexBannerDefault1">None</label>
-    </div>
-    <div class="form-check">
-      <input
-        value="classified"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexBannerDefault"
-        id="flexBannerDefault2"
-      />
-      <label class="form-check-label" for="flexBannerDefault2"
-        >Classified</label
-      >
-    </div>
-
-    <div class="form-check">
-      <input
-        value="confidential"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexBannerDefault"
-        id="flexBannerDefault3"
-      />
-      <label class="form-check-label" for="flexBannerDefault3"
-        >Confidential</label
-      >
-    </div>
-
-    <div class="form-check">
-      <input
-        value="secret"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexBannerDefault"
-        id="flexBannerDefault4"
-      />
-      <label class="form-check-label" for="flexBannerDefault4">Secret</label>
-    </div>
-
-    <div class="form-check">
-      <input
-        value="standard"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexBannerDefault"
-        id="flexBannerDefault5"
-      />
-      <label class="form-check-label" for="flexBannerDefault5">Standard</label>
-    </div>
-
-    <div class="form-check">
-      <input
-        value="topsecret"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexBannerDefault"
-        id="flexBannerDefault6"
-      />
-      <label class="form-check-label" for="flexBannerDefault6">Topsecret</label>
-    </div>
-
-    <div class="form-check">
-      <input
-        value="unclassified"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexBannerDefault"
-        id="flexBannerDefault7"
-      />
-      <label class="form-check-label" for="flexBannerDefault7"
-        >Unclassified</label
-      >
-    </div>
-
+    <select class="form-select">
+      <option selected value="None">None</option>
+      <option value="Classified">Classified</option>
+      <option value="Confidential">Confidential</option>
+      <option value="Secret">Secret</option>
+      <option value="Standard">Standard</option>
+      <option value="Topsecret">Topsecret</option>
+      <option value="Unclassified">Unclassified</option>
+    </select>
     <div id="settingsHelp" class="form-text">
       Prints a banner with the document.
-    </div>
+    </div>   
   </div>
 </html>

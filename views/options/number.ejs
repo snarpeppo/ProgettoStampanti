@@ -2,6 +2,18 @@
 <html>
   <div>
     <h4>Number up</h4>
+    <select class="form-select">
+      <option selected value="None">None</option>
+      <option value="Classified">Classified</option>
+      <option value="Confidential">Confidential</option>
+      <option value="Secret">Secret</option>
+      <option value="Standard">Standard</option>
+      <option value="Topsecret">Topsecret</option>
+      <option value="Unclassified">Unclassified</option>
+    </select>
+    <div id="settingsHelp" class="form-text">
+      Prints 2, 4, 6, 9, or 16 document pages on each output page.
+    </div>
     <div class="form-check">
       <input
         value="None"
@@ -72,10 +84,6 @@
         id="flexNumberDefault6"
       />
       <label class="form-check-label" for="flexNumberDefault6">16</label>
-    </div>
-
-    <div id="settingsHelp" class="form-text">
-      Prints 2, 4, 6, 9, or 16 document pages on each output page.
     </div>
   </div>
 </html>
