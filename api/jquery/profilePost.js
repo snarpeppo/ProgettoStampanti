@@ -3,7 +3,7 @@ $(function () {
     var name = $("#selectPrinter").val();
     console.log(name);
     var profile = $("#inputText").val();
-    var selected = $("#formLp input[type='radio']:checked");
+    var selected = $("#formLp option:checked");
     var formData = new FormData();
     formData.append("profileName", profile);
     formData.append(

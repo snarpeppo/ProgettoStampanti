@@ -3,26 +3,22 @@ $(function () {
     var name = $("#selectPrinter").val();
     var input = document.getElementById("browseFile");
     var copie = $("#numberOfCopies").val();
-    var selected = $("#formLp option[type='radio']:checked");
-    console.log(selected[0].value);
-    console.log(selected[1].value);
-    console.log(selected[2].value);
-    console.log(selected[3].value);
-    console.log(selected[4].value);
-    console.log(selected[5].value);
+    var selected = $("#formLp option:checked");
+  
     console.log(copie);
     console.log(input.files[0]);
-    var formData = new FormData();
-    formData.append("printerName", name);
-    formData.append("fileToPrint", input.files[0]);
-    formData.append("copyNumber", copie[0]);
-    formData.append("size", selected[0].value);
-    formData.append("side", selected[1].value);
-    formData.append("banner", selected[2].value);
-    formData.append("quality", selected[3].value);
-    formData.append("orientation", selected[4].value);
-    formData.append("number", selected[5].value);
-
+    console.log(selected[0].value);
+    // var formData = new FormData();
+    // formData.append("printerName", name);
+    // formData.append("fileToPrint", input.files[0]);
+    // formData.append("copyNumber", copie[0]);
+    // formData.append("size", selected[0].value);
+    // formData.append("side", selected[1].value);
+    // formData.append("banner", selected[2].value);
+    // formData.append("quality", selected[3].value);
+    // formData.append("orientation", selected[4].value);
+    // formData.append("number", selected[5].value);
+return
     $.ajax({
       method: "POST",
       url: "/lpPost",
