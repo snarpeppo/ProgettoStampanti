@@ -1,4 +1,4 @@
 {
   "profileName": "Profilo 1",
-  "options": "{\"printerName\":\"HP-LaserJet-M607-flab\",\"size\":\"letter\",\"side\":\"two-sided-long-edge\",\"banner\":\"None\",\"quality\":\"5\",\"orientation\":\"None\",\"number\":\"None\"}"
+  "options": "{\"printerName\":\"HP_LaserJet_M607\",\"size\":\"a4\",\"side\":\"one-sided\",\"banner\":\"secret\",\"quality\":\"3\",\"orientation\":\"6\",\"number\":\"4\"}"
 }
