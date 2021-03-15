@@ -2,43 +2,13 @@
 <html>
   <div>
     <h4>Media</h4>
-    <div class="form-check">
-      <input
-        value="a4"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexSizeDefault"
-        id="flexSizeDefault1"
-      />
-      <label class="form-check-label" for="flexSizeDefault1">A4 format</label>
-    </div>
-    <div class="form-check">
-      <input
-        value="letter"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexSizeDefault"
-        id="flexSizeDefault2"
-        checked
-      />
-      <label class="form-check-label" for="flexSizeDefault2">Letter format</label>
-    </div>
-
-    <div class="form-check">
-      <input
-        value="legal"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexSizeDefault"
-        id="flexSizeDefault3"
-      />
-      <label class="form-check-label" for="flexSizeDefault3">Legal format</label>
-    </div>
+    <select class="form-select" id="SizeDefault">
+      <option selected value="a4">A4 format</option>
+      <option value="letter">Letter format</option>
+      <option value="legal">Legal format</option>
+    </select>
     <div id="settingsHelp" class="form-text">
       Specifies the output size of the printed file.
-    </div>
+    </div>    
   </div>
 </html>
