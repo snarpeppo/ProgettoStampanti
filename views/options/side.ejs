@@ -2,54 +2,13 @@
 <html>
   <div>
     <h4>Sides of paper</h4>
-    <div class="form-check">
-      <input
-        value="one-sided"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexSideDefault"
-        id="flexSideDefault1"
-      />
-      <label class="form-check-label" for="flexSideDefault1"
-        >Print sides: one-sided</label
-      >
-    </div>
+    <select class="form-select" id="SideDefault">
+      <option selected value="one-sided">Print sides: one-sided</option>
+      <option value="two-sided-long-edge">Print sides: two-sided-long-edge</option>
+      <option value="two-sided-short-edge">Print sides: two-sided-short-edge</option>
+    </select>
     <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">
-      Prints on one side of the paper.
-    </div>
-    <div class="form-check">
-      <input
-        value="two-sided-long-edge"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexSideDefault"
-        id="flexSideDefault2"
-        checked
-      />
-      <label class="form-check-label" for="flexSideDefault2"
-        >Print sides: two-sided-long-edge</label
-      >
-    </div>
-    <div id="settingsHelp" class="form-text" style="padding-bottom: 1%">
-      Prints on both sides of the paper for portrait output.
-    </div>
-    <div class="form-check">
-      <input
-        value="two-sided-short-edge"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexSideDefault"
-        id="flexSideDefault3"
-      />
-      <label class="form-check-label" for="flexSideDefault3"
-        >Print sides: two-sided-short-edge</label
-      >
-    </div>
-    <div id="settingsHelp" class="form-text">
-      Prints on both sides of the paper for landscape output.
+      Prints on one side of the paper, on both sides of the paper for portrait or landscape output.
     </div>
   </div>
 </html>

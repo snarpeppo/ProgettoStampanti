@@ -2,44 +2,11 @@
 <html>
   <div>
     <h4>Print quality</h4>
-    <div class="form-check">
-      <input
-        value="3"
-        ;
-        class="form-check-input"
-        type="radio"
-        name="flexQualityDefault"
-        id="flexQualityDefault1"
-      />
-      <label class="form-check-label" for="flexQualityDefault1"
-        >Print quality: Draft</label
-      >
-    </div>
-    <div class="form-check">
-      <input
-        value="4"
-        class="form-check-input"
-        type="radio"
-        name="flexQualityDefault"
-        id="flexQualityDefault2"
-      />
-      <label class="form-check-label" for="flexQualityDefault2"
-        >Print quality: Normal</label
-      >
-    </div>
-    <div class="form-check">
-      <input
-        value="5"
-        class="form-check-input"
-        type="radio"
-        name="flexQualityDefault"
-        id="flexQualityDefault3"
-        checked
-      />
-      <label class="form-check-label" for="flexQualityDefault3"
-        >Print quality: Best</label
-      >
-    </div>
+    <select class="form-select" id="QualityDefault">
+      <option selected value="3">Print quality: Draft</option>
+      <option value="4">Print quality: Normal</option>
+      <option value="5">Print quality: Best</option>
+    </select>
     <div id="settingsHelp" class="form-text">
       Specifies the output quality to draft, normal, or best.
     </div>
