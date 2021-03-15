@@ -4,7 +4,7 @@ $(function () {
     var path = "/profileGet/" + profile;
     $.getJSON(path, function (json) {
       $("#selectPrinter").val(json.printerName);
-      $(`input[name='flexSizeDefault'][value='${json.size}']`).prop(
+      $(`option[id='flexSizeDefault'][value='${json.size}']`).prop(
         "checked",
         true
       );
@@ -24,9 +24,10 @@ $(function () {
         "checked",
         true
       );
-      $(
-        `input[name='flexOrientation-RequestedDefault'][value='${json.orientation}']`
-      ).prop("checked", true);
+      $(`input[name='flexOrientation-RequestedDefault'][value='${json.orientation}']`).prop(
+        "checked",
+         true
+      );
       $(`input[name='flexNumberDefault'][value='${json.number}']`).prop(
         "checked",
         true
