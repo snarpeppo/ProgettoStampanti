@@ -3,7 +3,7 @@ $(function () {
     var name = $("#selectPrinter").val();
     var input = document.getElementById("browseFile");
     var copie = $("#numberOfCopies").val();
-    var selected = $("#formLp input[type='radio']:checked");
+    var selected = $("#formLp option[type='radio']:checked");
     console.log(selected[0].value);
     console.log(selected[1].value);
     console.log(selected[2].value);
