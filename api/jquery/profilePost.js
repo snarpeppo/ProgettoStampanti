@@ -4,7 +4,16 @@ $(function () {
     console.log(name);
     var profile = $("#inputText").val();
     var selected = $("#formLp option:checked");
+    var advancedOptions = {};
+    $("#oOptions option:selected").each(function(){
+      console.log($(this));
+      advancedOptions[$(this).parent().attr('id')] = $(this).val()
+    });
+     console.log(advancedOptions);
+ 
+    console.log(selected);
     var formData = new FormData();
+    formData.append("printerName", name);
     formData.append("profileName", profile);
     formData.append(
       "options",
@@ -18,6 +27,7 @@ $(function () {
         number: selected[5].value,
       })
     );
+      formData.append("oOptions",JSON.stringify(advancedOptions));
 
     $.ajax({
       method: "POST",

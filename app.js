@@ -130,8 +130,8 @@ app.get("/profiles", (req, res) => {
 app.post("/profilePost", (req, res) => {
   const name = req.body.profileName;
   const options = req.body;
-  console.log(options);
-  const profile = cups.profiler(name, options);
+  const printerOptions = req.body.oOptions;
+  const profile = cups.profiler(name, options, printerOptions);
   res.status(200).send(profile);
 });
 

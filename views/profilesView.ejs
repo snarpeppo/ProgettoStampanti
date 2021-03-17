@@ -6,12 +6,9 @@
   <body>
     <div class="container-fluid" style="padding: 1% 1% 0% 1%;">
           <h2>Manage profiles</h2>
-
       <div id="profile">
         <!-- alert -->
       </div>
-
-
     <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
       <div class="row" style="width: 100%;">
         <div class="col-6">
@@ -89,9 +86,11 @@
                 <%- include('../views/options/number.ejs') %>
               </div>
             </div>
-        </form>
-        <div id="advancedOptions" style="padding-bottom: 24px;">
-        </div>
+          </form>
+          <form id="oOptions">
+            <div id="advancedOptions" style="padding-bottom: 24px;">
+            </div>
+          </form>
     </div>
     
     <script type="text/javascript" src="../api/jquery/profilePost.js"></script>

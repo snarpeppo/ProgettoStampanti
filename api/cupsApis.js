@@ -200,30 +200,31 @@ lpoptions = function (name) {
   lpoption = spawnSync("lpoptions", args, {
     encoding: "utf-8",
   });
- 
+
   var lpoptionParsed = utils.parseStdout(lpoption.stdout);
   console.log("lpoptions", lpoptionParsed);
-  var optionsSplitted = lpoptionParsed.map(function(line){
-    line = line.split(':');
+  var optionsSplitted = lpoptionParsed.map(function (line) {
+    line = line.split(":");
     return line;
   });
-  
-  
-  var options = optionsSplitted.map(function(element) {
-    var option = element[0];
+
+  var options = optionsSplitted.map(function (element) {
+    var option = element[0].replace(" ", "-");
     return option;
   });
-  var values = optionsSplitted.map(function(element) {
+  var values = optionsSplitted.map(function (element) {
+    element[1] = element[1].replace("*", "");
     var value = element[1].split(/\s/g);
+
     value.shift();
     return value;
   });
 
   var optionsAndValues = utils.toObject(options, values);
-  console.log(typeof(optionsAndValues))
+  console.log(typeof optionsAndValues);
   // var optionsAndValuesJson = JSON.stringify(optionsAndValues)
   //   console.log(optionsAndValuesJson);
-    
+
   return optionsAndValues;
 };
 
@@ -253,11 +254,12 @@ readJson = function () {
   return arrayJson;
 };
 
-profiler = function (profile, options) {
-  const profileJson = JSON.stringify(options, null, 2);
+profiler = function (profile, options, oOptions) {
+  const generalOptions = JSON.stringify(options, null, 2);
+  const printerOptions = JSON.stringify(oOptions, null, 2);
   const outputDir = "./public/profiles/";
 
-  fs.writeFile(outputDir + profile + ".json", profileJson, (err) => {
+  fs.writeFile(outputDir + profile + ".json", generalOptions, (err) => {
     if (err) {
       console.log("Error writing file", err);
     } else {

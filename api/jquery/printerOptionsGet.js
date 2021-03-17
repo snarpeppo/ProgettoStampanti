@@ -10,14 +10,13 @@ ajaxPrinterOptions = function (nomeStampante) {
     },
   }).done(function (options) {
     console.log("jquery", options);
-    console.log(typeof options);
     if (typeof options == 'string'){
       options = JSON.parse(options);
       var string = ''; 
       $.each(options,function(key,value){
         string += ` 
         <h4> ${key} </h4>
-        <select id=${key}>`;
+        <select class="form-select" name="asd" id=${key}>`;
          for (var i = 0; i < value.length; i++) {
           string += `<option value='${options[key][i]}'>${options[key][i]}</option>`;
         };
@@ -29,7 +28,7 @@ ajaxPrinterOptions = function (nomeStampante) {
       $.each(options,function(key,value){
         string += ` 
         <h4> ${key} </h4>
-        <select id=${key}>`;
+        <select class="form-select" id=${key}>`;
          for (var i = 0; i < value.length; i++) {
           string += `<option value='${options[key][i]}'>${options[key][i]}</option>`;
         };
