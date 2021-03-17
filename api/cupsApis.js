@@ -193,16 +193,38 @@ lpstatInfo = function (name) {
   }
 };
 
-lpoption = function (name) {
+lpoptions = function (name) {
   let args = ["-p", name];
   args.push("-l");
 
   lpoption = spawnSync("lpoptions", args, {
     encoding: "utf-8",
   });
-  console.log("lpoptions", lpoption);
+ 
   var lpoptionParsed = utils.parseStdout(lpoption.stdout);
-  return lpoptionParsed;
+  console.log("lpoptions", lpoptionParsed);
+  var optionsSplitted = lpoptionParsed.map(function(line){
+    line = line.split(':');
+    return line;
+  });
+  
+  
+  var options = optionsSplitted.map(function(element) {
+    var option = element[0];
+    return option;
+  });
+  var values = optionsSplitted.map(function(element) {
+    var value = element[1].split(/\s/g);
+    value.shift();
+    return value;
+  });
+
+  var optionsAndValues = utils.toObject(options, values);
+  console.log(typeof(optionsAndValues))
+  // var optionsAndValuesJson = JSON.stringify(optionsAndValues)
+  //   console.log(optionsAndValuesJson);
+    
+  return optionsAndValues;
 };
 
 cancelAll = function () {
@@ -260,7 +282,7 @@ module.exports = {
   lpstatInfo,
   lpstatCompleted,
   lpq,
-  lpoption,
+  lpoptions,
   cancelAll,
   profiler,
   readJson,

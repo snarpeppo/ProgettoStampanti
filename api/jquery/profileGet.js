@@ -13,15 +13,3 @@ $(function () {
     });
   });
 });
-
-// jQuery(window).on("load", function (data) {
-
-// //  var printer = data[1].printerName
-// //  console.log(printer);
-// //  ajaxProfile(printer);
-//   $("#selectProfile").on("change", function () {
-//     var printer = data[1].printerName
-//     console.log(printer);
-//     ajaxProfile(printer);
-//   });
-// });

@@ -139,6 +139,19 @@ app.get("/api/jquery/profilePost.js", (req, res) => {
   res.sendFile("./api/jquery/profilePost.js", { root: __dirname });
 });
 
+
+app.get("/printerOptions", (req, res) => {
+  const options = cups.lpoptions(req.query.printername);
+  // JSON.stringify(options);
+  console.log('options',options);
+  res.setHeader('Content-Type','application/json');
+  res.status(200).send(options);
+});
+
+app.get("/api/jquery/printerOptionsGet.js", (req, res) => {
+  res.sendFile("./api/jquery/printerOptionsGet.js", { root: __dirname });
+});
+
 app.get("/profileDelete", (req, res) => {
   const profile = req.query.profileName;
   console.log("profile", profile);
@@ -162,3 +175,5 @@ app.get("/profileGet/:profileName", (req, res) => {
 app.get("/api/jquery/profileGet.js", (req, res) => {
   res.sendFile("./api/jquery/profileGet.js", { root: __dirname });
 });
+
+
