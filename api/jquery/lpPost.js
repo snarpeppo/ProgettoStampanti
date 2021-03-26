@@ -1,9 +1,20 @@
+// const { each } = require("jquery");
+
 $(function () {
   $("#button").on("click", function () {
     var name = $("#selectPrinter").val();
     var input = document.getElementById("browseFile");
     var copie = $("#numberOfCopies").val();
-    var selected = $("#formLp option:checked");
+    var selected = $("#formLp option:selected");
+
+    var oOptionsId = $("#oOptions select").map(function () {
+      return $(this).attr("id");
+    });
+
+    var oOptions = $("#oOptions option:selected").map(function () {
+      return $(this).val();
+    });
+
     var formData = new FormData();
     formData.append("printerName", name);
     formData.append("fileToPrint", input.files[0]);
@@ -14,6 +25,11 @@ $(function () {
     formData.append("quality", selected[3].value);
     formData.append("orientation", selected[4].value);
     formData.append("number", selected[5].value);
+
+    for (let i = 0; i < oOptionsId.length; i++) {
+      formData.append(oOptionsId[i], oOptions[i]);
+    }
+
 
     $.ajax({
       method: "POST",

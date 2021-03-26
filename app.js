@@ -79,6 +79,9 @@ app.get("/lp", (req, res) => {
 app.post("/lpPost", (req, res) => {
   console.log(req.files.fileToPrint.tempFilePath);
   console.log(req.body.printerName);
+  console.log(req.body);
+  console.log( );
+ 
   const name = req.body.printerName;
   delete req.body.printerName;
   const options = req.body;
@@ -169,7 +172,9 @@ app.get("/profileGet/:profileName", (req, res) => {
   );
   let profile = JSON.parse(profileData);
   res.setHeader("Content-Type", "application/json");
-  res.status(200).send(profile.options);
+  profile.options = JSON.parse(profile.options);
+  profile.oOptions = JSON.parse(profile.oOptions);
+  res.status(200).send(profile);
 });
 
 app.get("/api/jquery/profileGet.js", (req, res) => {

@@ -2,30 +2,6 @@ const spawnSync = require("child_process").spawnSync;
 const utils = require("../utils/utils.js");
 const fs = require("fs");
 
-//const writeSync = require("fs").writeSync;
-
-// print da buffer
-// lp = function (data, options) {
-//   let self = this;
-//   //console.log("self",self);
-//   let args = utils.buildArgs(options);
-//   //console.log("args", args);
-//   args.push("-d", "");
-//   //console.log("args2", args);
-
-//   let lp = spawnSync("lp", args, { encoding: "utf-8" });
-//   console.log("lp",lp);
-//   let input = lp.output;
-
-//   console.log("input",input);
-
-//   input.writeSync(data);
-//   input.end();
-//   //	lp.stdin.write(data)
-//   //	lp.stdin.end()
-
-// };
-//print da file
 lp = function (name, options, filePath) {
   let args = ["-d", name];
   let option = "-o";
@@ -42,28 +18,39 @@ lp = function (name, options, filePath) {
   args.push(option);
   args.push("sides=" + options.side);
 
-  console.log("args prima di orientation", args);
   if (options.orientation !== "None") {
     args.push(option);
     args.push("orientation-requested=" + options.orientation);
-    console.log("args dentro orientation", args);
   }
 
-  console.log("args prima di number", args);
   if (options.number !== "None") {
     args.push(option);
     args.push("number-up=" + options.number);
-    console.log("args dentro number", args);
   }
 
-  console.log("args prima di banner", args);
   if (options.banner !== "None") {
     args.push(option);
     args.push("job-sheets=" + options.banner);
-    console.log("args dentro di banner", args);
+  }
+  
+  var lpoption = lpoptions(name);
+  var size = Object.keys(lpoption).length;
+  // console.log('valore',options[Object.keys(lpoption)[0]]);
+  // console.log('chiave',Object.keys(lpoption)[0]);
+  for (var i = 0; i <size; i++) {
+    if(Object.keys(lpoption)[i] !== "None" || Object.keys(lpoption)[i] !== 'none' ){
+      args.push(option);
+      args.push(Object.keys(lpoption)[i] + "=" + options[Object.keys(lpoption)[i]])
+    }
   }
 
-  console.log("tutti", args);
+  for (var i = 0; i <size; i++) {
+   console.log(options[Object.keys(lpoption)[i]])
+  }
+
+  console.log(args);
+  
+
   args.push(filePath);
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
   console.log("lp", lp);
@@ -207,9 +194,9 @@ lpoptions = function (name) {
     line = line.split(":");
     return line;
   });
-
+var regex = / /g;
   var options = optionsSplitted.map(function (element) {
-    var option = element[0].replace(" ", "-");
+    var option = element[0].replace(regex, "-");
     return option;
   });
   var values = optionsSplitted.map(function (element) {
@@ -221,7 +208,6 @@ lpoptions = function (name) {
   });
 
   var optionsAndValues = utils.toObject(options, values);
-  console.log(typeof optionsAndValues);
   // var optionsAndValuesJson = JSON.stringify(optionsAndValues)
   //   console.log(optionsAndValuesJson);
 
