@@ -189,7 +189,7 @@ lpoptions = function (name) {
   });
 
   var lpoptionParsed = utils.parseStdout(lpoption.stdout);
-  console.log("lpoptions", lpoptionParsed);
+  // console.log("lpoptions", lpoptionParsed);
   var optionsSplitted = lpoptionParsed.map(function (line) {
     line = line.split(":");
     return line;

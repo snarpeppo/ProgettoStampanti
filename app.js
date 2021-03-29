@@ -145,8 +145,7 @@ app.get("/api/jquery/profilePost.js", (req, res) => {
 
 app.get("/printerOptions", (req, res) => {
   const options = cups.lpoptions(req.query.printername);
-  // JSON.stringify(options);
-  console.log('options',options);
+  console.log('stampante',req.query.printername);
   res.setHeader('Content-Type','application/json');
   res.status(200).send(options);
 });

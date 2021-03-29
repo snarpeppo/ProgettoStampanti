@@ -1,5 +1,4 @@
-$(function () {
-  $("#selectProfile").on("change", function () {
+ function valueChange () {
     var profile = $("#selectProfile").val();
     var path = "/profileGet/" + profile;
     $.getJSON(path, function (json) {
@@ -17,5 +16,4 @@ $(function () {
         });
       });
     });
-  });
-});
+};

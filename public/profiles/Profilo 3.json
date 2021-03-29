@@ -1,6 +1,0 @@
-{
-  "printerName": "HP_LaserJet_P3010_Series",
-  "profileName": "Profilo 3",
-  "options": "{\"printerName\":\"HP_LaserJet_P3010_Series\",\"size\":\"a4\",\"side\":\"one-sided\",\"banner\":\"None\",\"quality\":\"3\",\"orientation\":\"None\",\"number\":\"None\"}",
-  "oOptions": "{\"HPCollateSupported/Collation-in\":\"True128\",\"HPOption_Tray3/Tray-3\":\"False\",\"HPOption_Tray4/Tray-4\":\"False\",\"HPOption_Duplexer/Duplex-Unit\":\"True\",\"HPOption_Disk/Printer-Disk\":\"None\",\"HPPinPrnt/Secure-Printing\":\"True\",\"HPFIDigit/First-Digit\":\"0\",\"HPSEDigit/Second-Digit\":\"0\",\"HPTHDigit/Third-Digit\":\"0\",\"HPFTDigit/Fourth-Digit\":\"0\",\"HPServicesWeb/Services-on\":\"SupportAndTroubleshooting\",\"HPServicesUtility/Device-Maintenance\":\"DeviceAndSuppliesStatus\",\"HPRotate180/Rotate-Page\":\"False\",\"MirrorPrint/Mirror-Image\":\"True\",\"MediaType/Media-Type\":\"Unspecified\",\"HPStraightPaperPath/Use-Straight\":\"True\",\"Duplex/2-Sided-Printing\":\"None\",\"Collate/Collate\":\"True\",\"PageSize/Page-Size\":\"Letter\",\"InputSlot/Paper-Source\":\"Auto\",\"Resolution/Printer-Resolution\":\"1200x1200dpi\",\"HPEconoMode/EconoMode\":\"PrinterDefault\"}"
-}
