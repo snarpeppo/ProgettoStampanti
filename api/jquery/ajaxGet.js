@@ -1,3 +1,4 @@
+// chiamata ajax che crea la tabella relativa ai 'jobs' della stampante con i valori restituiti dal back-end
 ajaxLpq = function (nomeStampante) {
   $.ajax({
     method: "GET",
@@ -9,7 +10,7 @@ ajaxLpq = function (nomeStampante) {
       alert("Error");
     },
   }).done(function (data) {
-    console.log(Object.keys(data).length);
+   //se data ha dei valori, crea la tabella
     if (Object.keys(data).length > 0) {
       $("#records").show();
       $("#empty").hide();
@@ -31,6 +32,7 @@ ajaxLpq = function (nomeStampante) {
       });
       string += " </tbody></table>";
       $("#records").html(string);
+      //altrimenti, avvisa che non ci sono 'jobs' su quella stampante
     } else {
       $("#empty").show();
       $("#records").hide();
@@ -41,10 +43,10 @@ ajaxLpq = function (nomeStampante) {
     }
   });
 };
+//permette la creazione della tabella al caricamento della pagina
 jQuery(window).on("load", function () {
   var nomeStampante = $("#select").val();
   ajaxLpq(nomeStampante);
-  console.log(nomeStampante);
   $("#select").on("change", function () {
     var nomeStampante = $("#select").val();
     ajaxLpq(nomeStampante);

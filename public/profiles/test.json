@@ -1,6 +1,0 @@
-{
-  "printerName": "HP-LaserJet-M607-flab",
-  "profileName": "test",
-  "options": "{\"printerName\":\"HP-LaserJet-M607-flab\",\"size\":\"a4\",\"side\":\"one-sided\",\"banner\":\"None\",\"quality\":\"3\",\"orientation\":\"None\",\"number\":\"None\"}",
-  "oOptions": "{\"PageSize/Media-Size\":\"EnvC6\",\"InputSlot/Media-Source\":\"Tray2\",\"ColorModel/Print-Color\":\"Gray\",\"Duplex/2-Sided-Printing\":\"DuplexNoTumble\",\"cupsPrintQuality/Print-Quality\":\"Normal\",\"print-content-optimize/Print-Optimization\":\"auto\",\"print-scaling/Print-Scaling\":\"fit\"}"
-}

@@ -1,5 +1,4 @@
-// const { each } = require("jquery");
-
+//funzione che si occupa di raccogliere i dati dentro le select e di mandarli in stampa 
 $(function () {
   $("#button").on("click", function () {
     var name = $("#selectPrinter").val();
@@ -14,7 +13,7 @@ $(function () {
     var oOptions = $("#oOptions option:selected").map(function () {
       return $(this).val();
     });
-
+    //aggancio al form data tutti i dati restituitemi dalle funioni jquery riportate sopra
     var formData = new FormData();
     formData.append("printerName", name);
     formData.append("fileToPrint", input.files[0]);
@@ -29,14 +28,14 @@ $(function () {
     for (let i = 0; i < oOptionsId.length; i++) {
       formData.append(oOptionsId[i], oOptions[i]);
     }
-
-
+    //chiamata ajax in POST per l'invio dei dati
     $.ajax({
       method: "POST",
       url: "/lpPost",
       data: formData,
       processData: false,
       contentType: false,
+      //in caso di fallimento o successo, informa l utente dello stato della richiesta
       error: function () {
         var string =
           '<div class="alert alert-danger alert-dismissible rounded-pill fade show" role="alert" style="padding-left: 20px; padding-top: 20px; margin-right: 50%;">';

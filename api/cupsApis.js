@@ -2,6 +2,9 @@ const spawnSync = require("child_process").spawnSync;
 const utils = require("../utils/utils.js");
 const fs = require("fs");
 
+//questo file contiene tutte le mie funzioni 'back-end'
+
+//'lp' e' il comando di stampa, aggancio dentro la variabile 'args' tutte le varie opzioni di stampa
 lp = function (name, options, filePath) {
   let args = ["-d", name];
   let option = "-o";
@@ -32,50 +35,43 @@ lp = function (name, options, filePath) {
     args.push(option);
     args.push("job-sheets=" + options.banner);
   }
-  
-  var lpoption = lpoptions(name);
-  var size = Object.keys(lpoption).length;
-  // console.log('valore',options[Object.keys(lpoption)[0]]);
-  // console.log('chiave',Object.keys(lpoption)[0]);
-  for (var i = 0; i <size; i++) {
-    if(Object.keys(lpoption)[i] !== "None" || Object.keys(lpoption)[i] !== 'none' ){
+  //richiamo la funzione che contiene tutti i valori delle relative opzioni, uniche per ogni stampante
+  var lpoptions = lpoptions(name);
+  var size = Object.keys(lpoptions).length;
+  for (var i = 0; i < size; i++) {
+    if (
+      Object.keys(lpoptions)[i] !== "None" ||
+      Object.keys(lpoptions)[i] !== "none"
+    ) {
       args.push(option);
-      args.push(Object.keys(lpoption)[i] + "=" + options[Object.keys(lpoption)[i]])
+      args.push(
+        Object.keys(lpoptions)[i] + "=" + options[Object.keys(lpoptions)[i]]
+      );
     }
   }
 
-  for (var i = 0; i <size; i++) {
-   console.log(options[Object.keys(lpoption)[i]])
-  }
-
-  console.log(args);
-  
-
   args.push(filePath);
+  //comando effettivo che esegue la stampa
   let lp = spawnSync("lp", args, { encoding: "utf-8" });
   console.log("lp", lp);
   let inputParsed = utils.parseStdout(lp.stdout);
 
   return inputParsed;
 };
-
+//funzione che dobrebbe aggiungere una stampante, potendone modificare il nome, la descrizione e la 'posizione', ma per mancanza di permessi, non e' stata implementata
 lpadmin = function (name, description, location) {
   let args = ["-p", name];
-
   args.push("-D");
   args.push(description);
   args.push("-L");
   args.push(location);
-  console.log(args);
 
   let lpadmin = spawnSync("lpadmin", args, { encoding: "utf-8" });
-  console.log("lpadmin", lpadmin);
   let stdoutSpawnSync = utils.parseStdout(lpadmin.stdout);
 
-  console.log(stdoutSpawnSync);
   return stdoutSpawnSync;
 };
-
+//funzione che fa visualizzare i 'jobs' completati e non, a seconda dalla 'option' che si inserisce nella select
 lpstatCompleted = function (option) {
   let args = ["-W", option];
   let lpstatCompleted = spawnSync("lpstat", args, { encoding: "utf-8" });
@@ -102,28 +98,17 @@ lpstatCompleted = function (option) {
         line[9],
     };
   });
-  console.log(lpstatCompletedMap);
   return lpstatCompletedMap;
 };
-
+//funzione che restituisce tutti i 'jobs' per la stampante selezionata
 lpq = function (name) {
-  let self = this;
-  self = name;
-  let args = ["-P", self];
-  //  console.log('args', args);
-
+  let args = ["-P", name];
   let lpq = spawnSync("lpq", args, { encoding: "utf-8" });
-  //console.log('lpq',lpq);
-  console.log("stdoutlpq", lpq.stdout);
   let stdoutSpawnSync = utils.parseStdout(lpq.stdout);
-  console.log("stdoutSpawnSync", stdoutSpawnSync);
   stdoutSpawnSync.shift();
   stdoutSpawnSync.shift();
-  // console.log("stdout", stdoutSpawnSync);
-
   let InfoJob = stdoutSpawnSync.map(function (line) {
     line = line.split(/ +/);
-    // console.log(line);
     return {
       rank: line[0] === "active" ? line[0] : parseInt(line[0].slice(0, -2)),
       owner: line[1],
@@ -132,22 +117,18 @@ lpq = function (name) {
       totalSize: parseInt(line[4]),
     };
   });
-  console.log(InfoJob);
   return InfoJob;
 };
-
+//funzione presa da 'utils', restituisce una lista di tutti jobs attivi avviati dall l'utente di sistema
 lpstat = function () {
   let lpstatList = utils.list();
   return lpstatList;
 };
-
+//funzione che riporta lo status della singola stampante, a seconda di quella selezionata
 lpstatInfo = function (name) {
   let args = ["-l", "-p"];
   args.push(name);
-  let lpstatInfo = spawnSync("lpstat", args, {
-    encoding: "utf-8",
-  });
-
+  let lpstatInfo = spawnSync("lpstat", args, { encoding: "utf-8" });
   let lpstatInfoStdout = lpstatInfo.stdout;
   let lpstatInfoParsed = utils.parseStdout(lpstatInfoStdout);
   lpstatInfoParsed.shift();
@@ -155,8 +136,6 @@ lpstatInfo = function (name) {
     line = line.replace(/.+?(?<=:)/, "").trim();
     return line;
   });
-
-  console.log("parsed", lpstatInfoMap);
 
   if (lpstatInfoMap[0] === "") {
     let details = {
@@ -179,26 +158,24 @@ lpstatInfo = function (name) {
     return details;
   }
 };
-
+//funzione che restituisce tutte le opzioni e i conseguenti valori specifici, diversi a seconda della stampante
 lpoptions = function (name) {
   let args = ["-p", name];
   args.push("-l");
 
-  lpoption = spawnSync("lpoptions", args, {
-    encoding: "utf-8",
-  });
-
+  lpoption = spawnSync("lpoptions", args, { encoding: "utf-8" });
   var lpoptionParsed = utils.parseStdout(lpoption.stdout);
-  console.log("lpoptions", lpoptionParsed);
   var optionsSplitted = lpoptionParsed.map(function (line) {
     line = line.split(":");
     return line;
   });
-var regex = / /g;
+  var regex = / /g;
+  //variabile con solo le options(keys)
   var options = optionsSplitted.map(function (element) {
     var option = element[0].replace(regex, "-");
     return option;
   });
+  //variabile con solo valori (values)
   var values = optionsSplitted.map(function (element) {
     element[1] = element[1].replace("*", "");
     var value = element[1].split(/\s/g);
@@ -206,31 +183,23 @@ var regex = / /g;
     value.shift();
     return value;
   });
-
+  //unisce i due valori per creare un array associativo
   var optionsAndValues = utils.toObject(options, values);
-  // var optionsAndValuesJson = JSON.stringify(optionsAndValues)
-  //   console.log(optionsAndValuesJson);
-
   return optionsAndValues;
 };
-
+//funzione che cancella tutti i jobs, ma per problemi di permessi, non e' stata implementata
 cancelAll = function () {
   let args = ["-u"];
   args.push("finsoft");
-  //let cancelAll = spawnSync("cancel",args, { encoding: "utf-8", shell:"/home/finsoft" });
   let cancelAll = spawnSync("cancel", args, {
     encoding: "utf-8",
     shell: true,
   });
-  //console.log(cancelAll.shell);
-  // let uid = spawnSync('id', args, { encoding: "utf-8"});
-  console.log(cancelAll);
   return cancelAll;
 };
-
+//funzione che 'legge' i file dentro il path specificato e ritorna un array con tutti nomi dei file
 readJson = function () {
   const outputDir = "./public/profiles/";
-
   const filesName = fs.readdirSync(outputDir);
   let arrayJson = [];
   filesName.forEach((file) => {
@@ -239,10 +208,9 @@ readJson = function () {
 
   return arrayJson;
 };
-
+//funzione che crea il profilo con tutte le opzioni passate dalle altre funzioni jQuery
 profiler = function (profile, options, oOptions) {
   const generalOptions = JSON.stringify(options, null, 2);
-  const printerOptions = JSON.stringify(oOptions, null, 2);
   const outputDir = "./public/profiles/";
 
   fs.writeFile(outputDir + profile + ".json", generalOptions, (err) => {
@@ -253,7 +221,7 @@ profiler = function (profile, options, oOptions) {
     }
   });
 };
-
+//fuzione che elimina il profilo selezionato, passato come attributo alla funzione
 deleteProfile = function (profile) {
   const outputDir = "./public/profiles/";
   try {

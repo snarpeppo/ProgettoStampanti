@@ -3,7 +3,7 @@ const app = express();
 const fileUpload = require("express-fileupload");
 const cups = require("./api/cupsApis.js");
 const fs = require("fs");
-
+//questo file contiene tutte le routes dell'applicativo, insieme alle chiamate ai file jQuery inclusi nelle varie view
 app.use(express.static("api"));
 app.use(
   fileUpload({
@@ -11,9 +11,9 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
-
 app.listen(3000);
 app.set("view engine", "ejs");
+
 // home Routes
 app.get("/", (req, res) => {
   res.redirect("/home");
@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 app.get("/home", (req, res) => {
   res.render("home");
 });
+
 // lpq Routes
 app.get("/lpq", (req, res) => {
   const name = cups.lpstat();
@@ -40,15 +41,6 @@ app.get("/api/jquery/ajaxGet.js", (req, res) => {
   res.sendFile("./api/jquery/ajaxGet.js", { root: __dirname });
 });
 
-app.get("/lpstatCompleted", (req, res) => {
-  const option = cups.lpstatCompleted(req.query.preference);
-  res.send(option);
-});
-
-app.get("/api/jquery/lpstatCompletedGet.js", (req, res) => {
-  res.sendFile("./api/jquery/lpstatCompletedGet.js", { root: __dirname });
-});
-
 // classes Routes
 app.get("/classes", (req, res) => {
   res.render("classes");
@@ -61,6 +53,15 @@ app.get("/lpstat", (req, res) => {
     command,
   });
 });
+app.get("/lpstatCompleted", (req, res) => {
+  const option = cups.lpstatCompleted(req.query.preference);
+  res.send(option);
+});
+
+app.get("/api/jquery/lpstatCompletedGet.js", (req, res) => {
+  res.sendFile("./api/jquery/lpstatCompletedGet.js", { root: __dirname });
+});
+
 
 app.get("/api/jquery/onPrinterDetail.js", (req, res) => {
   res.sendFile("./api/jquery/onPrinterDetail.js", { root: __dirname });
@@ -77,11 +78,6 @@ app.get("/lp", (req, res) => {
 });
 
 app.post("/lpPost", (req, res) => {
-  console.log(req.files.fileToPrint.tempFilePath);
-  console.log(req.body.printerName);
-  console.log(req.body);
-  console.log( );
- 
   const name = req.body.printerName;
   delete req.body.printerName;
   const options = req.body;
@@ -94,7 +90,6 @@ app.get("/api/jquery/lpPost.js", (req, res) => {
 });
 
 // lpadmin routes
-
 app.get("/lpadmin", (req, res) => {
   const command = cups.lpadmin("PrinterProva2", "HP Printer", "FINSOFT");
   res.render("lpadminView", {
@@ -114,13 +109,13 @@ app.get("/cancelAll", (req, res) => {
 app.get("/details", (req, res) => {
   const name = req.query.printerName;
   const info = cups.lpstatInfo(name);
-  //console.log(req.query.printerName);
   res.render("details", {
     name,
     info,
   });
 });
 
+//profiles routes
 app.get("/profiles", (req, res) => {
   const name = cups.lpstat();
   const profile = cups.readJson();
@@ -145,8 +140,6 @@ app.get("/api/jquery/profilePost.js", (req, res) => {
 
 app.get("/printerOptions", (req, res) => {
   const options = cups.lpoptions(req.query.printername);
-  // JSON.stringify(options);
-  console.log('options',options);
   res.setHeader('Content-Type','application/json');
   res.status(200).send(options);
 });
@@ -157,7 +150,6 @@ app.get("/api/jquery/printerOptionsGet.js", (req, res) => {
 
 app.get("/profileDelete", (req, res) => {
   const profile = req.query.profileName;
-  console.log("profile", profile);
   const remove = cups.deleteProfile(profile);
   res.status(200).send(remove);
 });
