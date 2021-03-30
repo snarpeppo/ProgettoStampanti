@@ -1,3 +1,4 @@
+//funzione manda il nome del profilo che si vuole cancellare alla funzione nel back-end
 ajaxDelete = function (profile) {
   $.ajax({
     method: "GET",
@@ -18,6 +19,5 @@ ajaxDelete = function (profile) {
 
 $("#delete").on("click", function () {
   var profile = $("#selectProfile").val();
-  console.log(profile);
   ajaxDelete(profile);
 });

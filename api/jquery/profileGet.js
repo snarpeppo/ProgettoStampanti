@@ -1,3 +1,4 @@
+ //funzione che aggiorna tutti i valori delle select in base a quanto scritto dentro il profilo
  function valueChange () {
     var profile = $("#selectProfile").val();
     var path = "/profileGet/" + profile;
