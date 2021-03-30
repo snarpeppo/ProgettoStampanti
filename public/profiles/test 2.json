@@ -1,0 +1,6 @@
+{
+  "printerName": "HP_ENVY_5540_series_19C02B_",
+  "profileName": "test 2",
+  "options": "{\"printerName\":\"HP_ENVY_5540_series_19C02B_\",\"size\":\"a4\",\"side\":\"two-sided-short-edge\",\"banner\":\"None\",\"quality\":\"3\",\"orientation\":\"None\",\"number\":\"None\"}",
+  "oOptions": "{\"PageSize/Media-Size\":\"4x5\",\"InputSlot/Media-Source\":\"Main\",\"MediaType/Media-Type\":\"Stationery\",\"ColorModel/Print-Color-Mode\":\"RGB\",\"Duplex/2-Sided-Printing\":\"None\",\"cupsPrintQuality/Print-Quality\":\"Draft\",\"print-content-optimize/Print-Optimization\":\"auto\",\"print-rendering-intent/Print-Rendering-Intent\":\"auto\",\"print-scaling/Print-Scaling\":\"auto\"}"
+}
