@@ -6,12 +6,12 @@
 ## Utilizzo dell'applicativo
 
 Il sito si presenta con una schermata di ingresso all'utente, strutturata in base ai contenuti:
-- Stampanti 
-- Profili
+- **Stampanti**
+- **Profili**
   - *Stili di stampaggio creati dall' utente*
-- 'Jobs'
+- **'Jobs'**
    - *I lavori di stampa assegnati alle stampanti* 
-- Stampa
+- **'Quick Print'**
 
   ![Home](img/home.jpg)
 
@@ -62,9 +62,9 @@ La schermata dei Jobs e' composta da due tabelle:
 
 1. Tabella contenente tutti i Jobs di tutte le stampanti
 
-    ![Jobs completati e non](img/completedOrNot.jpg)
-    - Potrai anche scegliere se visualizzare i jobs completati o no, tramite una tendina a scelta
-2. Tabella contenente i jobs *solo* delle stampante selezionata
+   ![Jobs completati e non](img/completedOrNot.jpg)
+   > Potrai anche scegliere se visualizzare i jobs completati o no, tramite una tendina a scelta
+2. Tabella contenente i jobs *solo* della stampante selezionata
    
    ![tutti i jobs](img/alljobs.jpg)
    
