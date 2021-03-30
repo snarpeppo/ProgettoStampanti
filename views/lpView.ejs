@@ -12,7 +12,7 @@
       </div>
 
       <div class="col-4" style="width: 100%; padding: 1% 0% 0% 0%">
-        <h4>Selected profile</h4>
+        <h5>Selected profile</h5>
       </div>
       <div class="col-4">
         <div class="col-4">
@@ -27,10 +27,10 @@
     <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
       <div class="row" style="width: 100%; padding: 1% 0% 0% 0%">
         <div class="col-4">
-            <h4>Selected printer</h4>
+            <h5>Selected printer</h5>
         </div>
         <div class="col-4">
-            <h4>Selected file</h4>
+            <h5>Selected file</h5>
         </div>
         <div class="col-4">
         </div>
@@ -57,12 +57,10 @@
       <form id="formLp">
         <div class="container-fluid" style="padding: 2% 0% 3% 0%;">
           <div class="row" style="width: 100%;">
-            <div class="col-4">
+            <div class="col-6">
               <%- include('../views/options/numberOfCopies.ejs') %>
             </div>
-            <div class="col-4">
-            </div>
-            <div class="col-4">
+            <div class="col-6">
             </div>
           </div>
           <div class="row" style="width: 100%;">
@@ -77,27 +75,21 @@
           </div>
         </div>
         <div class="row" style="width: 100%;">
-          <div class="col-4" style="padding-top: 1%">
+          <div class="col-4" style="padding-top: 1%;">
             <%- include('../views/options/quality.ejs') %>
           </div>
-          <div class="col-4" style="padding-top: 1%">
+          <div class="col-4" style="padding-top: 1%;">
             <%- include('../views/options/orientation-requested.ejs') %>
           </div>
-          <div class="col-4" style="padding-top: 1%">
+          <div class="col-4" style="padding-top: 1%;">
             <%- include('../views/options/number.ejs') %>
           </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
       </form>
 
-      <div class="col-4">
-        <h4>Printer specific options</h4>
-      </div>
-      <form id="oOptions">
+      <form id="oOptions" style="padding-top: 1%;">
         <div id="advancedOptions" style="padding-bottom: 24px;">
+          <!-- iniettate le advanced options -->
         </div>
       </form>
     </div>
@@ -105,7 +97,6 @@
     <script type="text/javascript" src="../api/jquery/lpPost.js"></script>
     <script type="text/javascript" src="../api/jquery/profileGet.js"></script>
     <script type="text/javascript" src="../api/jquery/printerOptionsGet.js"></script>
-    <!-- <script type="text/javascript" src="../api/jquery/lpGet.js"></script> -->
   </body>
 
   <%- include('../views/partials/footer.ejs') %>
