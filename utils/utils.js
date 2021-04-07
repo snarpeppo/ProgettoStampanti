@@ -1,5 +1,8 @@
+//file che contiene tutte le funzioni 'utili' o comunque riutilizzate piu' volte nel codice
+//vengono richiamate per minimizzare la quantita' di codice dove possibile
 const execSync = require("child_process").execSync;
 
+// visualizza tutte le stampanti riconosciute
 list = function () {
   let listaStampanti = execSync("lpstat -p", {
     timeout: 10000,
@@ -11,40 +14,26 @@ list = function () {
   let listaSoloPrinters = listaParsata.filter(function (line) {
     return line.match(line.match(/^printer/) || line.match(/^impressora/));
   });
-  //console.log("printers",listaSoloPrinters);
+
   let listaSoloNomi = listaSoloPrinters.map(function (printer) {
     return printer.match(/(?: \S+)/)[0].trim();
   });
-
-  //console.log(listaSoloNomiParsata)
-
   return listaSoloNomi;
 };
-
+//parsifica un oggetto rimuovendo e spezzando l'array per andare a capo (\n)
 parseStdout = function (data) {
   if (!data) return [];
   return data.toString().replace(/\n$/, "").split("\n");
 };
-
-match = function (name) {
-  let lista = list();
-  return Boolean(
-    lista.filter(function (printer) {
-      return name === printer;
-    }).length
-  );
-};
-
+//unisce due array in un singolo array in chiave-valore
 toObject = function (keys, values) {
   var result = {};
-  for (var i = 0; i < keys.length; i++)
-       result[keys[i]] = values[i];
+  for (var i = 0; i < keys.length; i++) result[keys[i]] = values[i];
   return result;
-}
+};
 
 module.exports = {
   parseStdout,
-  match,
   list,
   toObject,
 };
