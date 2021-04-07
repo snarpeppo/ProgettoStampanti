@@ -8,7 +8,7 @@
       <h2>Quick print</h2>
 
       <div id="result">
-        <!-- alert -->
+        <!-- Alert in caso di errore di stampa -->
       </div>
 
       <div class="col-4" style="width: 100%; padding: 1% 0% 0% 0%">
@@ -17,6 +17,7 @@
       <div class="col-4">
         <div class="col-4">
           <select id="selectProfile" class="form-select">
+            <!-- Qui vengono iniettati tutti profili creati -->
             <% for ( var i = 0; i<profile.length; i++ ) { %>
                 <option value="<%= profile[i] %>"> <%= profile[i] %></option>
                 <% } %>
@@ -38,6 +39,7 @@
         <div class="row" style="width: 100%;">
           <div class="col-4">
             <div class="col-8">
+              <!-- Select disabled perchè la stampante selezionata per quel profilo non può essere cambiata -->
               <select id="selectPrinter" class="form-select" disabled>
                 <% for ( var i = 0; i<name.length; i++ ) { %>
                   <option value="<%= name[i] %>"> <%= name[i] %></option>
@@ -46,6 +48,7 @@
             </div>
           </div>
           <div class="col-4">
+            <!-- Ricerca in locale il file da stampare -->
             <%- include('../views/options/browseFile.ejs') %>
           </div>
           <div class="col-4">
@@ -53,8 +56,9 @@
           </div>
       </div>
     </div>
-
-      <form id="formLp">
+      
+      <form id="formLp"> 
+        <!-- Qui vengono iniettate le common options della stampante una ad una nella grid -->
         <div class="container-fluid" style="padding: 2% 0% 3% 0%;">
           <div class="row" style="width: 100%;">
             <div class="col-6">
@@ -89,7 +93,7 @@
 
       <form id="oOptions">
         <div id="advancedOptions" style="padding-bottom: 24px; margin-right: 70%;">
-              <!-- iniettate le advanced options -->
+              <!-- Qui vengono iniettate le options specifiche della stampante -->
         </div>
       </form>
     </div>

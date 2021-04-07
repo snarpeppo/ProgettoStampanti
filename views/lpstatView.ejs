@@ -6,15 +6,17 @@
   <body>
     <div class="table-responsive" style="padding: 20px 20px 0px 20px;" >
       <h2 style="padding-bottom: 20px;">Printers List</h2>
-    <table class="table table-hover table-borderless table-striped">
+    <table class="table table-hover table-borderless table-striped"> 
       <thead>
         <tr class='table-dark'>
           <th scope="col" style="padding-left: 20px;">Name</th>
         </tr>
+        <!-- Qui vengono iniettate le stampanti conosciute -->
       </thead>
       <tbody style="cursor: pointer">
       </div>
 
+        <!-- Cliccando una stampante si va alla sua detail page -->
         <% for(var i=0; i<command.length; i++){ %>
           <tr id="printer">
             <th onclick="onPrinterDetail('<%= command[i] %>')"><%= command[i] %></th>

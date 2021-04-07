@@ -7,7 +7,7 @@
     <div class="container-fluid" style="padding: 1% 1% 0% 1%;">
           <h2>Manage profiles</h2>
       <div id="profile">
-        <!-- alert -->
+        <!-- alert in caso di errore -->
       </div>
     <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
       <div class="row" style="width: 100%;">
@@ -49,6 +49,7 @@
         <div class="col-4">
           <div class="col-8">
             <select id="selectPrinter" class="form-select">
+              <!-- Iniettati i nomi delle stampanti selezionabili per il profilo -->
               <% for ( var i = 0; i<name.length; i++ ) { %>
                 <option value="<%= name[i] %>"> <%= name[i] %></option>
               <% } %>
@@ -63,6 +64,7 @@
     </div>
   </div>
         <form id="formLp">
+          <!-- Qui vengono iniettate le common options -->
           <div class="container-fluid" style="padding: 2% 0% 0% 0%;">
             <div class="row" style="width: 100%;">
               <div class="col-4">
@@ -92,8 +94,10 @@
           </div>
           <form id="oOptions">
             <div id="advancedOptions" style="padding-bottom: 24px;">
+              <!-- Qui vengono iniettate le specific options se presenti nella stampanti -->
             </div>
           </form>
+          <br>
     </div>
     
     <script type="text/javascript" src="../api/jquery/profilePost.js"></script>
