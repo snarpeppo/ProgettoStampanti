@@ -20,6 +20,7 @@
           <div class="col-2">
             <div class="col-auto">
               <select id="selectProfile" class="form-select">
+                <option value="null" selected>Seleziona un profilo</option>
                 <% for ( var i = 0; i<profile.length; i++ ) { %>
                     <option value="<%= profile[i] %>"> <%= profile[i] %></option>
                     <% } %>

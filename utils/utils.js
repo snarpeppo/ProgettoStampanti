@@ -8,16 +8,19 @@ list = function () {
     timeout: 10000,
     encoding: "utf-8",
   });
-
+  
   let listaParsata = parseStdout(listaStampanti);
-
+  
   let listaSoloPrinters = listaParsata.filter(function (line) {
-    return line.match(line.match(/^printer/) || line.match(/^impressora/));
+    return line.match(line.match(/[^stampante]*$/) || line.match(/[^printer]*$/));
   });
+  let listaNomi = listaSoloPrinters.map(function (printer) {
+    return printer.match(printer.match(/(?<=la stampante\s).*?(?=\s+)/gs) || printer.match(/(?<=the printer\s).*?(?=\s+)/gs)); ;
+  });
+  let listaSoloNomi = listaNomi.filter(function (el){
+    return el != null;
+  })
 
-  let listaSoloNomi = listaSoloPrinters.map(function (printer) {
-    return printer.match(/(?: \S+)/)[0].trim();
-  });
   return listaSoloNomi;
 };
 //parsifica un oggetto rimuovendo e spezzando l'array per andare a capo (\n)
